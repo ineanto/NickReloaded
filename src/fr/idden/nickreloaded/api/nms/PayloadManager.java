@@ -5,12 +5,12 @@ import fr.idden.nickreloaded.api.nms.impl.AbstractActionbar;
 import fr.idden.nickreloaded.api.nms.impl.AbstractGameprofileFiller;
 import fr.idden.nickreloaded.api.nms.impl.AbstractPlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.throwable.PayloadModuleUnsupportedVersionException;
+import fr.idden.nickreloaded.api.nms.v1_12_R1.v_1_12_R1_Actionbar;
 import fr.idden.nickreloaded.api.nms.v1_12_R1.v_1_12_R1_GameprofileFiller;
 import fr.idden.nickreloaded.api.nms.v1_12_R1.v_1_12_R1_PlayerIdentityManager;
-import fr.idden.nickreloaded.api.nms.v1_12_R1.v_1_12_R1_Actionbar;
 import fr.idden.nickreloaded.api.nms.v_1_11_R1.v_1_11_R1_Actionbar;
-import fr.idden.nickreloaded.api.nms.v_1_11_R1.v_1_11_R1_PlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.v_1_11_R1.v_1_11_R1_GameprofileFiller;
+import fr.idden.nickreloaded.api.nms.v_1_11_R1.v_1_11_R1_PlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.v_1_8_R1.v_1_8_R1_Actionbar;
 import fr.idden.nickreloaded.api.nms.v_1_8_R1.v_1_8_R1_GameprofileFiller;
 import fr.idden.nickreloaded.api.nms.v_1_8_R1.v_1_8_R1_PlayerIdentityManager;
@@ -102,43 +102,43 @@ public class PayloadManager
     private static void initModule(NMSModule module)
             throws PayloadModuleUnsupportedVersionException
     {
-        NickReloaded.log("§cLoading module §b" + module.name() + "§c...");
+        NickReloaded.log("§6Loading module §b" + module.name() + "§6...");
         switch (module)
         {
             case GAMEPROFILE_FILLER:
                 switch (MINECRAFT_SERVER_VERSION_CONSTANT)
                 {
                     case MINECRAFT_1_12_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + NMSVersion.MINECRAFT_1_12_R1.v());
+                        logInitModule(module);
                         MINECRAFT_GAMEPROFILE_FILLER = new v_1_12_R1_GameprofileFiller();
                         break;
                     case MINECRAFT_1_11_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + NMSVersion.MINECRAFT_1_11_R1.v());
+                        logInitModule(module);
                         MINECRAFT_GAMEPROFILE_FILLER = new v_1_11_R1_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_9_R2:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + NMSVersion.MINECRAFT_1_9_R2.v());
+                        logInitModule(module);
                         MINECRAFT_GAMEPROFILE_FILLER = new v_1_9_R2_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_9_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + NMSVersion.MINECRAFT_1_9_R1.v());
+                        logInitModule(module);
                         MINECRAFT_GAMEPROFILE_FILLER = new v_1_9_R1_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_8_R3:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + NMSVersion.MINECRAFT_1_8_R3.v());
+                        logInitModule(module);
                         MINECRAFT_GAMEPROFILE_FILLER = new v_1_8_R3_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_8_R2:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_GAMEPROFILE_FILLER = new v_1_8_R2_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_8_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_GAMEPROFILE_FILLER = new v_1_8_R1_GameprofileFiller();
                         break;
 
@@ -152,36 +152,36 @@ public class PayloadManager
                 switch (MINECRAFT_SERVER_VERSION_CONSTANT)
                 {
                     case MINECRAFT_1_12_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_12_R1_PlayerIdentityManager();
                         break;
                     case MINECRAFT_1_11_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_11_R1_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_9_R2:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_9_R2_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_9_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_9_R1_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_8_R3:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_8_R3_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_8_R2:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_8_R2_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_8_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_8_R1_PlayerIdentityManager();
                         break;
 
@@ -195,36 +195,36 @@ public class PayloadManager
                 switch (MINECRAFT_SERVER_VERSION_CONSTANT)
                 {
                     case MINECRAFT_1_12_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_ACTION_BAR = new v_1_12_R1_Actionbar();
                         break;
                     case MINECRAFT_1_11_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_ACTION_BAR = new v_1_11_R1_Actionbar();
                         break;
 
                     case MINECRAFT_1_9_R2:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_ACTION_BAR = new v_1_9_R2_Actionbar();
                         break;
 
                     case MINECRAFT_1_9_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_ACTION_BAR = new v_1_9_R1_Actionbar();
                         break;
 
                     case MINECRAFT_1_8_R3:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_ACTION_BAR = new v_1_8_R3_Actionbar();
                         break;
 
                     case MINECRAFT_1_8_R2:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_ACTION_BAR = new v_1_8_R2_Actionbar();
                         break;
 
                     case MINECRAFT_1_8_R1:
-                        NickReloaded.log("§cLoaded §b" + module.name() + " §cfor version(s) §b" + getVersion().v());
+                        logInitModule(module);
                         MINECRAFT_ACTION_BAR = new v_1_8_R1_Actionbar();
                         break;
 
@@ -244,6 +244,11 @@ public class PayloadManager
         final String packageName = Bukkit.getServer().getClass().getPackage().getName();
 
         return packageName.substring(packageName.lastIndexOf('.') + 1);
+    }
+
+    private static void logInitModule(NMSModule module)
+    {
+        NickReloaded.log("§aLoaded §b" + module.name() + " §afor version(s) §b" + getVersion().v());
     }
 
     public enum NMSVersion

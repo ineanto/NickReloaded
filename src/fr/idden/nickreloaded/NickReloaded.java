@@ -3,6 +3,7 @@ package fr.idden.nickreloaded;
 import fr.idden.nickreloaded.api.nick.NickManager;
 import fr.idden.nickreloaded.api.nms.PayloadManager;
 import fr.idden.nickreloaded.api.nms.throwable.PayloadModuleUnsupportedVersionException;
+import fr.idden.nickreloaded.api.placeholderapi.NickReloadedPAPI;
 import fr.idden.nickreloaded.api.storage.PlayerStorage;
 import fr.idden.nickreloaded.api.storage.StorageManager;
 import fr.idden.nickreloaded.api.storage.impl.DatabaseImpl;
@@ -38,6 +39,12 @@ public class NickReloaded
         catch (PayloadModuleUnsupportedVersionException e)
         {
             disable("§cPayload was unable to get an adapter for module " + e.getModule() + " for version(s): " + PayloadManager.getVersion().v());
+        }
+
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
+        {
+            new NickReloadedPAPI(this).hook();
+            log("§bPlaceholderAPI §afound §b! Hooked.");
         }
 
         new StorageManager().setupStorage();
