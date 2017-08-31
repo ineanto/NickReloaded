@@ -24,7 +24,7 @@ public class UnnickCommand extends ExecutableCommand
         {
             Player player = (Player) sender;
 
-            if (! sender.isOp() || ! sender.hasPermission("nickreloaded.unnick") || ! sender.hasPermission("nickreloaded.*"))
+            if (! sender.isOp() || ! sender.hasPermission("nickreloaded.unnick") || ! sender.hasPermission("nickreloaded.*") || ! sender.hasPermission("*"))
             {
                 sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(), false));
             }

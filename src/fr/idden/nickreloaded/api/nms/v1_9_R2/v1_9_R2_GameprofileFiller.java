@@ -1,11 +1,11 @@
-package fr.idden.nickreloaded.api.nms.v_1_8_R2;
+package fr.idden.nickreloaded.api.nms.v1_9_R2;
 
 import com.google.common.collect.Iterables;
 import com.mojang.authlib.GameProfile;
 import fr.idden.nickreloaded.api.nms.impl.AbstractGameprofileFiller;
-import net.minecraft.server.v1_8_R2.MinecraftServer;
+import net.minecraft.server.v1_9_R2.MinecraftServer;
 
-public class v_1_8_R2_GameprofileFiller
+public class v1_9_R2_GameprofileFiller
         implements AbstractGameprofileFiller
 {
     @Override
@@ -31,7 +31,7 @@ public class v_1_8_R2_GameprofileFiller
                 if (Iterables.getFirst(gameProfile1.getProperties().get("textures"),
                                        null) == null)
                 {
-                    gameProfile1 = MinecraftServer.getServer().aC().fillProfileProperties(gameProfile1,
+                    gameProfile1 = MinecraftServer.getServer().ay().fillProfileProperties(gameProfile1,
                                                                                           true);
                 }
                 return gameProfile1;

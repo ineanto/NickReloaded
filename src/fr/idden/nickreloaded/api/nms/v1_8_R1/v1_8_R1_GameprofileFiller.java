@@ -1,11 +1,11 @@
-package fr.idden.nickreloaded.api.nms.v_1_8_R1;
+package fr.idden.nickreloaded.api.nms.v1_8_R1;
 
 import com.google.common.collect.Iterables;
 import com.mojang.authlib.GameProfile;
 import fr.idden.nickreloaded.api.nms.impl.AbstractGameprofileFiller;
 import net.minecraft.server.v1_8_R1.MinecraftServer;
 
-public class v_1_8_R1_GameprofileFiller
+public class v1_8_R1_GameprofileFiller
         implements AbstractGameprofileFiller
 {
     @Override

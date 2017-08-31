@@ -1,4 +1,4 @@
-package fr.idden.nickreloaded.api.nms.v_1_8_R2;
+package fr.idden.nickreloaded.api.nms.v1_8_R2;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class v_1_8_R2_PlayerIdentityManager
+public class v1_8_R2_PlayerIdentityManager
         implements AbstractPlayerIdentityManager
 {
     private static final Map<UUID, GameProfile> fakeProfiles = new HashMap<>();
@@ -28,7 +28,7 @@ public class v_1_8_R2_PlayerIdentityManager
     private static Field playerInfo_action, playerInfo_data;
     private static Field playerInfoData_latency, playerInfoData_gameMode, playerInfoData_gameProfile, playerInfoData_displayName;
 
-    public v_1_8_R2_PlayerIdentityManager()
+    public v1_8_R2_PlayerIdentityManager()
     {
         Map<String, Field> fields = PacketUtils.registerFields(PacketPlayOutPlayerInfo.class);
         playerInfo_action = fields.get("a");

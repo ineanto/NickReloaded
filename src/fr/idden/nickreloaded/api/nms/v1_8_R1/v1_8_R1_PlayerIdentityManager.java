@@ -1,4 +1,4 @@
-package fr.idden.nickreloaded.api.nms.v_1_8_R3;
+package fr.idden.nickreloaded.api.nms.v1_8_R1;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
@@ -7,9 +7,9 @@ import fr.idden.nickreloaded.api.nms.PayloadManager;
 import fr.idden.nickreloaded.api.nms.event.PlayerProfileEditorListener;
 import fr.idden.nickreloaded.api.nms.impl.AbstractPlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.utils.PacketUtils;
-import net.minecraft.server.v1_8_R3.*;
+import net.minecraft.server.v1_8_R1.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class v_1_8_R3_PlayerIdentityManager
+public class v1_8_R1_PlayerIdentityManager
         implements AbstractPlayerIdentityManager
 {
     private static final Map<UUID, GameProfile> fakeProfiles = new HashMap<>();
@@ -28,7 +28,7 @@ public class v_1_8_R3_PlayerIdentityManager
     private static Field playerInfo_action, playerInfo_data;
     private static Field playerInfoData_latency, playerInfoData_gameMode, playerInfoData_gameProfile, playerInfoData_displayName;
 
-    public v_1_8_R3_PlayerIdentityManager()
+    public v1_8_R1_PlayerIdentityManager()
     {
         Map<String, Field> fields = PacketUtils.registerFields(PacketPlayOutPlayerInfo.class);
         playerInfo_action = fields.get("a");
@@ -44,19 +44,19 @@ public class v_1_8_R3_PlayerIdentityManager
 
         try
         {
-            profileField = EntityHuman.class.getDeclaredField("bH");
+            profileField = EntityHuman.class.getDeclaredField("bF");
             profileField.setAccessible(true);
             profileIdField = GameProfile.class.getDeclaredField("id");
             profileIdField.setAccessible(true);
             profileNameField = GameProfile.class.getDeclaredField("name");
             profileNameField.setAccessible(true);
-            pidLatency = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("b");
+            pidLatency = PlayerInfoData.class.getDeclaredField("b");
             pidLatency.setAccessible(true);
-            pidGameMode = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("c");
+            pidGameMode = PlayerInfoData.class.getDeclaredField("c");
             pidGameMode.setAccessible(true);
-            pidGameProfile = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("d");
+            pidGameProfile = PlayerInfoData.class.getDeclaredField("d");
             pidGameProfile.setAccessible(true);
-            pidDisplayName = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("e");
+            pidDisplayName = PlayerInfoData.class.getDeclaredField("e");
             pidDisplayName.setAccessible(true);
         }
         catch (Exception e)
@@ -72,7 +72,9 @@ public class v_1_8_R3_PlayerIdentityManager
         playerInfoData_gameProfile = pidGameProfile;
         playerInfoData_displayName = pidDisplayName;
 
-        NickReloaded.getInstance().getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles, this), NickReloaded.getInstance());
+        NickReloaded.getInstance().getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles,
+                                                                                                                 this),
+                                                                                 NickReloaded.getInstance());
     }
 
     @Override
@@ -80,13 +82,13 @@ public class v_1_8_R3_PlayerIdentityManager
     {
         try
         {
-            PacketPlayOutPlayerInfo.EnumPlayerInfoAction action = (PacketPlayOutPlayerInfo.EnumPlayerInfoAction) playerInfo_action.get(packet);
-            if (action != PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER)
+            EnumPlayerInfoAction action = (EnumPlayerInfoAction) playerInfo_action.get(packet);
+            if (action != EnumPlayerInfoAction.ADD_PLAYER)
             {
                 return;
             }
-            List<PacketPlayOutPlayerInfo.PlayerInfoData> dataList = (List<PacketPlayOutPlayerInfo.PlayerInfoData>) playerInfo_data.get(packet);
-            for (PacketPlayOutPlayerInfo.PlayerInfoData data : dataList)
+            List<PlayerInfoData> dataList = (List<PlayerInfoData>) playerInfo_data.get(packet);
+            for (PlayerInfoData data : dataList)
             {
                 GameProfile gameProfile = data.a();
                 if (fakeProfiles.containsKey(gameProfile.getId()))
@@ -154,7 +156,7 @@ public class v_1_8_R3_PlayerIdentityManager
             @Override
             public void run()
             {
-                PacketPlayOutPlayerInfo playerInfo = new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER,
+                PacketPlayOutPlayerInfo playerInfo = new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.ADD_PLAYER,
                                                                                  entityPlayer);
                 PacketPlayOutNamedEntitySpawn spawnPacket = new PacketPlayOutNamedEntitySpawn(entityPlayer);
                 for (Player player : Bukkit.getServer().getOnlinePlayers())

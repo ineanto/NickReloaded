@@ -19,7 +19,7 @@ public class NickReloadedCommand
     @Override
     public boolean execute(CommandSender sender, String s, String[] args)
     {
-        if (! sender.isOp() || ! sender.hasPermission("nickreloaded.nickreloaded") || ! sender.hasPermission("nickreloaded.*"))
+        if (! sender.isOp() || ! sender.hasPermission("nickreloaded.nickreloaded") || ! sender.hasPermission("nickreloaded.*") || ! sender.hasPermission("*"))
         {
             sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(),
                                                     false));

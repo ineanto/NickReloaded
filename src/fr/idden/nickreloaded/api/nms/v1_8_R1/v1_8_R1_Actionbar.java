@@ -1,4 +1,4 @@
-package fr.idden.nickreloaded.api.nms.v_1_8_R1;
+package fr.idden.nickreloaded.api.nms.v1_8_R1;
 
 import fr.idden.nickreloaded.api.nms.impl.AbstractActionbar;
 import net.minecraft.server.v1_8_R1.ChatSerializer;
@@ -7,7 +7,7 @@ import net.minecraft.server.v1_8_R1.PacketPlayOutChat;
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-public class v_1_8_R1_Actionbar
+public class v1_8_R1_Actionbar
         implements AbstractActionbar
 {
     @Override

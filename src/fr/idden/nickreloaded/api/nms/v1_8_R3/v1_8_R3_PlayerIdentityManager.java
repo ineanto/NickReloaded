@@ -1,4 +1,4 @@
-package fr.idden.nickreloaded.api.nms.v1_12_R1;
+package fr.idden.nickreloaded.api.nms.v1_8_R3;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
@@ -7,9 +7,9 @@ import fr.idden.nickreloaded.api.nms.PayloadManager;
 import fr.idden.nickreloaded.api.nms.event.PlayerProfileEditorListener;
 import fr.idden.nickreloaded.api.nms.impl.AbstractPlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.utils.PacketUtils;
-import net.minecraft.server.v1_12_R1.*;
+import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class v_1_12_R1_PlayerIdentityManager
+public class v1_8_R3_PlayerIdentityManager
         implements AbstractPlayerIdentityManager
 {
     private static final Map<UUID, GameProfile> fakeProfiles = new HashMap<>();
@@ -28,7 +28,7 @@ public class v_1_12_R1_PlayerIdentityManager
     private static Field playerInfo_action, playerInfo_data;
     private static Field playerInfoData_latency, playerInfoData_gameMode, playerInfoData_gameProfile, playerInfoData_displayName;
 
-    public v_1_12_R1_PlayerIdentityManager()
+    public v1_8_R3_PlayerIdentityManager()
     {
         Map<String, Field> fields = PacketUtils.registerFields(PacketPlayOutPlayerInfo.class);
         playerInfo_action = fields.get("a");
@@ -44,7 +44,7 @@ public class v_1_12_R1_PlayerIdentityManager
 
         try
         {
-            profileField = EntityHuman.class.getDeclaredField("g");
+            profileField = EntityHuman.class.getDeclaredField("bH");
             profileField.setAccessible(true);
             profileIdField = GameProfile.class.getDeclaredField("id");
             profileIdField.setAccessible(true);

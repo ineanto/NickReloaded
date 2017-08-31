@@ -5,27 +5,27 @@ import fr.idden.nickreloaded.api.nms.impl.AbstractActionbar;
 import fr.idden.nickreloaded.api.nms.impl.AbstractGameprofileFiller;
 import fr.idden.nickreloaded.api.nms.impl.AbstractPlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.throwable.PayloadModuleUnsupportedVersionException;
-import fr.idden.nickreloaded.api.nms.v1_12_R1.v_1_12_R1_Actionbar;
-import fr.idden.nickreloaded.api.nms.v1_12_R1.v_1_12_R1_GameprofileFiller;
-import fr.idden.nickreloaded.api.nms.v1_12_R1.v_1_12_R1_PlayerIdentityManager;
-import fr.idden.nickreloaded.api.nms.v_1_11_R1.v_1_11_R1_Actionbar;
-import fr.idden.nickreloaded.api.nms.v_1_11_R1.v_1_11_R1_GameprofileFiller;
-import fr.idden.nickreloaded.api.nms.v_1_11_R1.v_1_11_R1_PlayerIdentityManager;
-import fr.idden.nickreloaded.api.nms.v_1_8_R1.v_1_8_R1_Actionbar;
-import fr.idden.nickreloaded.api.nms.v_1_8_R1.v_1_8_R1_GameprofileFiller;
-import fr.idden.nickreloaded.api.nms.v_1_8_R1.v_1_8_R1_PlayerIdentityManager;
-import fr.idden.nickreloaded.api.nms.v_1_8_R2.v_1_8_R2_Actionbar;
-import fr.idden.nickreloaded.api.nms.v_1_8_R2.v_1_8_R2_GameprofileFiller;
-import fr.idden.nickreloaded.api.nms.v_1_8_R2.v_1_8_R2_PlayerIdentityManager;
-import fr.idden.nickreloaded.api.nms.v_1_8_R3.v_1_8_R3_Actionbar;
-import fr.idden.nickreloaded.api.nms.v_1_8_R3.v_1_8_R3_GameprofileFiller;
-import fr.idden.nickreloaded.api.nms.v_1_8_R3.v_1_8_R3_PlayerIdentityManager;
-import fr.idden.nickreloaded.api.nms.v_1_9_R1.v_1_9_R1_Actionbar;
-import fr.idden.nickreloaded.api.nms.v_1_9_R1.v_1_9_R1_GameprofileFiller;
-import fr.idden.nickreloaded.api.nms.v_1_9_R1.v_1_9_R1_PlayerIdentityManager;
-import fr.idden.nickreloaded.api.nms.v_1_9_R2.v_1_9_R2_Actionbar;
-import fr.idden.nickreloaded.api.nms.v_1_9_R2.v_1_9_R2_GameprofileFiller;
-import fr.idden.nickreloaded.api.nms.v_1_9_R2.v_1_9_R2_PlayerIdentityManager;
+import fr.idden.nickreloaded.api.nms.v1_12_R1.v1_12_R1_Actionbar;
+import fr.idden.nickreloaded.api.nms.v1_12_R1.v1_12_R1_GameprofileFiller;
+import fr.idden.nickreloaded.api.nms.v1_12_R1.v1_12_R1_PlayerIdentityManager;
+import fr.idden.nickreloaded.api.nms.v1_11_R1.v1_11_R1_Actionbar;
+import fr.idden.nickreloaded.api.nms.v1_11_R1.v1_11_R1_GameprofileFiller;
+import fr.idden.nickreloaded.api.nms.v1_11_R1.v1_11_R1_PlayerIdentityManager;
+import fr.idden.nickreloaded.api.nms.v1_8_R1.v1_8_R1_Actionbar;
+import fr.idden.nickreloaded.api.nms.v1_8_R1.v1_8_R1_GameprofileFiller;
+import fr.idden.nickreloaded.api.nms.v1_8_R1.v1_8_R1_PlayerIdentityManager;
+import fr.idden.nickreloaded.api.nms.v1_8_R2.v1_8_R2_Actionbar;
+import fr.idden.nickreloaded.api.nms.v1_8_R2.v1_8_R2_GameprofileFiller;
+import fr.idden.nickreloaded.api.nms.v1_8_R2.v1_8_R2_PlayerIdentityManager;
+import fr.idden.nickreloaded.api.nms.v1_8_R3.v1_8_R3_Actionbar;
+import fr.idden.nickreloaded.api.nms.v1_8_R3.v1_8_R3_GameprofileFiller;
+import fr.idden.nickreloaded.api.nms.v1_8_R3.v1_8_R3_PlayerIdentityManager;
+import fr.idden.nickreloaded.api.nms.v1_9_R1.v1_9_R1_Actionbar;
+import fr.idden.nickreloaded.api.nms.v1_9_R1.v1_9_R1_GameprofileFiller;
+import fr.idden.nickreloaded.api.nms.v1_9_R1.v1_9_R1_PlayerIdentityManager;
+import fr.idden.nickreloaded.api.nms.v1_9_R2.v1_9_R2_Actionbar;
+import fr.idden.nickreloaded.api.nms.v1_9_R2.v1_9_R2_GameprofileFiller;
+import fr.idden.nickreloaded.api.nms.v1_9_R2.v1_9_R2_PlayerIdentityManager;
 import org.bukkit.Bukkit;
 
 public class PayloadManager
@@ -110,36 +110,36 @@ public class PayloadManager
                 {
                     case MINECRAFT_1_12_R1:
                         logInitModule(module);
-                        MINECRAFT_GAMEPROFILE_FILLER = new v_1_12_R1_GameprofileFiller();
+                        MINECRAFT_GAMEPROFILE_FILLER = new v1_12_R1_GameprofileFiller();
                         break;
                     case MINECRAFT_1_11_R1:
                         logInitModule(module);
-                        MINECRAFT_GAMEPROFILE_FILLER = new v_1_11_R1_GameprofileFiller();
+                        MINECRAFT_GAMEPROFILE_FILLER = new v1_11_R1_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_9_R2:
                         logInitModule(module);
-                        MINECRAFT_GAMEPROFILE_FILLER = new v_1_9_R2_GameprofileFiller();
+                        MINECRAFT_GAMEPROFILE_FILLER = new v1_9_R2_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_9_R1:
                         logInitModule(module);
-                        MINECRAFT_GAMEPROFILE_FILLER = new v_1_9_R1_GameprofileFiller();
+                        MINECRAFT_GAMEPROFILE_FILLER = new v1_9_R1_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_8_R3:
                         logInitModule(module);
-                        MINECRAFT_GAMEPROFILE_FILLER = new v_1_8_R3_GameprofileFiller();
+                        MINECRAFT_GAMEPROFILE_FILLER = new v1_8_R3_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_8_R2:
                         logInitModule(module);
-                        MINECRAFT_GAMEPROFILE_FILLER = new v_1_8_R2_GameprofileFiller();
+                        MINECRAFT_GAMEPROFILE_FILLER = new v1_8_R2_GameprofileFiller();
                         break;
 
                     case MINECRAFT_1_8_R1:
                         logInitModule(module);
-                        MINECRAFT_GAMEPROFILE_FILLER = new v_1_8_R1_GameprofileFiller();
+                        MINECRAFT_GAMEPROFILE_FILLER = new v1_8_R1_GameprofileFiller();
                         break;
 
                     default:
@@ -153,36 +153,36 @@ public class PayloadManager
                 {
                     case MINECRAFT_1_12_R1:
                         logInitModule(module);
-                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_12_R1_PlayerIdentityManager();
+                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v1_12_R1_PlayerIdentityManager();
                         break;
                     case MINECRAFT_1_11_R1:
                         logInitModule(module);
-                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_11_R1_PlayerIdentityManager();
+                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v1_11_R1_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_9_R2:
                         logInitModule(module);
-                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_9_R2_PlayerIdentityManager();
+                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v1_9_R2_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_9_R1:
                         logInitModule(module);
-                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_9_R1_PlayerIdentityManager();
+                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v1_9_R1_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_8_R3:
                         logInitModule(module);
-                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_8_R3_PlayerIdentityManager();
+                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v1_8_R3_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_8_R2:
                         logInitModule(module);
-                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_8_R2_PlayerIdentityManager();
+                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v1_8_R2_PlayerIdentityManager();
                         break;
 
                     case MINECRAFT_1_8_R1:
                         logInitModule(module);
-                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v_1_8_R1_PlayerIdentityManager();
+                        MINECRAFT_PLAYER_IDENTITY_MANAGER = new v1_8_R1_PlayerIdentityManager();
                         break;
 
                     default:
@@ -196,36 +196,36 @@ public class PayloadManager
                 {
                     case MINECRAFT_1_12_R1:
                         logInitModule(module);
-                        MINECRAFT_ACTION_BAR = new v_1_12_R1_Actionbar();
+                        MINECRAFT_ACTION_BAR = new v1_12_R1_Actionbar();
                         break;
                     case MINECRAFT_1_11_R1:
                         logInitModule(module);
-                        MINECRAFT_ACTION_BAR = new v_1_11_R1_Actionbar();
+                        MINECRAFT_ACTION_BAR = new v1_11_R1_Actionbar();
                         break;
 
                     case MINECRAFT_1_9_R2:
                         logInitModule(module);
-                        MINECRAFT_ACTION_BAR = new v_1_9_R2_Actionbar();
+                        MINECRAFT_ACTION_BAR = new v1_9_R2_Actionbar();
                         break;
 
                     case MINECRAFT_1_9_R1:
                         logInitModule(module);
-                        MINECRAFT_ACTION_BAR = new v_1_9_R1_Actionbar();
+                        MINECRAFT_ACTION_BAR = new v1_9_R1_Actionbar();
                         break;
 
                     case MINECRAFT_1_8_R3:
                         logInitModule(module);
-                        MINECRAFT_ACTION_BAR = new v_1_8_R3_Actionbar();
+                        MINECRAFT_ACTION_BAR = new v1_8_R3_Actionbar();
                         break;
 
                     case MINECRAFT_1_8_R2:
                         logInitModule(module);
-                        MINECRAFT_ACTION_BAR = new v_1_8_R2_Actionbar();
+                        MINECRAFT_ACTION_BAR = new v1_8_R2_Actionbar();
                         break;
 
                     case MINECRAFT_1_8_R1:
                         logInitModule(module);
-                        MINECRAFT_ACTION_BAR = new v_1_8_R1_Actionbar();
+                        MINECRAFT_ACTION_BAR = new v1_8_R1_Actionbar();
                         break;
 
                     default:
