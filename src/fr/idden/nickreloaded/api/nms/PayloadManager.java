@@ -74,8 +74,8 @@ public class PayloadManager
             case "v1_8_R2":
                 NickReloaded.log("§6Loaded v1_8_R2 payload.");
                 return NMSVersion.MINECRAFT_1_8_R2;
-            case "v_1_8_R3":
-                NickReloaded.log("§6Loaded v_1_8_R3 payload.");
+            case "v1_8_R3":
+                NickReloaded.log("§6Loaded v1_8_R3 payload.");
                 return NMSVersion.MINECRAFT_1_8_R3;
             case "v1_9_R1":
                 NickReloaded.log("§6Loaded v1_9_R1 payload.");

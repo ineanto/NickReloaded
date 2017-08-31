@@ -82,7 +82,11 @@ public class NickReloaded
     public void onDisable()
     {
         Bukkit.getOnlinePlayers().forEach(player -> new StorageManager().save(player.getUniqueId()));
-        database.close();
+
+        if(database != null)
+        {
+            database.close();
+        }
     }
 
     public static void log(String message)
