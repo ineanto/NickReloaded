@@ -94,7 +94,7 @@ public class PayloadManager
                 return NMSVersion.MINECRAFT_1_12_R1;
 
             default:
-                NickReloaded.log("§cUnsupported plugin version.");
+                NickReloaded.log("§cServer version unknown, beware. (v=" + vD() + ")");
                 return NMSVersion.UNSUPPORTED;
         }
     }

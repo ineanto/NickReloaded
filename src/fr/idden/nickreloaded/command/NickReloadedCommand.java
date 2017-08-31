@@ -40,7 +40,7 @@ public class NickReloadedCommand
 
                 sender.sendMessage(" ");
 
-                sender.sendMessage("§a© Idden 2017. - By Idden \n§a( https://www.spigotmc.org/resources/nickreloaded.46335/ ).");
+                sender.sendMessage("§a© Idden 2017. \n§a(https://www.spigotmc.org/resources/nickreloaded.46335/).");
 
                 sender.sendMessage("§7§m----------§6§m------------------------------§7§m----------§r");
             }
