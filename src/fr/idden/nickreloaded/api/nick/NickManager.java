@@ -29,7 +29,9 @@ public class NickManager
                                                                     {
                                                                         if (PlayerStorage.getStorage(player.getUniqueId()).isNicked())
                                                                         {
-                                                                            PayloadManager.getActionbar().sendActionbar(player, configFile.getString(Config.MESSAGES_COMMANDS_NICK_ACTIVE.getConfigValue(), true));
+                                                                            PayloadManager.getActionbar().sendActionbar(player,
+                                                                                                                        configFile.getString(Config.MESSAGES_COMMANDS_NICK_ACTIVE.getConfigValue(),
+                                                                                                                                             true));
                                                                         }
                                                                     }
                                                                 },
@@ -103,5 +105,39 @@ public class NickManager
     public static boolean isNicked(Player player)
     {
         return PlayerStorage.getStorage(player.getUniqueId()).isNicked();
+    }
+
+    public static void processData(Status status)
+    {
+        StorageManager storageManager = new StorageManager();
+
+        if (status == Status.DISABLING)
+        {
+            Bukkit.getOnlinePlayers().forEach(player -> {
+                if (isNicked(player))
+                {
+                    storageManager.save(player.getUniqueId());
+                }
+            });
+        }
+        else if (status == Status.ENABLING)
+        {
+            Bukkit.getOnlinePlayers().forEach(player -> {
+                storageManager.load(player.getUniqueId());
+
+                PlayerStorage playerStorage = PlayerStorage.getStorage(player.getUniqueId());
+
+                if (isNicked(player))
+                {
+                    NickManager.nick(player, playerStorage.getNick(), playerStorage.getSkin());
+                }
+            });
+        }
+    }
+
+    public enum Status
+    {
+        ENABLING,
+        DISABLING
     }
 }

@@ -4,6 +4,7 @@ import fr.idden.nickreloaded.api.command.ExecutableCommand;
 import fr.idden.nickreloaded.api.config.Config;
 import fr.idden.nickreloaded.api.config.ConfigFile;
 import fr.idden.nickreloaded.api.storage.StorageManager;
+import fr.idden.nickreloaded.command.help.HelpValues;
 import org.bukkit.command.CommandSender;
 
 public class NickReloadedCommand
@@ -33,7 +34,7 @@ public class NickReloadedCommand
                                                         true));
                 for (HelpValues command : HelpValues.values())
                 {
-                    sender.sendMessage("§7- §6/" + command.command + " §7• §b" + configFile.getString(command.description,
+                    sender.sendMessage("§7- §6/" + command.getCommand() + " §7• §b" + configFile.getString(command.getDescription(),
                                                                                                       true));
                 }
 

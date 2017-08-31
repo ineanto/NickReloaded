@@ -18,53 +18,47 @@
     <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="NickReloadedCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickReloadedCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="158" />
+            <state relative-caret-position="447">
+              <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NickCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickCommand.java">
+      <file leaf-file-name="NickManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nick/NickManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="28" column="76" lean-forward="false" selection-start-line="28" selection-start-column="76" selection-end-line="28" selection-end-column="76" />
+            <state relative-caret-position="2576">
+              <caret line="127" column="93" lean-forward="false" selection-start-line="127" selection-start-column="93" selection-end-line="127" selection-end-column="93" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminNickCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/AdminNickCommand.java">
+      <file leaf-file-name="NickReloaded.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/NickReloaded.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            <state relative-caret-position="399">
+              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/plugin.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UnnickCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/UnnickCommand.java">
+      <file leaf-file-name="HelpValues.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/help/HelpValues.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="26" column="78" lean-forward="false" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
-              <folding />
+              <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+              <folding>
+                <element signature="e#685#686#0" expanded="true" />
+                <element signature="e#727#728#0" expanded="true" />
+                <element signature="e#761#762#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,7 +117,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/impl/AbstractCraftplayerGetter.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/v1_12_R1/v1_12_R1_Craftplayer.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/impl/AbstractPacketPlayOutInfo.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/v1_12_R1/v1_12_R1_PacketPlayOutInfo.java" />
@@ -163,17 +156,18 @@
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/v_1_9_R2/v_1_9_R2_GameprofileFiller.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/v_1_8_R2/v_1_8_R2_Actionbar.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/v_1_8_R1/v_1_8_R1_Actionbar.java" />
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nick/NickManager.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/storage/StorageManager.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/listener/PlayerJoinListener.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/placeholderapi/NickReloadedPAPI.java" />
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/NickReloaded.java" />
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/PayloadManager.java" />
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickReloadedCommand.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/command/UnnickCommand.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickCommand.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/command/AdminNickCommand.java" />
         <option value="$PROJECT_DIR$/src/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/PayloadManager.java" />
+        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nick/NickManager.java" />
+        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/command/help/HelpValues.java" />
+        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickReloadedCommand.java" />
+        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/NickReloaded.java" />
       </list>
     </option>
   </component>
@@ -223,6 +217,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -251,16 +247,21 @@
               <item name="NickReloaded" type="58d84e3e:PackageViewProjectNode" />
               <item name="NickReloaded" type="616d4139:PackageViewModuleNode" />
               <item name="fr.idden.nickreloaded" type="1f31426a:PackageElementNode" />
+              <item name="command" type="1f31426a:PackageElementNode" />
+              <item name="help" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="NickReloaded" type="58d84e3e:PackageViewProjectNode" />
+              <item name="NickReloaded" type="616d4139:PackageViewModuleNode" />
+              <item name="fr.idden.nickreloaded" type="1f31426a:PackageElementNode" />
               <item name="listener" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="ProjectPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,12 +274,12 @@
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R1" />
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms" />
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R2" />
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R3" />
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_9_R1" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="fr.idden.nickreloaded.api.nms.impl" />
+      <recent name="fr.idden.nickreloaded.api.nms.utils" />
+      <recent name="fr.idden.nickreloaded.api.storage.impl" />
+      <recent name="fr.idden.nickreloaded.api.storage" />
+      <recent name="fr.idden.nickreloaded.api.storage.sqlite" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="fr.idden.nickreloaded.api.nms.v_1_8_R1" />
@@ -287,12 +288,12 @@
       <recent name="fr.idden.nickreloaded.api.nms.v_1_9_R1" />
       <recent name="fr.idden.nickreloaded.api.nms.v_1_11_R1" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="fr.idden.nickreloaded.api.nms.impl" />
-      <recent name="fr.idden.nickreloaded.api.nms.utils" />
-      <recent name="fr.idden.nickreloaded.api.storage.impl" />
-      <recent name="fr.idden.nickreloaded.api.storage" />
-      <recent name="fr.idden.nickreloaded.api.storage.sqlite" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R1" />
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms" />
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R2" />
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R3" />
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_9_R1" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -537,7 +538,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18530351" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18530351" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -551,7 +552,6 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1453125" sideWeight="0.5" order="10" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -568,6 +568,7 @@
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="92" y="122" width="1736" height="866" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -633,13 +634,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/impl/AbstractPlayerIdentityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/v1_12_R1/v1_12_R1_GameprofileFiller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-26">
@@ -871,13 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nick/NickManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="31" column="211" lean-forward="false" selection-start-line="31" selection-start-column="211" selection-end-line="31" selection-end-column="211" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/storage/mysql/Field.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="851">
@@ -910,7 +897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -925,7 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="35" column="54" lean-forward="false" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -940,50 +925,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/NickReloaded.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/PayloadManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="77" column="44" lean-forward="false" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="44" />
-          <folding>
-            <element signature="e#11076#11077#0" expanded="true" />
-            <element signature="e#11108#11109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/UnnickCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="26" column="78" lean-forward="false" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickReloadedCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="158" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
+        <state relative-caret-position="391">
           <caret line="28" column="76" lean-forward="false" selection-start-line="28" selection-start-column="76" selection-end-line="28" selection-end-column="76" />
           <folding />
         </state>
@@ -997,10 +944,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/UnnickCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="78" lean-forward="false" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
-          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nms/PayloadManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1379">
+          <caret line="231" column="90" lean-forward="false" selection-start-line="231" selection-start-column="90" selection-end-line="231" selection-end-column="90" />
+          <folding>
+            <element signature="e#11076#11077#0" expanded="true" />
+            <element signature="e#11108#11109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/help/HelpValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="e#685#686#0" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickReloadedCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/nick/NickManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2576">
+          <caret line="127" column="93" lean-forward="false" selection-start-line="127" selection-start-column="93" selection-end-line="127" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/NickReloaded.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>

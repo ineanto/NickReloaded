@@ -4,7 +4,6 @@ import fr.idden.nickreloaded.api.nick.NickManager;
 import fr.idden.nickreloaded.api.nms.PayloadManager;
 import fr.idden.nickreloaded.api.nms.throwable.PayloadModuleUnsupportedVersionException;
 import fr.idden.nickreloaded.api.placeholderapi.NickReloadedPAPI;
-import fr.idden.nickreloaded.api.storage.PlayerStorage;
 import fr.idden.nickreloaded.api.storage.StorageManager;
 import fr.idden.nickreloaded.api.storage.impl.DatabaseImpl;
 import fr.idden.nickreloaded.command.AdminNickCommand;
@@ -38,42 +37,34 @@ public class NickReloaded
         }
         catch (PayloadModuleUnsupportedVersionException e)
         {
-            disable("§cPayload was unable to get an adapter for module " + e.getModule() + " for version(s): " + PayloadManager.getVersion().v());
+            disable("§cPayload was unable to get an adapter for module " + e.getModule() + " for version(s): " + PayloadManager.vD());
         }
 
-        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
+        if(Bukkit.getPluginManager().isPluginEnabled("NickReloaded"))
         {
-            new NickReloadedPAPI(this).hook();
-            log("§bPlaceholderAPI §afound §b! Hooked.");
-        }
-
-        new StorageManager().setupStorage();
-
-        Bukkit.getOnlinePlayers().forEach(player -> {
-            new StorageManager().load(player.getUniqueId());
-
-            PlayerStorage playerStorage = PlayerStorage.getStorage(player.getUniqueId());
-
-            if (playerStorage.isNicked())
+            if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
             {
-                NickManager.nick(player,
-                                 playerStorage.getNick(),
-                                 playerStorage.getSkin());
+                new NickReloadedPAPI(this).hook();
+                log("§bPlaceholderAPI §afound §b! Hooked.");
             }
-        });
 
-        //LISTENERS
-        new PlayerJoinListener();
-        new PlayerQuitListener();
+            new StorageManager().setupStorage();
 
-        //COMMANDS
-        new NickCommand();
-        new UnnickCommand();
-        new AdminNickCommand();
-        new NickReloadedCommand();
+            NickManager.processData(NickManager.Status.ENABLING);
 
-        log(" ");
-        log("§a§mPlugin enabled.");
+            //LISTENERS
+            new PlayerJoinListener();
+            new PlayerQuitListener();
+
+            //COMMANDS
+            new NickCommand();
+            new UnnickCommand();
+            new AdminNickCommand();
+            new NickReloadedCommand();
+
+            log(" ");
+            log("§a§mPlugin enabled.");
+        }
 
         log("§b-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     }
@@ -81,7 +72,7 @@ public class NickReloaded
     @Override
     public void onDisable()
     {
-        Bukkit.getOnlinePlayers().forEach(player -> new StorageManager().save(player.getUniqueId()));
+        NickManager.processData(NickManager.Status.DISABLING);
 
         if(database != null)
         {
@@ -106,6 +97,7 @@ public class NickReloaded
 
     public static void disable(String reason)
     {
+        log("§4Disabling plugin :");
         log(reason);
         getInstance().getPluginLoader().disablePlugin(getInstance());
     }

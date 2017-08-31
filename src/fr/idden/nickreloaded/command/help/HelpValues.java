@@ -1,4 +1,4 @@
-package fr.idden.nickreloaded.command;
+package fr.idden.nickreloaded.command.help;
 
 import fr.idden.nickreloaded.api.config.Config;
 
@@ -13,4 +13,14 @@ public enum HelpValues
     String command, description;
 
     HelpValues(String command, String description) { this.command = command; this.description = description; }
+
+    public String getCommand()
+    {
+        return command;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
 }
