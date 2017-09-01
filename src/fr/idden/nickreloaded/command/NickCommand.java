@@ -23,18 +23,12 @@ public class NickCommand
     @Override
     public boolean execute(CommandSender sender, String label, String[] args)
     {
-
         if (sender instanceof Player)
         {
-            if (! sender.isOp() || ! sender.hasPermission("nickreloaded.nick") || ! sender.hasPermission("nickreloaded.*") || ! sender.hasPermission("*"))
-            {
-                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(),
-                                                        false));
-            }
-            else
-            {
-                Player player = (Player) sender;
+            Player player = (Player) sender;
 
+            if (player.hasPermission("nickreloaded.*") || player.hasPermission("nickreloaded.nick") || player.hasPermission("*"))
+            {
                 if (args.length < 1)
                 {
                     String name = RandomNameStorage.getRandomName();
@@ -53,8 +47,8 @@ public class NickCommand
                                          name);
                         sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NICK_SUCCESS.getConfigValue(),
                                                                 false).replace("%nick%",
-                                                                                name).replace("%skin%", name) + " " + configFile.getString(Config.MESSAGES_COMMANDS_NICK_TOUNNICK.getConfigValue(),
-                                                                                                                                           true));
+                                                                               name).replace("%skin%", name) + " " + configFile.getString(Config.MESSAGES_COMMANDS_NICK_TOUNNICK.getConfigValue(),
+                                                                                                                                          true));
                     }
 
                 }
@@ -83,8 +77,8 @@ public class NickCommand
                                                  args[0]);
                                 sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NICK_SUCCESS.getConfigValue(),
                                                                         false).replace("%nick%",
-                                                                                        args[0]).replace("%skin%", args[0]) + " " + configFile.getString(Config.MESSAGES_COMMANDS_NICK_TOUNNICK.getConfigValue(),
-                                                                                                                                                         true));
+                                                                                       args[0]).replace("%skin%", args[0]) + " " + configFile.getString(Config.MESSAGES_COMMANDS_NICK_TOUNNICK.getConfigValue(),
+                                                                                                                                                        true));
                             }
                             else if (args.length == 2)
                             {
@@ -94,8 +88,8 @@ public class NickCommand
                                                      args[1]);
                                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NICK_SUCCESS.getConfigValue(),
                                                                             false).replace("%nick%",
-                                                                                            args[0]).replace("%skin%", args[1]) + " " + configFile.getString(Config.MESSAGES_COMMANDS_NICK_TOUNNICK.getConfigValue(),
-                                                                                                                                                             true));
+                                                                                           args[0]).replace("%skin%", args[1]) + " " + configFile.getString(Config.MESSAGES_COMMANDS_NICK_TOUNNICK.getConfigValue(),
+                                                                                                                                                            true));
                                 }
                             }
                         }
@@ -103,6 +97,11 @@ public class NickCommand
                     }
 
                 }
+            }
+            else
+            {
+                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(),
+                                                        false));
             }
         }
         else

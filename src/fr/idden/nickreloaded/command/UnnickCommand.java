@@ -24,11 +24,7 @@ public class UnnickCommand extends ExecutableCommand
         {
             Player player = (Player) sender;
 
-            if (! sender.isOp() || ! sender.hasPermission("nickreloaded.unnick") || ! sender.hasPermission("nickreloaded.*") || ! sender.hasPermission("*"))
-            {
-                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(), false));
-            }
-            else
+            if (player.hasPermission("nickreloaded.*") || player.hasPermission("nickreloaded.unnick") || player.hasPermission("*"))
             {
                 if(NickManager.isNicked(player))
                 {
@@ -39,6 +35,10 @@ public class UnnickCommand extends ExecutableCommand
                 {
                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_UNNICK_NOTNICKED.getConfigValue(), false));
                 }
+            }
+            else
+            {
+                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(), false));
             }
         }
 

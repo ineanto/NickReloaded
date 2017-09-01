@@ -24,11 +24,7 @@ public class AdminNickCommand extends ExecutableCommand
         {
             Player player = (Player) sender;
 
-            if (! sender.isOp() || ! sender.hasPermission("nickreloaded.adminnick") || ! sender.hasPermission("nickreloaded.*") || ! sender.hasPermission("*"))
-            {
-                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(), false));
-            }
-            else
+            if (player.hasPermission("nickreloaded.*") || player.hasPermission("nickreloaded.adminnick") || player.hasPermission("*"))
             {
                 if(args.length < 1)
                 {
@@ -86,6 +82,10 @@ public class AdminNickCommand extends ExecutableCommand
                         }
                     }
                 }
+            }
+            else
+            {
+                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(), false));
             }
         }
         return false;

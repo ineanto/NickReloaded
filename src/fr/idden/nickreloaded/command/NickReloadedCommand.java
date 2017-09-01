@@ -6,6 +6,7 @@ import fr.idden.nickreloaded.api.config.ConfigFile;
 import fr.idden.nickreloaded.api.storage.StorageManager;
 import fr.idden.nickreloaded.command.help.HelpValues;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class NickReloadedCommand
         extends ExecutableCommand
@@ -20,40 +21,39 @@ public class NickReloadedCommand
     @Override
     public boolean execute(CommandSender sender, String s, String[] args)
     {
-        if (! sender.isOp() || ! sender.hasPermission("nickreloaded.nickreloaded") || ! sender.hasPermission("nickreloaded.*") || ! sender.hasPermission("*"))
+        if(sender instanceof Player)
         {
-            sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(),
-                                                    false));
-        }
-        else
-        {
-            if (args.length < 1)
+            Player player = (Player) sender;
+
+            if (player.hasPermission("nickreloaded.*") || player.hasPermission("nickreloaded.nickreloaded") || player.hasPermission("*"))
             {
-                sender.sendMessage("§7§m----------§6§m------------------------------§7§m----------§r\n");
-                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_TITLE.getConfigValue(),
-                                                        true));
-                for (HelpValues command : HelpValues.values())
+                if (args.length < 1)
                 {
-                    sender.sendMessage("§7- §6/" + command.getCommand() + " §7• §b" + configFile.getString(command.getDescription(),
-                                                                                                      true));
+                    sender.sendMessage("§7§m----------§6§m------------------------------§7§m----------§r\n");
+                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_TITLE.getConfigValue(),
+                                                            true));
+                    for (HelpValues command : HelpValues.values())
+                    {
+                        sender.sendMessage("§7- §6/" + command.getCommand() + " §7• §b" + configFile.getString(command.getDescription(),
+                                                                                                               true));
+                    }
+
+                    sender.sendMessage(" ");
+
+                    sender.sendMessage("§a© Idden 2017. \n§a(https://www.spigotmc.org/resources/nickreloaded.46335/).");
+
+                    sender.sendMessage("§7§m----------§6§m------------------------------§7§m----------§r");
                 }
-
-                sender.sendMessage(" ");
-
-                sender.sendMessage("§a© Idden 2017. \n§a(https://www.spigotmc.org/resources/nickreloaded.46335/).");
-
-                sender.sendMessage("§7§m----------§6§m------------------------------§7§m----------§r");
-            }
-            else if (args[0].equalsIgnoreCase("reload"))
-            {
-                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_RELOADING.getConfigValue(),
-                                                        false));
-                configFile.load();
-                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_DONERELOADED.getConfigValue(),
-                                                        false));
-            }
-            else if (args[0].equalsIgnoreCase("check"))
-            {
+                else if (args[0].equalsIgnoreCase("reload"))
+                {
+                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_RELOADING.getConfigValue(),
+                                                            false));
+                    configFile.load();
+                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_DONERELOADED.getConfigValue(),
+                                                            false));
+                }
+                else if (args[0].equalsIgnoreCase("check"))
+                {
                 /*if (args.length < 2)
                 {
                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ARGSMISSING.getConfigValue(),
@@ -98,15 +98,22 @@ public class NickReloadedCommand
                         }
                     }
                 }*/
-                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(),
-                                                        false));
+                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(),
+                                                            false));
+                }
+                else
+                {
+                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_UNKNOWNCOMMAND.getConfigValue(),
+                                                            false));
+                }
             }
             else
             {
-                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_UNKNOWNCOMMAND.getConfigValue(),
+                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(),
                                                         false));
             }
         }
+
 
         return false;
     }
