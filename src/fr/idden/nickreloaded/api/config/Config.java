@@ -2,7 +2,8 @@ package fr.idden.nickreloaded.api.config;
 
 public enum Config
 {
-    DATABASE_COMMON_USINGMYSQL(false),
+    BUNGEECORD(false),
+    DATABASE_COMMON_MYSQL(false),
     DATABASE_COMMON_NAME("nickreloaded"),
     DATABASE_COMMON_RANDOMNAME("randomnames"),
     DATABASE_SQLITE_FILENAME("nickreloaded"),

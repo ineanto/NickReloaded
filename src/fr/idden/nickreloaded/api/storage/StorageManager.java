@@ -209,7 +209,7 @@ public class StorageManager
     @Override
     public void detectStorage()
     {
-        if (! configFile.getConfigC().getBoolean(Config.DATABASE_COMMON_USINGMYSQL.getConfigValue()))
+        if (! configFile.getConfigC().getBoolean(Config.DATABASE_COMMON_MYSQL.getConfigValue()))
         {
             StorageMode.setMode(StorageMode.SQLITE);
         }

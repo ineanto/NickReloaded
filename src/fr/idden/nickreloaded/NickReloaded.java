@@ -27,7 +27,7 @@ public class NickReloaded
     {
         instance = this;
 
-        log("§b-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        log(Messages.SEPARATOR.m());
 
         Prefix.printPrefix();
 
@@ -37,7 +37,7 @@ public class NickReloaded
         }
         catch (PayloadModuleUnsupportedVersionException e)
         {
-            disable("§cPayload was unable to get an adapter for module " + e.getModule() + " for version(s): " + PayloadManager.vD());
+            disable(Messages.ERROR_PAYLOAD_UNABLE_TO_GET_ADAPTER_FOR_VERSION.m().replace("%module", e.getModule().name()));
         }
 
         if(Bukkit.getPluginManager().isPluginEnabled("NickReloaded"))
@@ -45,7 +45,7 @@ public class NickReloaded
             if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
             {
                 new NickReloadedPAPI(this).hook();
-                log("§bPlaceholderAPI §afound §b! Hooked.");
+                log(Messages.PLACEHOLDERAPI_FOUND.m());
             }
 
             new StorageManager().setupStorage();
@@ -63,10 +63,10 @@ public class NickReloaded
             new NickReloadedCommand();
 
             log(" ");
-            log("§a§mPlugin enabled.");
+            log(Messages.PLUGIN_ENABLED.m());
         }
 
-        log("§b-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        log(Messages.SEPARATOR.m());
     }
 
     @Override
@@ -97,7 +97,7 @@ public class NickReloaded
 
     public static void disable(String reason)
     {
-        log("§4Disabling plugin :");
+        log(Messages.ERROR_DISABLED_PLUGIN.m());
         log(reason);
         getInstance().getPluginLoader().disablePlugin(getInstance());
     }
