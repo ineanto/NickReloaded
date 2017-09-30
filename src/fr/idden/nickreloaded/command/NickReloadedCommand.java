@@ -4,7 +4,10 @@ import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.command.ExecutableCommand;
 import fr.idden.nickreloaded.api.config.Config;
 import fr.idden.nickreloaded.api.config.ConfigFile;
+import fr.idden.nickreloaded.api.parser.MinecraftName;
+import fr.idden.nickreloaded.api.storage.PlayerStorage;
 import fr.idden.nickreloaded.command.help.HelpValues;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -21,7 +24,7 @@ public class NickReloadedCommand
     @Override
     public boolean execute(CommandSender sender, String s, String[] args)
     {
-        if(sender instanceof Player)
+        if (sender instanceof Player)
         {
             Player player = (Player) sender;
 
@@ -40,7 +43,8 @@ public class NickReloadedCommand
 
                     sender.sendMessage(" ");
 
-                    sender.sendMessage("§a© Idden 2017. \n§a(https://www.spigotmc.org/resources/nickreloaded.46335/).");
+                    sender.sendMessage("§aLink: https://www.spigotmc.org/resources/nickreloaded.46335/");
+                    sender.sendMessage("§a© Idden 2017.");
 
                     sender.sendMessage("§7§m----------§6§m------------------------------§7§m----------§r");
                 }
@@ -54,50 +58,42 @@ public class NickReloadedCommand
                 }
                 else if (args[0].equalsIgnoreCase("check"))
                 {
-                /*if (args.length < 2)
-                {
-                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ARGSMISSING.getConfigValue(),
-                                                            false));
-                }
-                else
-                {
-
-                    MinecraftName parser = new MinecraftName(args[1]);
-
-                    if (! parser.validate())
+                    if (args.length < 2)
                     {
-                        sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_INVALIDNAME.getConfigValue(),
-                                                                false).replace("%name%",
-                                                                                args[1]));
+                        sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ARGSMISSING.getConfigValue(),
+                                                                false));
                     }
                     else
                     {
-                        Player target = Bukkit.getPlayer(args[1]);
 
-                        if (target == null || ! target.isOnline())
+                        MinecraftName parser = new MinecraftName(args[1]);
+
+                        if (! parser.validate())
                         {
-                            TextComponent textComponent = new TextComponent(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_OFFLINEPLAYER.getConfigValue(),
-                                                                                                 false).replace("%name%",
-                                                                                                                 args[1]));
-
-                            textComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-                                                                       new TextComponent[] {new TextComponent(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_HOVERTEXT.getConfigValue(),
-                                                                                                                                   true))}));
-
-                            textComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/nickreloaded checkdatabase " + Bukkit.getOfflinePlayer(args[1]).getUniqueId()));
-
-                            sender.spigot().sendMessage(textComponent);
+                            sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_INVALIDNAME.getConfigValue(),
+                                                                    false).replace("%name%",
+                                                                                   args[1]));
                         }
                         else
                         {
-                            sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_STATUS.getConfigValue(),
-                                                                    false).replace("%name%",
-                                                                                    target.getName()).replace("%status%",
-                                                                                                              PlayerStorage.getStorage(target.getUniqueId()).isNicked() ? "&a✔" : "&c✕").replace("&",
-                                                                                                                                                                                                 "§"));
+                            Player target = Bukkit.getPlayer(args[1]);
+
+                            if (target == null || ! target.isOnline())
+                            {
+                                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_OFFLINEPLAYER.getConfigValue(),
+                                                                        false).replace("%name%",
+                                                                                       args[1]));
+                            }
+                            else
+                            {
+                                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_MAIN_STATUS.getConfigValue(),
+                                                                        false).replace("%name%",
+                                                                                       target.getName()).replace("%status%",
+                                                                                                                 PlayerStorage.getStorage(target.getUniqueId()).isNicked() ? "&a✔" : "&c✕").replace("&",
+                                                                                                                                                                                                    "§"));
+                            }
                         }
                     }
-                }*/
                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(),
                                                             false));
                 }

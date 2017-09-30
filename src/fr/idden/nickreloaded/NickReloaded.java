@@ -3,7 +3,7 @@ package fr.idden.nickreloaded;
 import fr.idden.nickreloaded.api.manager.NickManager;
 import fr.idden.nickreloaded.api.manager.PayloadManager;
 import fr.idden.nickreloaded.api.manager.StorageManager;
-import fr.idden.nickreloaded.api.nms.throwable.PayloadModuleUnsupportedVersionException;
+import fr.idden.nickreloaded.api.nms.throwable.PayloadUnsupportedVersionException;
 import fr.idden.nickreloaded.api.placeholderapi.NickReloadedPAPI;
 import fr.idden.nickreloaded.command.AdminNickCommand;
 import fr.idden.nickreloaded.command.NickCommand;
@@ -16,7 +16,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class NickReloaded
         extends JavaPlugin
-        implements INickReloaded
 {
     private static NickReloaded instance;
 
@@ -33,10 +32,9 @@ public class NickReloaded
         {
             getPayloadManager().init();
         }
-        catch (PayloadModuleUnsupportedVersionException e)
+        catch (PayloadUnsupportedVersionException e)
         {
-            disable(Messages.ERROR_PAYLOAD_UNABLE_TO_GET_ADAPTER_FOR_VERSION.getMessage().replace("%module",
-                                                                                                  e.getModule().name()));
+            e.printStackTrace();
         }
 
         if (Bukkit.getPluginManager().isPluginEnabled("NickReloaded"))
@@ -106,21 +104,18 @@ public class NickReloaded
         NickReloaded.log(" ");
     }
 
-    @Override
     public StorageManager getStorageManager()
     {
-        return StorageManager.get();
+        return new StorageManager();
     }
 
-    @Override
     public NickManager getNickManager()
     {
-        return NickManager.get();
+        return new NickManager();
     }
 
-    @Override
     public PayloadManager getPayloadManager()
     {
-        return PayloadManager.get();
+        return new PayloadManager();
     }
 }

@@ -24,11 +24,6 @@ public class StorageManager
     private DatabaseImpl database;
     private Table table, randomTable;
 
-    public static StorageManager get()
-    {
-        return new StorageManager();
-    }
-
     public void setupStorage()
     {
         NickReloaded.log("§aLoading storage...");
@@ -76,11 +71,11 @@ public class StorageManager
 
             RequestHandler requestHandler = new RequestHandler(database);
 
-            requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS " + configFile.getString(Config.DATABASE_COMMON_NAME.getConfigValue(),
-                                                                                              true) + " (uuid VARCHAR(255), nicked tinyint(1), nick VARCHAR(16), skin VARCHAR(16), UNIQUE (uuid))");
+            requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(Config.DATABASE_COMMON_NAME.getConfigValue(),
+                                                                                              true) + "` (`uuid` VARCHAR(255), `nicked` tinyint(1), `nick` VARCHAR(16),`skin` VARCHAR(16), UNIQUE (uuid))");
 
             requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(Config.DATABASE_COMMON_RANDOMNAME.getConfigValue(),
-                                                                                               true) + "` " + "(nick VARCHAR(16))");
+                                                                                               true) + "` " + "(`nick` VARCHAR(16))");
 
             table = database.getTable(configFile.getString(Config.DATABASE_COMMON_NAME.getConfigValue(),
                                                            true));

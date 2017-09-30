@@ -19,11 +19,6 @@ public class NickManager
     private ConfigFile configFile = NickReloaded.get().getStorageManager().getConfigFile();
     private BukkitTask task;
 
-    public static NickManager get()
-    {
-        return new NickManager();
-    }
-
     public void nick(Player player, String nick, String skin)
     {
         task = Bukkit.getScheduler().runTaskTimerAsynchronously(NickReloaded.get(),

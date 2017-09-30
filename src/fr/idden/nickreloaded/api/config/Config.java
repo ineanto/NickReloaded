@@ -25,7 +25,7 @@ public enum Config
     MESSAGES_COMMANDS_MAIN_DONERELOADED("&aConfig file reloaded !"),
     MESSAGES_COMMANDS_MAIN_INCORRECTPLAYER("&c'&l%name%' &cis not a valid name !"),
     MESSAGES_COMMANDS_MAIN_INVALIDNAME("&cThis name contains invalid charcaters/is too long &7(must be < 16)"),
-    MESSAGES_COMMANDS_MAIN_OFFLINEPLAYER("&c'%name%' is offline, click here to check into database."),
+    MESSAGES_COMMANDS_MAIN_OFFLINEPLAYER("&c'%name%' is offline !"),
     MESSAGES_COMMANDS_MAIN_HOVERTEXT("&6Click to check in the database."),
     MESSAGES_COMMANDS_MAIN_STATUS("&aPlayer '%name%' is currently nicked : %status%"),
 
