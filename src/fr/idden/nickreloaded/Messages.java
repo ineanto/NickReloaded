@@ -1,15 +1,13 @@
 package fr.idden.nickreloaded;
 
-import fr.idden.nickreloaded.api.nms.PayloadManager;
-
 public enum Messages
 {
     SEPARATOR("§b-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"),
     PLACEHOLDERAPI_FOUND("§bPlaceholderAPI §afound §b! Hooked."),
-    BUNGEECORD_FOUND("§bBungeecord §aenabled §b!"),
+    BUNGEECORD_FOUND("§bBungeecord §afound §b! Hooked."),
     PLUGIN_ENABLED("§a§mPlugin enabled."),
     ERROR_DISABLED_PLUGIN("§4Disabling plugin :"),
-    ERROR_PAYLOAD_UNABLE_TO_GET_ADAPTER_FOR_VERSION("§cPayload was unable to get an adapter for module %module for version(s): " + PayloadManager.vD());
+    ERROR_PAYLOAD_UNABLE_TO_GET_ADAPTER_FOR_VERSION("§cPayload was unable to get an adapter for module %module for version(s): " + NickReloaded.get().getPayloadManager().getBukkitVersion());
 
     private String message;
 
@@ -18,7 +16,7 @@ public enum Messages
         this.message = message;
     }
 
-    public String m()
+    public String getMessage()
     {
         return message;
     }

@@ -1,56 +1,55 @@
 package fr.idden.nickreloaded;
 
-import fr.idden.nickreloaded.api.nick.NickManager;
-import fr.idden.nickreloaded.api.nms.PayloadManager;
+import fr.idden.nickreloaded.api.manager.NickManager;
+import fr.idden.nickreloaded.api.manager.PayloadManager;
+import fr.idden.nickreloaded.api.manager.StorageManager;
 import fr.idden.nickreloaded.api.nms.throwable.PayloadModuleUnsupportedVersionException;
 import fr.idden.nickreloaded.api.placeholderapi.NickReloadedPAPI;
-import fr.idden.nickreloaded.api.storage.StorageManager;
-import fr.idden.nickreloaded.api.storage.impl.DatabaseImpl;
 import fr.idden.nickreloaded.command.AdminNickCommand;
 import fr.idden.nickreloaded.command.NickCommand;
 import fr.idden.nickreloaded.command.NickReloadedCommand;
 import fr.idden.nickreloaded.command.UnnickCommand;
 import fr.idden.nickreloaded.listener.PlayerJoinListener;
 import fr.idden.nickreloaded.listener.PlayerQuitListener;
-import fr.idden.nickreloaded.prefix.Prefix;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class NickReloaded
         extends JavaPlugin
+        implements INickReloaded
 {
     private static NickReloaded instance;
-    private DatabaseImpl database;
 
     @Override
     public void onEnable()
     {
         instance = this;
 
-        log(Messages.SEPARATOR.m());
+        log(Messages.SEPARATOR.getMessage());
 
-        Prefix.printPrefix();
+        printPrefix();
 
         try
         {
-            new PayloadManager();
+            getPayloadManager().init();
         }
         catch (PayloadModuleUnsupportedVersionException e)
         {
-            disable(Messages.ERROR_PAYLOAD_UNABLE_TO_GET_ADAPTER_FOR_VERSION.m().replace("%module", e.getModule().name()));
+            disable(Messages.ERROR_PAYLOAD_UNABLE_TO_GET_ADAPTER_FOR_VERSION.getMessage().replace("%module",
+                                                                                                  e.getModule().name()));
         }
 
-        if(Bukkit.getPluginManager().isPluginEnabled("NickReloaded"))
+        if (Bukkit.getPluginManager().isPluginEnabled("NickReloaded"))
         {
-            if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
+            if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
             {
                 new NickReloadedPAPI(this).hook();
-                log(Messages.PLACEHOLDERAPI_FOUND.m());
+                log(Messages.PLACEHOLDERAPI_FOUND.getMessage());
             }
 
-            new StorageManager().setupStorage();
+            getStorageManager().setupStorage();
 
-            NickManager.processData(NickManager.Status.ENABLING);
+            getNickManager().processData(NickManager.DataStatus.ENABLING);
 
             //LISTENERS
             new PlayerJoinListener();
@@ -63,42 +62,65 @@ public class NickReloaded
             new NickReloadedCommand();
 
             log(" ");
-            log(Messages.PLUGIN_ENABLED.m());
+            log(Messages.PLUGIN_ENABLED.getMessage());
         }
 
-        log(Messages.SEPARATOR.m());
+        log(Messages.SEPARATOR.getMessage());
     }
 
     @Override
     public void onDisable()
     {
-        NickManager.processData(NickManager.Status.DISABLING);
-
-        if(database != null)
-        {
-            database.close();
-        }
+        getNickManager().processData(NickManager.DataStatus.DISABLING);
     }
 
     public static void log(String message)
     {
-        getInstance().getServer().getConsoleSender().sendMessage(Prefix.getPrefix() + message);
+        get().getServer().getConsoleSender().sendMessage(get().getPrefix() + message);
     }
 
-    public static NickReloaded getInstance()
+    public static NickReloaded get()
     {
         return instance;
     }
 
-    public void setDatabase(DatabaseImpl database)
+    public void disable(String reason)
     {
-        this.database = database;
+        log(Messages.ERROR_DISABLED_PLUGIN.getMessage());
+        log(reason);
+        get().getPluginLoader().disablePlugin(get());
     }
 
-    public static void disable(String reason)
+    public String getPrefix()
     {
-        log(Messages.ERROR_DISABLED_PLUGIN.m());
-        log(reason);
-        getInstance().getPluginLoader().disablePlugin(getInstance());
+        return "§f[§6NickReloaded§f] ";
+    }
+
+    public void printPrefix()
+    {
+        NickReloaded.log("§a _   _ _      _    ____      _                 _          _ ");
+        NickReloaded.log("§2| \\ | (_) ___| | _|  _ \\ ___| | ___   __ _  __| | ___  __| |");
+        NickReloaded.log("§a|  \\| | |/ __| |/ / |_) / _ \\ |/ _ \\ / _` |/ _` |/ _ \\/ _` |");
+        NickReloaded.log("§2| |\\  | | (__|   <|  _ <  __/ | (_) | (_| | (_| |  __/ (_| |");
+        NickReloaded.log("§a|_| \\_|_|\\___|_|\\_\\_| \\_\\___|_|\\___/ \\__,_|\\__,_|\\___|\\__,_|");
+        NickReloaded.log(" ");
+    }
+
+    @Override
+    public StorageManager getStorageManager()
+    {
+        return StorageManager.get();
+    }
+
+    @Override
+    public NickManager getNickManager()
+    {
+        return NickManager.get();
+    }
+
+    @Override
+    public PayloadManager getPayloadManager()
+    {
+        return PayloadManager.get();
     }
 }

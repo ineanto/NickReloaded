@@ -1,16 +1,15 @@
 package fr.idden.nickreloaded.command;
 
+import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.command.ExecutableCommand;
 import fr.idden.nickreloaded.api.config.Config;
 import fr.idden.nickreloaded.api.config.ConfigFile;
-import fr.idden.nickreloaded.api.nick.NickManager;
-import fr.idden.nickreloaded.api.storage.StorageManager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class UnnickCommand extends ExecutableCommand
 {
-    private ConfigFile configFile = StorageManager.getConfigFile();
+    private ConfigFile configFile = NickReloaded.get().getStorageManager().getConfigFile();
 
     public UnnickCommand()
     {
@@ -26,9 +25,9 @@ public class UnnickCommand extends ExecutableCommand
 
             if (player.hasPermission("nickreloaded.*") || player.hasPermission("nickreloaded.unnick") || player.hasPermission("*"))
             {
-                if(NickManager.isNicked(player))
+                if(NickReloaded.get().getNickManager().isNicked(player))
                 {
-                    NickManager.nick(player, null, null);
+                    NickReloaded.get().getNickManager().nick(player, null, null);
                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_UNNICK_SUCCESS.getConfigValue(), false));
                 }
                 else

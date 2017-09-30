@@ -1,6 +1,6 @@
 package fr.idden.nickreloaded.api.nms.throwable;
 
-import fr.idden.nickreloaded.api.nms.PayloadManager;
+import fr.idden.nickreloaded.api.manager.PayloadManager;
 
 public class PayloadModuleUnsupportedVersionException
         extends Throwable

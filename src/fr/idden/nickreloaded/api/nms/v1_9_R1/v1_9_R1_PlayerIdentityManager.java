@@ -3,7 +3,6 @@ package fr.idden.nickreloaded.api.nms.v1_9_R1;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import fr.idden.nickreloaded.NickReloaded;
-import fr.idden.nickreloaded.api.nms.PayloadManager;
 import fr.idden.nickreloaded.api.nms.event.PlayerProfileEditorListener;
 import fr.idden.nickreloaded.api.nms.impl.AbstractPlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.utils.PacketUtils;
@@ -72,7 +71,7 @@ public class v1_9_R1_PlayerIdentityManager
         playerInfoData_gameProfile = pidGameProfile;
         playerInfoData_displayName = pidDisplayName;
 
-        NickReloaded.getInstance().getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles, this), NickReloaded.getInstance());
+        NickReloaded.get().getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles, this), NickReloaded.get());
     }
 
     @Override
@@ -123,7 +122,7 @@ public class v1_9_R1_PlayerIdentityManager
     {
         GameProfile gameProfile = getFakeProfile(player);
         gameProfile.getProperties().get("textures").clear();
-        GameProfile skinProfile = PayloadManager.getGameprofileFiller().fillGameprofile(new GameProfile(null,
+        GameProfile skinProfile = NickReloaded.get().getPayloadManager().getGameprofileFiller().fillGameprofile(new GameProfile(null,
                                                                                                         skin));
         for (Property texture : skinProfile.getProperties().get("textures"))
         {
@@ -186,7 +185,7 @@ public class v1_9_R1_PlayerIdentityManager
 
                 updatePlayerProfile(playerInfo);
             }
-        }.runTaskLater(NickReloaded.getInstance(),
+        }.runTaskLater(NickReloaded.get(),
                        0);
     }
 

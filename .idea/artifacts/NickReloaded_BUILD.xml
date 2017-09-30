@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="NickReloaded-BUILD">
-    <output-path>$USER_HOME$/Documents/Développement/Plugins publics</output-path>
+    <output-path>$USER_HOME$/Documents/01 Développement/04 Projets/03 NickReloaded</output-path>
     <root id="archive" name="NickReloaded-BUILD.jar">
       <element id="module-output" name="NickReloaded" />
     </root>

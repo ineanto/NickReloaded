@@ -1,9 +1,9 @@
 package fr.idden.nickreloaded.command;
 
+import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.command.ExecutableCommand;
 import fr.idden.nickreloaded.api.config.Config;
 import fr.idden.nickreloaded.api.config.ConfigFile;
-import fr.idden.nickreloaded.api.storage.StorageManager;
 import fr.idden.nickreloaded.command.help.HelpValues;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class NickReloadedCommand
         extends ExecutableCommand
 {
-    private ConfigFile configFile = StorageManager.getConfigFile();
+    private ConfigFile configFile = NickReloaded.get().getStorageManager().getConfigFile();
 
     public NickReloadedCommand()
     {

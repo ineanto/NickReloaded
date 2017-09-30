@@ -1,8 +1,11 @@
-package fr.idden.nickreloaded.api.storage;
+package fr.idden.nickreloaded.api.manager;
 
 import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.config.Config;
 import fr.idden.nickreloaded.api.config.ConfigFile;
+import fr.idden.nickreloaded.api.storage.PlayerStorage;
+import fr.idden.nickreloaded.api.storage.RequestHandler;
+import fr.idden.nickreloaded.api.storage.StorageMode;
 import fr.idden.nickreloaded.api.storage.impl.DatabaseImpl;
 import fr.idden.nickreloaded.api.storage.impl.StorageManagerImpl;
 import fr.idden.nickreloaded.api.storage.mysql.Field;
@@ -17,22 +20,27 @@ import java.util.UUID;
 public class StorageManager
         implements StorageManagerImpl
 {
-    private static ConfigFile configFile;
-    private static DatabaseImpl database;
-    private static Table table, randomTable;
+    private ConfigFile configFile;
+    private DatabaseImpl database;
+    private Table table, randomTable;
+
+    public static StorageManager get()
+    {
+        return new StorageManager();
+    }
 
     public void setupStorage()
     {
         NickReloaded.log("§aLoading storage...");
 
-        configFile = new ConfigFile(NickReloaded.getInstance(),
+        configFile = new ConfigFile(NickReloaded.get(),
                                     "config.yml");
 
         detectStorage();
 
         if (StorageMode.isMode(StorageMode.SQLITE))
         {
-            NickReloaded.log("§6Detected use of §bSQLite §6!");
+            NickReloaded.log("§6Using §bSQLite §6!");
             database = new SQLiteDatabase(configFile.getString(Config.DATABASE_SQLITE_FILENAME.getConfigValue(),
                                                                true));
             database.connect();
@@ -43,9 +51,7 @@ public class StorageManager
                                                                                                true) + "` (" + "`uuid` TEXT(16) UNIQUE, " + " `nicked` INTEGER(1), " + " `nick` TEXT(16), " + " `skin` TEXT(16) " + ");");
 
             requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(Config.DATABASE_COMMON_RANDOMNAME.getConfigValue(),
-                                                                                               true) + "` (" + "`name` TEXT" + ");");
-
-            NickReloaded.getInstance().setDatabase(database);
+                                                                                               true) + "` (" + "`nick` TEXT" + ");");
 
             table = database.getTable(configFile.getString(Config.DATABASE_COMMON_NAME.getConfigValue(),
                                                            true));
@@ -56,7 +62,7 @@ public class StorageManager
         }
         else
         {
-            NickReloaded.log("§6Detected use of §bMySQL §6!");
+            NickReloaded.log("§6Using §bMySQL §6!");
             database = new MySQLDatabase(configFile.getString(Config.DATABASE_MYSQL_IP.getConfigValue(),
                                                               true),
                                          configFile.getConfigC().getInt(Config.DATABASE_MYSQL_PORT.getConfigValue()),
@@ -74,8 +80,7 @@ public class StorageManager
                                                                                               true) + " (uuid VARCHAR(255), nicked tinyint(1), nick VARCHAR(16), skin VARCHAR(16), UNIQUE (uuid))");
 
             requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(Config.DATABASE_COMMON_RANDOMNAME.getConfigValue(),
-                                                                                               true) + "` " + "(name VARCHAR(16))");
-            NickReloaded.getInstance().setDatabase(database);
+                                                                                               true) + "` " + "(nick VARCHAR(16))");
 
             table = database.getTable(configFile.getString(Config.DATABASE_COMMON_NAME.getConfigValue(),
                                                            true));
@@ -84,6 +89,7 @@ public class StorageManager
 
             NickReloaded.log("§aLoaded MySQL !");
         }
+
     }
 
     @Override
@@ -101,20 +107,6 @@ public class StorageManager
                 Field field = new Field("uuid",
                                         uuid);
 
-                int nickedi = 0;
-                boolean nickedb = false;
-
-                if(StorageMode.isMode(StorageMode.MYSQL))
-                {
-                    boolean nicked = (boolean) table.select("nicked",
-                                                    field);
-                }
-                else
-                {
-                    int nicked = (int) table.select("nicked",
-                                                    field);
-                }
-
                 String nick = (String) table.select("nick",
                                                     field);
                 String skin = (String) table.select("skin",
@@ -122,15 +114,21 @@ public class StorageManager
 
                 if(StorageMode.isMode(StorageMode.MYSQL))
                 {
+                    boolean nicked = (boolean) table.select("nicked",
+                                                            field);
+
                     new PlayerStorage(uuid.toString(),
-                                      nickedb,
+                                      nicked,
                                       nick,
                                       skin);
                 }
                 else
                 {
+                    int nicked = (int) table.select("nicked",
+                                                    field);
+
                     new PlayerStorage(uuid.toString(),
-                                      nickedi == 1,
+                                      nicked == 1,
                                       nick,
                                       skin);
                 }
@@ -219,7 +217,7 @@ public class StorageManager
         }
     }
 
-    public static ConfigFile getConfigFile()
+    public ConfigFile getConfigFile()
     {
         return configFile;
     }

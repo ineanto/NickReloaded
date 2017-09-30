@@ -24,7 +24,7 @@ public class NickReloadedPAPI extends EZPlaceholderHook
             {
                 switch (placeholder)
                 {
-                    case "nick":
+                    case "manager":
                         return playerStorage.getNick();
                     case "skin":
                         return playerStorage.getSkin();

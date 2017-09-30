@@ -1,16 +1,16 @@
-package fr.idden.nickreloaded.api.nms;
+package fr.idden.nickreloaded.api.manager;
 
 import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.nms.impl.AbstractActionbar;
 import fr.idden.nickreloaded.api.nms.impl.AbstractGameprofileFiller;
 import fr.idden.nickreloaded.api.nms.impl.AbstractPlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.throwable.PayloadModuleUnsupportedVersionException;
-import fr.idden.nickreloaded.api.nms.v1_12_R1.v1_12_R1_Actionbar;
-import fr.idden.nickreloaded.api.nms.v1_12_R1.v1_12_R1_GameprofileFiller;
-import fr.idden.nickreloaded.api.nms.v1_12_R1.v1_12_R1_PlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.v1_11_R1.v1_11_R1_Actionbar;
 import fr.idden.nickreloaded.api.nms.v1_11_R1.v1_11_R1_GameprofileFiller;
 import fr.idden.nickreloaded.api.nms.v1_11_R1.v1_11_R1_PlayerIdentityManager;
+import fr.idden.nickreloaded.api.nms.v1_12_R1.v1_12_R1_Actionbar;
+import fr.idden.nickreloaded.api.nms.v1_12_R1.v1_12_R1_GameprofileFiller;
+import fr.idden.nickreloaded.api.nms.v1_12_R1.v1_12_R1_PlayerIdentityManager;
 import fr.idden.nickreloaded.api.nms.v1_8_R1.v1_8_R1_Actionbar;
 import fr.idden.nickreloaded.api.nms.v1_8_R1.v1_8_R1_GameprofileFiller;
 import fr.idden.nickreloaded.api.nms.v1_8_R1.v1_8_R1_PlayerIdentityManager;
@@ -35,7 +35,12 @@ public class PayloadManager
     private static AbstractPlayerIdentityManager MINECRAFT_PLAYER_IDENTITY_MANAGER = null;
     private static AbstractActionbar MINECRAFT_ACTION_BAR = null;
 
-    public PayloadManager()
+    public static PayloadManager get()
+    {
+        return new PayloadManager();
+    }
+
+    public void init()
             throws PayloadModuleUnsupportedVersionException
     {
         MINECRAFT_SERVER_VERSION_CONSTANT = v();
@@ -44,29 +49,29 @@ public class PayloadManager
         initModule(NMSModule.PLAYER_IDENTITY_MANAGER);
     }
 
-    public static NMSVersion getVersion()
+    public NMSVersion getVersion()
     {
         return MINECRAFT_SERVER_VERSION_CONSTANT;
     }
 
-    public static AbstractGameprofileFiller getGameprofileFiller()
+    public AbstractGameprofileFiller getGameprofileFiller()
     {
         return MINECRAFT_GAMEPROFILE_FILLER;
     }
 
-    public static AbstractPlayerIdentityManager getIdentityManager()
+    public AbstractPlayerIdentityManager getIdentityManager()
     {
         return MINECRAFT_PLAYER_IDENTITY_MANAGER;
     }
 
-    public static AbstractActionbar getActionbar()
+    public AbstractActionbar getActionbar()
     {
         return MINECRAFT_ACTION_BAR;
     }
 
-    private static NMSVersion v()
+    public NMSVersion v()
     {
-        switch (vD())
+        switch (getBukkitVersion())
         {
             case "v1_8_R1":
                 NickReloaded.log("§6Loaded v1_8_R1 payload.");
@@ -94,12 +99,12 @@ public class PayloadManager
                 return NMSVersion.MINECRAFT_1_12_R1;
 
             default:
-                NickReloaded.log("§cServer version unknown, beware. (v=" + vD() + ")");
+                NickReloaded.log("§cServer version unknown, beware. (getVersionName=" + getBukkitVersion() + ")");
                 return NMSVersion.UNSUPPORTED;
         }
     }
 
-    private static void initModule(NMSModule module)
+    public void initModule(NMSModule module)
             throws PayloadModuleUnsupportedVersionException
     {
         NickReloaded.log("§6Loading module §b" + module.name() + "§6...");
@@ -239,16 +244,16 @@ public class PayloadManager
         }
     }
 
-    public static String vD()
+    public String getBukkitVersion()
     {
         final String packageName = Bukkit.getServer().getClass().getPackage().getName();
 
         return packageName.substring(packageName.lastIndexOf('.') + 1);
     }
 
-    private static void logInitModule(NMSModule module)
+    public void logInitModule(NMSModule module)
     {
-        NickReloaded.log("§aLoaded §b" + module.name() + " §afor version(s) §b" + getVersion().v());
+        NickReloaded.log("§aLoaded §b" + module.name() + " §afor version(s) §b" + getVersion().getVersionName());
     }
 
     public enum NMSVersion
@@ -270,14 +275,9 @@ public class PayloadManager
             this.v = v;
         }
 
-        public String v()
+        public String getVersionName()
         {
             return v;
-        }
-
-        public boolean isSupported()
-        {
-            return MINECRAFT_SERVER_VERSION_CONSTANT == MINECRAFT_1_12_R1 || MINECRAFT_SERVER_VERSION_CONSTANT == MINECRAFT_1_11_R1;
         }
     }
 

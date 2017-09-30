@@ -1,6 +1,6 @@
 package fr.idden.nickreloaded.api.nms.utils;
 
-import fr.idden.nickreloaded.api.nms.PayloadManager;
+import fr.idden.nickreloaded.NickReloaded;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
@@ -31,7 +31,7 @@ public class PacketUtils
     {
         try
         {
-            return Class.forName("net.minecraft.server." + PayloadManager.vD() + "." + name);
+            return Class.forName("net.minecraft.server." + NickReloaded.get().getPayloadManager().getBukkitVersion() + "." + name);
         }
 
         catch (ClassNotFoundException e)

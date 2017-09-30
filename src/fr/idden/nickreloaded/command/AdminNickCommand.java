@@ -1,16 +1,16 @@
 package fr.idden.nickreloaded.command;
 
+import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.command.ExecutableCommand;
 import fr.idden.nickreloaded.api.config.Config;
 import fr.idden.nickreloaded.api.config.ConfigFile;
-import fr.idden.nickreloaded.api.nick.NickManager;
-import fr.idden.nickreloaded.api.storage.StorageManager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class AdminNickCommand extends ExecutableCommand
+public class AdminNickCommand
+        extends ExecutableCommand
 {
-    private ConfigFile configFile = StorageManager.getConfigFile();
+    private ConfigFile configFile = NickReloaded.get().getStorageManager().getConfigFile();
 
     public AdminNickCommand()
     {
@@ -20,63 +20,69 @@ public class AdminNickCommand extends ExecutableCommand
     @Override
     public boolean execute(CommandSender sender, String s, String[] args)
     {
-        if(sender instanceof Player)
+        if (sender instanceof Player)
         {
             Player player = (Player) sender;
 
             if (player.hasPermission("nickreloaded.*") || player.hasPermission("nickreloaded.adminnick") || player.hasPermission("*"))
             {
-                if(args.length < 1)
+                if (args.length < 1)
                 {
-                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ARGSMISSING.getConfigValue(), false));
+                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ARGSMISSING.getConfigValue(),
+                                                            false));
                 }
                 else
                 {
-                    if(args[0].equalsIgnoreCase("unnick"))
+                    if (args[0].equalsIgnoreCase("unnick"))
                     {
-                        if(args.length < 2)
+                        if (args.length < 2)
                         {
-                            sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ARGSMISSING.getConfigValue(), false));
+                            sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ARGSMISSING.getConfigValue(),
+                                                                    false));
                         }
                         else
                         {
-                            if(args[1].equalsIgnoreCase("all"))
+                            if (args[1].equalsIgnoreCase("all"))
                             {
-                                if(NickManager.players.isEmpty())
+                                if (NickReloaded.get().getNickManager().getPlayers().isEmpty())
                                 {
-                                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLFAILED.getConfigValue(), false));
+                                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLFAILED.getConfigValue(),
+                                                                            false));
                                 }
                                 else
                                 {
-                                    for (Player uPlayer : NickManager.players)
+                                    for (Player uPlayer : NickReloaded.get().getNickManager().getPlayers())
                                     {
-                                        NickManager.nick(uPlayer,
-                                                         null, null);
-                                        NickManager.stopTask(uPlayer);
+                                        NickReloaded.get().getNickManager().nick(uPlayer,
+                                                                                 null,
+                                                                                 null);
                                     }
 
                                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLSUCCESS.getConfigValue(),
                                                                             false));
                                 }
                             }
-                            else if(args[1].equalsIgnoreCase("asideme"))
+                            else if (args[1].equalsIgnoreCase("asideme"))
                             {
-                                if(NickManager.players.contains(player) && NickManager.players.size() == 1)
+                                if (NickReloaded.get().getNickManager().getPlayers().contains(player) && NickReloaded.get().getNickManager().getPlayers().size() == 1)
                                 {
-                                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLFAILED.getConfigValue(), false));
+                                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLFAILED.getConfigValue(),
+                                                                            false));
                                 }
                                 else
                                 {
-                                    for(Player uPlayer : NickManager.players)
+                                    for (Player nPlayer : NickReloaded.get().getNickManager().getPlayers())
                                     {
-                                        if(uPlayer != player)
+                                        if (nPlayer != player)
                                         {
-                                            NickManager.nick(uPlayer, null, null);
-                                            NickManager.stopTask(uPlayer);
+                                            NickReloaded.get().getNickManager().nick(nPlayer,
+                                                                                     null,
+                                                                                     null);
                                         }
                                     }
 
-                                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLSUCCESS.getConfigValue(), false));
+                                    sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLSUCCESS.getConfigValue(),
+                                                                            false));
                                 }
                             }
                         }
@@ -85,7 +91,8 @@ public class AdminNickCommand extends ExecutableCommand
             }
             else
             {
-                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(), false));
+                sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NOPERMISSION.getConfigValue(),
+                                                        false));
             }
         }
         return false;

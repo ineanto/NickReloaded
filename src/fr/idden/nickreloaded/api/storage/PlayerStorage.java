@@ -20,8 +20,6 @@ public class PlayerStorage
         storageHashMap.putIfAbsent(uuid, this);
     }
 
-    //Default getters and setters
-
     public String getUUID()
     {
         return uuid;

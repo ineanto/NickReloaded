@@ -86,7 +86,7 @@ public class ConfigFile
         }
     }
 
-    public String getString(String path, boolean dynamic)
+    public String getString(String path, boolean no_prefix)
     {
         if(getConfigC().getString(path) == null)
         {
@@ -94,7 +94,7 @@ public class ConfigFile
         }
         else
         {
-            if(dynamic)
+            if(no_prefix)
             {
                 return getConfigC().getString(path).replace("&", "§");
             }
