@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 public class UnnickCommand extends ExecutableCommand
 {
-    private ConfigFile configFile = NickReloaded.get().getStorageManager().getConfigFile();
+    private ConfigFile configFile = NickReloaded.getInstance().getStorageManager().getConfigFile();
 
     public UnnickCommand()
     {
@@ -25,9 +25,9 @@ public class UnnickCommand extends ExecutableCommand
 
             if (player.hasPermission("nickreloaded.*") || player.hasPermission("nickreloaded.unnick") || player.hasPermission("*"))
             {
-                if(NickReloaded.get().getNickManager().isNicked(player))
+                if(NickReloaded.getInstance().getNickManager().isNicked(player))
                 {
-                    NickReloaded.get().getNickManager().nick(player, null, null);
+                    NickReloaded.getInstance().getNickManager().nick(player, null, null);
                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_UNNICK_SUCCESS.getConfigValue(), false));
                 }
                 else

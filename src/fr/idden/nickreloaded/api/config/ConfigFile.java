@@ -23,16 +23,16 @@ public class ConfigFile
 
         if (! config.exists())
         {
-            NickReloaded.log("Config doesn't exists ! Creating...");
+            NickReloaded.getInstance().log("Config doesn't exists ! Creating...");
             config.getParentFile().mkdirs();
             try
             {
                 config.createNewFile();
-                NickReloaded.log("Config created !");
+                NickReloaded.getInstance().log("Config created !");
             }
             catch (IOException e)
             {
-                NickReloaded.log("Oh... something went wrong while creating the config file... Report this to Spigot's plugin page.");
+                NickReloaded.getInstance().log("Oh... something went wrong while creating the config file... Report this to Spigot's plugin page.");
                 e.printStackTrace();
             }
         }

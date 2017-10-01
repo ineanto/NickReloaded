@@ -72,21 +72,26 @@ public class NickReloaded
         getNickManager().processData(NickManager.DataStatus.DISABLING);
     }
 
-    public static void log(String message)
-    {
-        get().getServer().getConsoleSender().sendMessage(get().getPrefix() + message);
-    }
-
-    public static NickReloaded get()
-    {
-        return instance;
-    }
-
     public void disable(String reason)
     {
         log(Messages.ERROR_DISABLED_PLUGIN.getMessage());
         log(reason);
-        get().getPluginLoader().disablePlugin(get());
+        getInstance().getPluginLoader().disablePlugin(getInstance());
+    }
+
+    public void printPrefix()
+    {
+        log("§a _   _ _      _    ____      _                 _          _ ");
+        log("§2| \\ | (_) ___| | _|  _ \\ ___| | ___   __ _  __| | ___  __| |");
+        log("§a|  \\| | |/ __| |/ / |_) / _ \\ |/ _ \\ / _` |/ _` |/ _ \\/ _` |");
+        log("§2| |\\  | | (__|   <|  _ <  __/ | (_) | (_| | (_| |  __/ (_| |");
+        log("§a|_| \\_|_|\\___|_|\\_\\_| \\_\\___|_|\\___/ \\__,_|\\__,_|\\___|\\__,_|");
+        log(" ");
+    }
+
+    public void log(String message)
+    {
+        getServer().getConsoleSender().sendMessage(getInstance().getPrefix() + message);
     }
 
     public String getPrefix()
@@ -94,14 +99,9 @@ public class NickReloaded
         return "§f[§6NickReloaded§f] ";
     }
 
-    public void printPrefix()
+    public static NickReloaded getInstance()
     {
-        NickReloaded.log("§a _   _ _      _    ____      _                 _          _ ");
-        NickReloaded.log("§2| \\ | (_) ___| | _|  _ \\ ___| | ___   __ _  __| | ___  __| |");
-        NickReloaded.log("§a|  \\| | |/ __| |/ / |_) / _ \\ |/ _ \\ / _` |/ _` |/ _ \\/ _` |");
-        NickReloaded.log("§2| |\\  | | (__|   <|  _ <  __/ | (_) | (_| | (_| |  __/ (_| |");
-        NickReloaded.log("§a|_| \\_|_|\\___|_|\\_\\_| \\_\\___|_|\\___/ \\__,_|\\__,_|\\___|\\__,_|");
-        NickReloaded.log(" ");
+        return instance;
     }
 
     public StorageManager getStorageManager()

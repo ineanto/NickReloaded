@@ -31,7 +31,7 @@ public class PlayerProfileEditorListener
         UUID uuid = event.getPlayer().getUniqueId();
         if (PlayerStorage.getStorage(uuid) != null)
         {
-            if ((NickReloaded.get().getNickManager().isNicked(event.getPlayer())) && (fakeProfiles.containsKey(uuid)))
+            if ((NickReloaded.getInstance().getNickManager().isNicked(event.getPlayer())) && (fakeProfiles.containsKey(uuid)))
             {
                 fakeProfiles.put(uuid,
                                  abstractPlayerIdentityManager.getFakeProfile(event.getPlayer()));

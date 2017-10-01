@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class NickCommand
         extends ExecutableCommand
 {
-    private static ConfigFile configFile = NickReloaded.get().getStorageManager().getConfigFile();
+    private static ConfigFile configFile = NickReloaded.getInstance().getStorageManager().getConfigFile();
 
     public NickCommand()
     {
@@ -38,9 +38,9 @@ public class NickCommand
                     }
                     else
                     {
-                        NickReloaded.get().getNickManager().nick(player,
-                                                                 "default",
-                                                                 "default");
+                        NickReloaded.getInstance().getNickManager().nick(player,
+                                                                         "default",
+                                                                         "default");
                         sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NICK_SUCCESS.getConfigValue(),
                                                                 false).replace("%nick%",
                                                                                "default").replace("%skin%",
@@ -69,9 +69,9 @@ public class NickCommand
                         {
                             if (args.length == 1)
                             {
-                                NickReloaded.get().getNickManager().nick(player,
-                                                                         args[0],
-                                                                         args[0]);
+                                NickReloaded.getInstance().getNickManager().nick(player,
+                                                                                 args[0],
+                                                                                 args[0]);
                                 sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NICK_SUCCESS.getConfigValue(),
                                                                         false).replace("%nick%",
                                                                                        args[0]).replace("%skin%",
@@ -81,9 +81,9 @@ public class NickCommand
                             else if (args.length == 2)
                             {
                                 {
-                                    NickReloaded.get().getNickManager().nick(player,
-                                                                             args[0],
-                                                                             args[1]);
+                                    NickReloaded.getInstance().getNickManager().nick(player,
+                                                                                     args[0],
+                                                                                     args[1]);
                                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_NICK_SUCCESS.getConfigValue(),
                                                                             false).replace("%nick%",
                                                                                            args[0]).replace("%skin%",

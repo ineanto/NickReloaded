@@ -10,7 +10,7 @@ public class PlayerQuitListener extends Listener<PlayerQuitEvent>
 {
     public PlayerQuitListener()
     {
-        super(NickReloaded.get());
+        super(NickReloaded.getInstance());
     }
 
     @Override
@@ -19,7 +19,7 @@ public class PlayerQuitListener extends Listener<PlayerQuitEvent>
     {
         Player player = event.getPlayer();
 
-        NickReloaded.get().getNickManager().stopTask(player);
+        NickReloaded.getInstance().getNickManager().stopTask(player);
         new StorageManager().save(player.getUniqueId());
     }
 }

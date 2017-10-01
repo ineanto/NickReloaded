@@ -29,7 +29,7 @@ public class Table
     /**
      * Retrieves a value find in the table from a {@link Field}.
      *
-     * @param field The field to get.
+     * @param field The field to getInstance.
      * @param where The field to find the row.
      * @return The find value.
      */
@@ -43,7 +43,7 @@ public class Table
      * Retrieves a value find in the table from
      * a {@link Field} with a list of where values.
      *
-     * @param field The field to get.
+     * @param field The field to getInstance.
      * @param where The list of fields to find the row.
      * @return The find value.
      */
@@ -56,7 +56,7 @@ public class Table
     /**
      * Retrieves a list of values find in the table.
      *
-     * @param field The field to get.
+     * @param field The field to getInstance.
      * @return The list of values.
      */
     public List<Object> selectList(String field)
@@ -69,8 +69,8 @@ public class Table
      * Retrieves a list of values find in the table with a
      * specific value in row.
      *
-     * @param field The field to get.
-     * @param where The field to get the row.
+     * @param field The field to getInstance.
+     * @param where The field to getInstance the row.
      * @return The list of values find with specific value.
      */
     public List<Object> selectList(String field, Field where)
@@ -83,8 +83,8 @@ public class Table
      * Retrieves a list of values find in the table with a
      * list of specific values in row.
      *
-     * @param field The field to get.
-     * @param where The list of fields to get the row.
+     * @param field The field to getInstance.
+     * @param where The list of fields to getInstance the row.
      * @return The list of values find with specific value.
      */
     public List<Object> selectList(String field, List<Field> where)
@@ -127,10 +127,10 @@ public class Table
 
     /**
      * Update a row in the table with the field to set
-     * and the field to get the row.
+     * and the field to getInstance the row.
      *
      * @param toSet The field to set.
-     * @param where The field to get the row.
+     * @param where The field to getInstance the row.
      */
     public void update(Field toSet, Field where)
     {
@@ -139,10 +139,10 @@ public class Table
 
     /**
      * Update a row in the table with a list of fields to set
-     * and the field to get the row.
+     * and the field to getInstance the row.
      *
      * @param toSet The list of fields to set.
-     * @param where The field to get the row.
+     * @param where The field to getInstance the row.
      */
     public void update(Map<String, Object> toSet, Field where)
     {

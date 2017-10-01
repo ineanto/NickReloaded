@@ -47,7 +47,7 @@ public class RequestHandler
      * Select an object in the database with a MySQL query.
      *
      * @param query The MySQL query.
-     * @param get   The object to get.
+     * @param get   The object to getInstance.
      * @return The find object.
      */
     public Object select(String query, String get)

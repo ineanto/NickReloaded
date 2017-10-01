@@ -11,7 +11,7 @@ public class PlayerJoinListener
 {
     public PlayerJoinListener()
     {
-        super(NickReloaded.get());
+        super(NickReloaded.getInstance());
     }
 
     @Override
@@ -27,7 +27,7 @@ public class PlayerJoinListener
 
         if (playerStorage.isNicked())
         {
-            NickReloaded.get().getNickManager().nick(player,
+            NickReloaded.getInstance().getNickManager().nick(player,
                                                      playerStorage.getNick(),
                                                      playerStorage.getSkin());
 
@@ -35,7 +35,7 @@ public class PlayerJoinListener
                                               {
                                                   if (player.getUniqueId() != oPlayer.getUniqueId())
                                                   {
-                                                      NickReloaded.get().getPayloadManager().getIdentityManager().updatePlayer(player,
+                                                      NickReloaded.getInstance().getPayloadManager().getIdentityManager().updatePlayer(player,
                                                                                                                                ! Objects.equals(playerStorage.getSkin(),
                                                                                                                                                 player.getName()));
                                                   }

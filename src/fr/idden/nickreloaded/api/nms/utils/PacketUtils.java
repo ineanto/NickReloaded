@@ -31,7 +31,7 @@ public class PacketUtils
     {
         try
         {
-            return Class.forName("net.minecraft.server." + NickReloaded.get().getPayloadManager().getBukkitVersion() + "." + name);
+            return Class.forName("net.minecraft.server." + NickReloaded.getInstance().getPayloadManager().getBukkitVersion() + "." + name);
         }
 
         catch (ClassNotFoundException e)

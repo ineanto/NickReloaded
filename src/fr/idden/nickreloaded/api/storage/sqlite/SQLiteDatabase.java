@@ -47,7 +47,7 @@ public class SQLiteDatabase
         }
         catch (ClassNotFoundException e)
         {
-            NickReloaded.get().disable("§cTried to load SQLite driver, but he hasn't been found. Disabling.");
+            NickReloaded.getInstance().disable("§cTried to load SQLite driver, but he hasn't been found. Disabling.");
         }
     }
 

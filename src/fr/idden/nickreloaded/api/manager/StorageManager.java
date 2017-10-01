@@ -26,16 +26,16 @@ public class StorageManager
 
     public void setupStorage()
     {
-        NickReloaded.log("§aLoading storage...");
+        NickReloaded.getInstance().log("§aLoading storage...");
 
-        configFile = new ConfigFile(NickReloaded.get(),
+        configFile = new ConfigFile(NickReloaded.getInstance(),
                                     "config.yml");
 
         detectStorage();
 
         if (StorageMode.isMode(StorageMode.SQLITE))
         {
-            NickReloaded.log("§6Using §bSQLite §6!");
+            NickReloaded.getInstance().log("§6Using §bSQLite §6!");
             database = new SQLiteDatabase(configFile.getString(Config.DATABASE_SQLITE_FILENAME.getConfigValue(),
                                                                true));
             database.connect();
@@ -53,11 +53,11 @@ public class StorageManager
             randomTable = database.getTable(configFile.getString(Config.DATABASE_COMMON_RANDOMNAME.getConfigValue(),
                                                                  true));
 
-            NickReloaded.log("§aLoaded SQLite !");
+            NickReloaded.getInstance().log("§aLoaded SQLite !");
         }
         else
         {
-            NickReloaded.log("§6Using §bMySQL §6!");
+            NickReloaded.getInstance().log("§6Using §bMySQL §6!");
             database = new MySQLDatabase(configFile.getString(Config.DATABASE_MYSQL_IP.getConfigValue(),
                                                               true),
                                          configFile.getConfigC().getInt(Config.DATABASE_MYSQL_PORT.getConfigValue()),
@@ -82,7 +82,7 @@ public class StorageManager
             randomTable = database.getTable(configFile.getString(Config.DATABASE_COMMON_RANDOMNAME.getConfigValue(),
                                                                  true));
 
-            NickReloaded.log("§aLoaded MySQL !");
+            NickReloaded.getInstance().log("§aLoaded MySQL !");
         }
 
     }
@@ -129,7 +129,7 @@ public class StorageManager
                 }
             }
 
-            NickReloaded.log("§aDone processing data for '" + Bukkit.getPlayer(uuid).getName() + "' !");
+            NickReloaded.getInstance().log("§aDone processing data for '" + Bukkit.getPlayer(uuid).getName() + "' !");
         }
     }
 
@@ -165,7 +165,7 @@ public class StorageManager
                              field);
             }
 
-            NickReloaded.log("§aDone sending data for '" + Bukkit.getPlayer(uuid).getName() + "' !");
+            NickReloaded.getInstance().log("§aDone sending data for '" + Bukkit.getPlayer(uuid).getName() + "' !");
         }
     }
 
@@ -174,7 +174,7 @@ public class StorageManager
     {
         if (table != null)
         {
-            NickReloaded.log("§a'" + Bukkit.getPlayer(uuid).getName() + "' don't have data, creating...");
+            NickReloaded.getInstance().log("§a'" + Bukkit.getPlayer(uuid).getName() + "' don't have data, creating...");
 
             HashMap<String, Object> hashMap = new HashMap<>();
 

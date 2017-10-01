@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 public class AdminNickCommand
         extends ExecutableCommand
 {
-    private ConfigFile configFile = NickReloaded.get().getStorageManager().getConfigFile();
+    private ConfigFile configFile = NickReloaded.getInstance().getStorageManager().getConfigFile();
 
     public AdminNickCommand()
     {
@@ -44,18 +44,18 @@ public class AdminNickCommand
                         {
                             if (args[1].equalsIgnoreCase("all"))
                             {
-                                if (NickReloaded.get().getNickManager().getPlayers().isEmpty())
+                                if (NickReloaded.getInstance().getNickManager().getPlayers().isEmpty())
                                 {
                                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLFAILED.getConfigValue(),
                                                                             false));
                                 }
                                 else
                                 {
-                                    for (Player uPlayer : NickReloaded.get().getNickManager().getPlayers())
+                                    for (Player uPlayer : NickReloaded.getInstance().getNickManager().getPlayers())
                                     {
-                                        NickReloaded.get().getNickManager().nick(uPlayer,
-                                                                                 null,
-                                                                                 null);
+                                        NickReloaded.getInstance().getNickManager().nick(uPlayer,
+                                                                                         null,
+                                                                                         null);
                                     }
 
                                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLSUCCESS.getConfigValue(),
@@ -64,20 +64,20 @@ public class AdminNickCommand
                             }
                             else if (args[1].equalsIgnoreCase("asideme"))
                             {
-                                if (NickReloaded.get().getNickManager().getPlayers().contains(player) && NickReloaded.get().getNickManager().getPlayers().size() == 1)
+                                if (NickReloaded.getInstance().getNickManager().getPlayers().contains(player) && NickReloaded.getInstance().getNickManager().getPlayers().size() == 1)
                                 {
                                     sender.sendMessage(configFile.getString(Config.MESSAGES_COMMANDS_ADMNICK_UNNICKALLFAILED.getConfigValue(),
                                                                             false));
                                 }
                                 else
                                 {
-                                    for (Player nPlayer : NickReloaded.get().getNickManager().getPlayers())
+                                    for (Player nPlayer : NickReloaded.getInstance().getNickManager().getPlayers())
                                     {
                                         if (nPlayer != player)
                                         {
-                                            NickReloaded.get().getNickManager().nick(nPlayer,
-                                                                                     null,
-                                                                                     null);
+                                            NickReloaded.getInstance().getNickManager().nick(nPlayer,
+                                                                                             null,
+                                                                                             null);
                                         }
                                     }
 

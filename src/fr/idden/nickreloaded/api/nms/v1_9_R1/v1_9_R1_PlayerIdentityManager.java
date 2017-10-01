@@ -71,7 +71,7 @@ public class v1_9_R1_PlayerIdentityManager
         playerInfoData_gameProfile = pidGameProfile;
         playerInfoData_displayName = pidDisplayName;
 
-        NickReloaded.get().getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles, this), NickReloaded.get());
+        NickReloaded.getInstance().getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles, this), NickReloaded.getInstance());
     }
 
     @Override
@@ -122,8 +122,8 @@ public class v1_9_R1_PlayerIdentityManager
     {
         GameProfile gameProfile = getFakeProfile(player);
         gameProfile.getProperties().get("textures").clear();
-        GameProfile skinProfile = NickReloaded.get().getPayloadManager().getGameprofileFiller().fillGameprofile(new GameProfile(null,
-                                                                                                        skin));
+        GameProfile skinProfile = NickReloaded.getInstance().getPayloadManager().getGameprofileFiller().fillGameprofile(new GameProfile(null,
+                                                                                                                                        skin));
         for (Property texture : skinProfile.getProperties().get("textures"))
         {
             gameProfile.getProperties().put("textures",
@@ -185,7 +185,7 @@ public class v1_9_R1_PlayerIdentityManager
 
                 updatePlayerProfile(playerInfo);
             }
-        }.runTaskLater(NickReloaded.get(),
+        }.runTaskLater(NickReloaded.getInstance(),
                        0);
     }
 

@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 public class NickReloadedCommand
         extends ExecutableCommand
 {
-    private ConfigFile configFile = NickReloaded.get().getStorageManager().getConfigFile();
+    private ConfigFile configFile = NickReloaded.getInstance().getStorageManager().getConfigFile();
 
     public NickReloadedCommand()
     {

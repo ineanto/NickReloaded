@@ -16,20 +16,20 @@ public class NickManager
 {
     private ArrayList<Player> players = new ArrayList<>();
     private HashMap<Player, BukkitTask> tasks = new HashMap<>();
-    private ConfigFile configFile = NickReloaded.get().getStorageManager().getConfigFile();
+    private ConfigFile configFile = NickReloaded.getInstance().getStorageManager().getConfigFile();
     private BukkitTask task;
 
     public void nick(Player player, String nick, String skin)
     {
-        task = Bukkit.getScheduler().runTaskTimerAsynchronously(NickReloaded.get(),
+        task = Bukkit.getScheduler().runTaskTimerAsynchronously(NickReloaded.getInstance(),
                                                                 () ->
                                                                 {
                                                                     if (tasks.containsKey(player))
                                                                     {
                                                                         if (PlayerStorage.getStorage(player.getUniqueId()).isNicked())
                                                                         {
-                                                                            NickReloaded.get().getPayloadManager().getActionbar().sendActionbar(player,
-                                                                                                                                                configFile.getString(Config.MESSAGES_COMMANDS_NICK_ACTIVE.getConfigValue(),
+                                                                            NickReloaded.getInstance().getPayloadManager().getActionbar().sendActionbar(player,
+                                                                                                                                                        configFile.getString(Config.MESSAGES_COMMANDS_NICK_ACTIVE.getConfigValue(),
                                                                                                                                                                      true));
                                                                         }
                                                                     }
@@ -40,7 +40,7 @@ public class NickManager
                           task);
 
 
-        Bukkit.getScheduler().runTaskAsynchronously(NickReloaded.get(),
+        Bukkit.getScheduler().runTaskAsynchronously(NickReloaded.getInstance(),
                                                     () ->
                                                     {
                                                         if (Objects.equals(nick,
@@ -52,10 +52,10 @@ public class NickManager
                                                             player.setDisplayName(player.getName());
                                                             player.setPlayerListName(player.getName());
 
-                                                            NickReloaded.get().getPayloadManager().getIdentityManager().setPlayerName(player,
-                                                                                                                                      player.getName());
-                                                            NickReloaded.get().getPayloadManager().getIdentityManager().setPlayerSkin(player,
-                                                                                                                                      player.getName());
+                                                            NickReloaded.getInstance().getPayloadManager().getIdentityManager().setPlayerName(player,
+                                                                                                                                              player.getName());
+                                                            NickReloaded.getInstance().getPayloadManager().getIdentityManager().setPlayerSkin(player,
+                                                                                                                                              player.getName());
 
                                                             stopTask(player);
 
@@ -76,10 +76,10 @@ public class NickManager
                                                             player.setDisplayName(nick);
                                                             player.setPlayerListName(nick);
 
-                                                            NickReloaded.get().getPayloadManager().getIdentityManager().setPlayerSkin(player,
-                                                                                                                                      skin);
-                                                            NickReloaded.get().getPayloadManager().getIdentityManager().setPlayerName(player,
-                                                                                                                                      nick);
+                                                            NickReloaded.getInstance().getPayloadManager().getIdentityManager().setPlayerSkin(player,
+                                                                                                                                              skin);
+                                                            NickReloaded.getInstance().getPayloadManager().getIdentityManager().setPlayerName(player,
+                                                                                                                                              nick);
 
                                                             if (PlayerStorage.getStorage(player.getUniqueId()) == null)
                                                             {
@@ -111,7 +111,7 @@ public class NickManager
 
     public void processData(DataStatus status)
     {
-        StorageManager storageManager = NickReloaded.get().getStorageManager();
+        StorageManager storageManager = NickReloaded.getInstance().getStorageManager();
 
         if (status == DataStatus.DISABLING)
         {
