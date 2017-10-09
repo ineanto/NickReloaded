@@ -7,7 +7,7 @@ public enum Messages
     BUNGEECORD_FOUND("§bBungeecord §afound §b! Hooked."),
     PLUGIN_ENABLED("§a§mPlugin enabled."),
     ERROR_DISABLED_PLUGIN("§4Disabling plugin :"),
-    ERROR_PAYLOAD_UNABLE_TO_GET_ADAPTER_FOR_VERSION("§cPayload was unable to getInstance an adapter for module %module for version(s): " + NickReloaded.getInstance().getPayloadManager().getBukkitVersion());
+    ERROR_PAYLOAD_UNABLE_TO_GET_ADAPTER_FOR_VERSION("§cPayload was unable to get an adapter for module %module for version(s): " + NickReloaded.getInstance().getPayloadManager().getBukkitVersion());
 
     private String message;
 

@@ -72,13 +72,6 @@ public class NickReloaded
         getNickManager().processData(NickManager.DataStatus.DISABLING);
     }
 
-    public void disable(String reason)
-    {
-        log(Messages.ERROR_DISABLED_PLUGIN.getMessage());
-        log(reason);
-        getInstance().getPluginLoader().disablePlugin(getInstance());
-    }
-
     public void printPrefix()
     {
         log("§a _   _ _      _    ____      _                 _          _ ");
@@ -94,16 +87,6 @@ public class NickReloaded
         getServer().getConsoleSender().sendMessage(getInstance().getPrefix() + message);
     }
 
-    public String getPrefix()
-    {
-        return "§f[§6NickReloaded§f] ";
-    }
-
-    public static NickReloaded getInstance()
-    {
-        return instance;
-    }
-
     public StorageManager getStorageManager()
     {
         return new StorageManager();
@@ -117,5 +100,15 @@ public class NickReloaded
     public PayloadManager getPayloadManager()
     {
         return new PayloadManager();
+    }
+
+    public String getPrefix()
+    {
+        return "§f[§6NickReloaded§f] ";
+    }
+
+    public static NickReloaded getInstance()
+    {
+        return instance;
     }
 }

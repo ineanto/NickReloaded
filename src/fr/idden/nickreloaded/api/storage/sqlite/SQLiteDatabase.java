@@ -1,6 +1,5 @@
 package fr.idden.nickreloaded.api.storage.sqlite;
 
-import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.storage.impl.DatabaseImpl;
 import fr.idden.nickreloaded.api.storage.mysql.Table;
 
@@ -41,13 +40,9 @@ public class SQLiteDatabase
             this.connection = DriverManager.getConnection(host);
             this.connected = true;
         }
-        catch (SQLException | IllegalAccessException | InstantiationException e)
+        catch (SQLException | IllegalAccessException | InstantiationException | ClassNotFoundException e)
         {
             e.printStackTrace();
-        }
-        catch (ClassNotFoundException e)
-        {
-            NickReloaded.getInstance().disable("§cTried to load SQLite driver, but he hasn't been found. Disabling.");
         }
     }
 

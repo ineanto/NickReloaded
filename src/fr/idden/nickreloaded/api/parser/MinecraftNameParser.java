@@ -2,11 +2,11 @@ package fr.idden.nickreloaded.api.parser;
 
 import java.util.regex.Pattern;
 
-public class MinecraftName
+public class MinecraftNameParser
 {
     private String pattern;
 
-    public MinecraftName(String pattern)
+    public MinecraftNameParser(String pattern)
     {
         this.pattern = pattern;
     }

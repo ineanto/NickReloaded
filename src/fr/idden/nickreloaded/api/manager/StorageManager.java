@@ -43,7 +43,7 @@ public class StorageManager
             RequestHandler requestHandler = new RequestHandler(database);
 
             requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(Config.DATABASE_SQLITE_FILENAME.getConfigValue(),
-                                                                                               true) + "` (" + "`uuid` TEXT(16) UNIQUE, " + " `nicked` INTEGER(1), " + " `nick` TEXT(16), " + " `skin` TEXT(16) " + ");");
+                                                                                               true) + "` (" + "`uuid` TEXT UNIQUE, " + " `nicked` INTEGER, " + " `nick` TEXT, " + " `skin` TEXT " + ");");
 
             requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(Config.DATABASE_COMMON_RANDOMNAME.getConfigValue(),
                                                                                                true) + "` (" + "`nick` TEXT" + ");");

@@ -4,7 +4,7 @@ import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.command.ExecutableCommand;
 import fr.idden.nickreloaded.api.config.Config;
 import fr.idden.nickreloaded.api.config.ConfigFile;
-import fr.idden.nickreloaded.api.parser.MinecraftName;
+import fr.idden.nickreloaded.api.parser.MinecraftNameParser;
 import fr.idden.nickreloaded.api.storage.PlayerStorage;
 import fr.idden.nickreloaded.command.help.HelpValues;
 import org.bukkit.Bukkit;
@@ -66,7 +66,7 @@ public class NickReloadedCommand
                     else
                     {
 
-                        MinecraftName parser = new MinecraftName(args[1]);
+                        MinecraftNameParser parser = new MinecraftNameParser(args[1]);
 
                         if (! parser.validate())
                         {
