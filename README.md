@@ -1,4 +1,4 @@
-# NickReloaded
+# NickReloaded - A simple nick plugin.
 
 Version | Supported
 ------------ | -------------
