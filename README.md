@@ -11,8 +11,8 @@ Version | Supported
 
 Todo :
 
-- [x] SQLite (Local mode) support.
-- [x] Support 1.8 to 1.12.1. 
+- [x] SQLite (w/o database/local mode) support.
+- [x] Support 1.8.X to 1.12.X. 
 - [x] PlaceholderAPI support (feature requested by @superzyr (on spigot)).
 - [ ] Bungeecord.
 
