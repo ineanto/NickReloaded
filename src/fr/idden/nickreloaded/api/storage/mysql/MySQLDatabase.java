@@ -1,7 +1,7 @@
 package fr.idden.nickreloaded.api.storage.mysql;
 
 
-import fr.idden.nickreloaded.api.storage.impl.DatabaseImpl;
+import fr.idden.nickreloaded.api.storage.core.DatabaseImpl;
 
 import java.sql.*;
 
@@ -15,7 +15,7 @@ public class MySQLDatabase
 
     private boolean connected;
 
-    public MySQLDatabase(final String host, final int port, final String database, final String user, final String password)
+    public MySQLDatabase(final String host, final int port, final String user, final String password, final String database)
     {
         this.host = "jdbc:mysql://" + host + ":" + port + "/" + database;
         this.user = user;
@@ -75,29 +75,14 @@ public class MySQLDatabase
         return host;
     }
 
-    public void setHost(String host)
-    {
-        this.host = host;
-    }
-
     public String getUser()
     {
         return user;
     }
 
-    public void setUser(String user)
-    {
-        this.user = user;
-    }
-
     public String getPassword()
     {
         return password;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
     }
 
     @Override
@@ -116,36 +101,5 @@ public class MySQLDatabase
     public boolean isConnected()
     {
         return connected;
-    }
-
-    @Override
-    public boolean tableExists(String name)
-    {
-        if(connected)
-        {
-            try
-            {
-                boolean exists;
-                DatabaseMetaData meta = getConnection().getMetaData();
-                ResultSet res = meta.getTables(null,
-                                               null,
-                                               name,
-                                               new String[] {"TABLE"});
-                exists = res.next();
-
-                res.close();
-                return exists;
-            }
-            catch (SQLException e)
-            {
-                e.printStackTrace();
-            }
-            finally
-            {
-                close();
-            }
-        }
-
-        return false;
     }
 }

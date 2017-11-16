@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="NickReloaded">
-    <output-path>$USER_HOME$/Documents/01 Développement/03 Serveurs/01 Ethos/02 Spigot/plugins</output-path>
+    <output-path>$USER_HOME$/Documents/01 Développement/03 Serveurs/01 Arass/01 Proxy/hub1</output-path>
     <root id="archive" name="NickReloaded.jar">
       <element id="module-output" name="NickReloaded" />
     </root>

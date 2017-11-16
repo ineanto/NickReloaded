@@ -1,38 +1,37 @@
 package fr.idden.nickreloaded.api.config;
 
 import fr.idden.nickreloaded.NickReloaded;
+import fr.idden.nickreloaded.api.logger.NickReloadedLogger;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
 import java.io.IOException;
 
-public class ConfigFile
+public class FileProvider
 {
-    public static File config;
+    public static java.io.File config;
     public static FileConfiguration configC;
     public static ConfigurationSection configCS;
 
-    public ConfigFile(JavaPlugin javaPlugin, String file)
+    public FileProvider(String file)
     {
-        config = new File("plugins/" + javaPlugin.getDescription().getName(),
-                          file);
+        config = new java.io.File("plugins/" + NickReloaded.getInstance().getDescription().getName(),
+                                  file);
 
         if (! config.exists())
         {
-            NickReloaded.getInstance().log("Config doesn't exists ! Creating...");
+            NickReloadedLogger.log(NickReloadedLogger.Level.WARN, "Config doesn't exists ! Creating...");
             config.getParentFile().mkdirs();
             try
             {
                 config.createNewFile();
-                NickReloaded.getInstance().log("Config created !");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Config created !");
             }
             catch (IOException e)
             {
-                NickReloaded.getInstance().log("Oh... something went wrong while creating the config file... Report this to Spigot's plugin page.");
+                NickReloadedLogger.log(NickReloadedLogger.Level.WARN, "Oh... something went wrong while creating the config file. Report this to Spigot's plugin page.");
                 e.printStackTrace();
             }
         }
@@ -86,32 +85,26 @@ public class ConfigFile
         }
     }
 
-    public String getString(String path, boolean no_prefix)
+    public String getString(String path)
     {
-        if(getConfigC().getString(path) == null)
+        if (getFileConfiguration().getString(path) == null)
         {
             return "§c" + path + " (key missing)";
         }
         else
         {
-            if(no_prefix)
-            {
-                return getConfigC().getString(path).replace("&", "§");
-            }
-            else
-            {
-                return getConfigC().getString("prefix").replace("&", "§") + getConfigC().getString(path).replace("&", "§");
-            }
+            return getFileConfiguration().getString(path).replace("&",
+                                                                  "§");
         }
     }
 
 
-    public static File getConfig()
+    public static java.io.File getConfig()
     {
         return config;
     }
 
-    public static FileConfiguration getConfigC()
+    public static FileConfiguration getFileConfiguration()
     {
         return configC;
     }

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="NickReloaded GameServer 2">
-    <output-path>$USER_HOME$/Documents/01 Développement/03 Serveurs/01 Ethos/01 Proxy/gameserver2/plugins</output-path>
-    <root id="archive" name="NickReloaded.jar">
-      <element id="module-output" name="NickReloaded" />
-    </root>
-  </artifact>
-</component>

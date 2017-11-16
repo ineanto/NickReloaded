@@ -1,4 +1,4 @@
-package fr.idden.nickreloaded.api.storage;
+package fr.idden.nickreloaded.api.storage.core;
 
 public enum StorageMode
 {

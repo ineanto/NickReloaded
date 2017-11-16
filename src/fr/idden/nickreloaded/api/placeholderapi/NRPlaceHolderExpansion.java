@@ -1,14 +1,14 @@
 package fr.idden.nickreloaded.api.placeholderapi;
 
-import fr.idden.nickreloaded.api.storage.PlayerStorage;
 import me.clip.placeholderapi.external.EZPlaceholderHook;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class NickReloadedPAPI extends EZPlaceholderHook
+public class NRPlaceHolderExpansion
+        extends EZPlaceholderHook
 {
 
-    public NickReloadedPAPI(Plugin plugin)
+    public NRPlaceHolderExpansion(Plugin plugin)
     {
         super(plugin, "nickreloaded");
     }
@@ -18,7 +18,7 @@ public class NickReloadedPAPI extends EZPlaceholderHook
     {
         if(player != null)
         {
-            PlayerStorage playerStorage = PlayerStorage.getStorage(player.getUniqueId());
+            /*PlayerStorage playerStorage = PlayerStorage.getStorage(player.getUniqueId());
 
             if(playerStorage.isNicked())
             {
@@ -32,7 +32,7 @@ public class NickReloadedPAPI extends EZPlaceholderHook
                     default:
                         return "nickreloaded: no placeholder for " + placeholder;
                 }
-            }
+            }*/
 
         }
         return null;

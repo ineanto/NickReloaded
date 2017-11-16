@@ -1,10 +1,9 @@
 package fr.idden.nickreloaded.api.manager;
 
-import fr.idden.nickreloaded.NickReloaded;
+import fr.idden.nickreloaded.api.logger.NickReloadedLogger;
 import fr.idden.nickreloaded.api.nms.impl.AbstractActionbar;
 import fr.idden.nickreloaded.api.nms.impl.AbstractGameprofileFiller;
 import fr.idden.nickreloaded.api.nms.impl.AbstractPlayerIdentityManager;
-import fr.idden.nickreloaded.api.nms.throwable.PayloadUnsupportedVersionException;
 import fr.idden.nickreloaded.api.nms.v1_11_R1.v1_11_R1_Actionbar;
 import fr.idden.nickreloaded.api.nms.v1_11_R1.v1_11_R1_GameprofileFiller;
 import fr.idden.nickreloaded.api.nms.v1_11_R1.v1_11_R1_PlayerIdentityManager;
@@ -28,7 +27,7 @@ import fr.idden.nickreloaded.api.nms.v1_9_R2.v1_9_R2_GameprofileFiller;
 import fr.idden.nickreloaded.api.nms.v1_9_R2.v1_9_R2_PlayerIdentityManager;
 import org.bukkit.Bukkit;
 
-public class PayloadManager
+public class NMSManager
 {
     private NMSVersion MINECRAFT_SERVER_VERSION_CONSTANT = null;
     private AbstractGameprofileFiller MINECRAFT_GAMEPROFILE_FILLER = null;
@@ -36,7 +35,6 @@ public class PayloadManager
     private AbstractActionbar MINECRAFT_ACTION_BAR = null;
 
     public void init()
-            throws PayloadUnsupportedVersionException
     {
         MINECRAFT_SERVER_VERSION_CONSTANT = getNMSVersion();
         initModule(NMSModule.ACTIONBAR, NMSModule.GAMEPROFILE_FILLER, NMSModule.PLAYER_IDENTITY_MANAGER);
@@ -47,43 +45,42 @@ public class PayloadManager
         switch (getBukkitVersion())
         {
             case "v1_8_R1":
-                NickReloaded.getInstance().log("§6Loaded v1_8_R1 (" + NMSVersion.MINECRAFT_1_8_R1.getVersionName() + ") payload.");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_8_R1 (" + NMSVersion.MINECRAFT_1_8_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_8_R1;
             case "v1_8_R2":
-                NickReloaded.getInstance().log("§6Loaded v1_8_R2 (" + NMSVersion.MINECRAFT_1_8_R2.getVersionName() + ") payload.");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_8_R2 (" + NMSVersion.MINECRAFT_1_8_R2.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_8_R2;
             case "v1_8_R3":
-                NickReloaded.getInstance().log("§6Loaded v1_8_R3 (" + NMSVersion.MINECRAFT_1_8_R3.getVersionName() + ") payload.");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_8_R3 (" + NMSVersion.MINECRAFT_1_8_R3.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_8_R3;
             case "v1_9_R1":
-                NickReloaded.getInstance().log("§6Loaded v1_9_R1 (" + NMSVersion.MINECRAFT_1_9_R1.getVersionName() + ") payload.");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_9_R1 (" + NMSVersion.MINECRAFT_1_9_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_9_R1;
             case "v1_9_R2":
-                NickReloaded.getInstance().log("§6Loaded v1_9_R2 (" + NMSVersion.MINECRAFT_1_9_R2.getVersionName() + ") payload.");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_9_R2 (" + NMSVersion.MINECRAFT_1_9_R2.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_9_R2;
             case "v1_10_R1":
-                NickReloaded.getInstance().log("§6Loaded v1_10_R1 (" + NMSVersion.MINECRAFT_1_10_R1.getVersionName() + ") payload.");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_10_R1 (" + NMSVersion.MINECRAFT_1_10_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_10_R1;
             case "v1_11_R1":
-                NickReloaded.getInstance().log("§6Loaded v1_11_R1 (" + NMSVersion.MINECRAFT_1_11_R1.getVersionName() + ") payload.");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_11_R1 (" + NMSVersion.MINECRAFT_1_11_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_11_R1;
             case "v1_12_R1":
-                NickReloaded.getInstance().log("§6Loaded v1_12_R1 (" + NMSVersion.MINECRAFT_1_12_R1.getVersionName() + ") payload.");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_12_R1 (" + NMSVersion.MINECRAFT_1_12_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_12_R1;
 
             default:
-                NickReloaded.getInstance().log("§cServer version unknown ! (version=" + getBukkitVersion() + ")");
+                NickReloadedLogger.log(NickReloadedLogger.Level.WARN, "§cServer version unknown ! (version=" + getBukkitVersion() + ")");
                 return NMSVersion.UNSUPPORTED;
         }
     }
 
     public void initModule(NMSModule... modules)
-            throws PayloadUnsupportedVersionException
     {
         for(NMSModule module : modules)
         {
 
-            NickReloaded.getInstance().log("§6Loading module §b" + module.getName() + "§6...");
+            NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loading module §b" + module.getName() + "§6...");
             switch (module)
             {
                 case GAMEPROFILE_FILLER:
@@ -116,7 +113,7 @@ public class PayloadManager
                             break;
 
                         default:
-                            throw new PayloadUnsupportedVersionException(module);
+                            break;
                     }
                     break;
 
@@ -151,7 +148,7 @@ public class PayloadManager
                             break;
 
                         default:
-                            throw new PayloadUnsupportedVersionException(module);
+                            break;
                     }
                     break;
 
@@ -186,7 +183,7 @@ public class PayloadManager
                             break;
 
                         default:
-                            throw new PayloadUnsupportedVersionException(module);
+                            break;
                     }
 
                     break;
@@ -195,7 +192,7 @@ public class PayloadManager
                     break;
             }
 
-            logInitModule(module);
+            NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded §b" + module.getName() + " §afor version(s) §b" + MINECRAFT_SERVER_VERSION_CONSTANT.getVersionName());
         }
     }
 
@@ -204,11 +201,6 @@ public class PayloadManager
         final String packageName = Bukkit.getServer().getClass().getPackage().getName();
 
         return packageName.substring(packageName.lastIndexOf('.') + 1);
-    }
-
-    public void logInitModule(NMSModule module)
-    {
-        NickReloaded.getInstance().log("§aLoaded §b" + module.name() + " §afor version(s) §b" + MINECRAFT_SERVER_VERSION_CONSTANT.getVersionName());
     }
 
     public enum NMSVersion
@@ -254,9 +246,9 @@ public class PayloadManager
 
     public enum NMSModule
     {
-        GAMEPROFILE_FILLER("Gameprofile Filler (GF) "),
-        PLAYER_IDENTITY_MANAGER("Player Identity Manager (PIM) "),
-        ACTIONBAR("Actionbar");
+        GAMEPROFILE_FILLER("Gameprofile Filler"),
+        PLAYER_IDENTITY_MANAGER("Player Identity Manager"),
+        ACTIONBAR("ActionBar");
 
         private String name;
 

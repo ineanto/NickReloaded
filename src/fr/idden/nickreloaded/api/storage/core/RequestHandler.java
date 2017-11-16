@@ -1,6 +1,6 @@
-package fr.idden.nickreloaded.api.storage;
+package fr.idden.nickreloaded.api.storage.core;
 
-import fr.idden.nickreloaded.api.storage.impl.DatabaseImpl;
+import fr.idden.nickreloaded.api.storage.core.DatabaseImpl;
 import fr.idden.nickreloaded.api.storage.mysql.Field;
 import fr.idden.nickreloaded.api.storage.mysql.Method;
 

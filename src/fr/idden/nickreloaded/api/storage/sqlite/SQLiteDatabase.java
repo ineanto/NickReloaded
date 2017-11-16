@@ -1,6 +1,6 @@
 package fr.idden.nickreloaded.api.storage.sqlite;
 
-import fr.idden.nickreloaded.api.storage.impl.DatabaseImpl;
+import fr.idden.nickreloaded.api.storage.core.DatabaseImpl;
 import fr.idden.nickreloaded.api.storage.mysql.Table;
 
 import java.sql.*;
@@ -80,33 +80,5 @@ public class SQLiteDatabase
     public boolean isConnected()
     {
         return connected;
-    }
-
-    @Override
-    public boolean tableExists(String name)
-    {
-        if(connected)
-        {
-            try
-            {
-                boolean exists;
-                DatabaseMetaData meta = getConnection().getMetaData();
-                ResultSet res = meta.getTables(null,
-                                               null,
-                                               name,
-                                               new String[] {"TABLE"});
-                exists = res.next();
-
-                res.close();
-                close();
-                return exists;
-            }
-            catch (SQLException e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-        return false;
     }
 }

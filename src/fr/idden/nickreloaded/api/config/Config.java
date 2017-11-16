@@ -3,14 +3,15 @@ package fr.idden.nickreloaded.api.config;
 public enum Config
 {
     BUNGEECORD(false),
-    DATABASE_COMMON_MYSQL(false),
-    DATABASE_COMMON_NAME("nickreloaded"),
-    DATABASE_COMMON_RANDOMNAME("randomnames"),
-    DATABASE_SQLITE_FILENAME("nickreloaded"),
-    DATABASE_MYSQL_IP("127.0.0.1"),
-    DATABASE_MYSQL_PORT(3306),
-    DATABASE_MYSQL_USER("root"),
-    DATABASE_MYSQL_PASSWORD(""),
+    STORAGE_COMMON_MYSQL(false),
+    STORAGE_COMMON_REDIS(false),
+    STORAGE_TABLE_NAME("nickreloaded"),
+    STORAGE_TABLE_RANDOMNAME("randomnames"),
+    STORAGE_SQLITE_FILENAME("nickreloaded"),
+    STORAGE_MYSQL_IP("127.0.0.1"),
+    STORAGE_MYSQL_PORT(3306),
+    STORAGE_MYSQL_USER("root"),
+    STORAGE_MYSQL_PASSWORD(""),
 
     PREFIX("&f[&6NickReloaded&f] "),
 
@@ -26,10 +27,9 @@ public enum Config
     MESSAGES_COMMANDS_MAIN_INCORRECTPLAYER("&c'&l%name%' &cis not a valid name !"),
     MESSAGES_COMMANDS_MAIN_INVALIDNAME("&cThis name contains invalid charcaters/is too long &7(must be < 16)"),
     MESSAGES_COMMANDS_MAIN_OFFLINEPLAYER("&c'%name%' is offline !"),
-    MESSAGES_COMMANDS_MAIN_HOVERTEXT("&6Click to check in the database."),
     MESSAGES_COMMANDS_MAIN_STATUS("&aPlayer '%name%' is currently nicked : %status%"),
 
-    MESSAGES_COMMANDS_NICK_ACTIVE("&fYou are currently &c&l&nNICKED"),
+    MESSAGES_COMMANDS_NICK_ACTIVE("&fYou are currently &cNICKED"),
     MESSAGES_COMMANDS_NICK_NONAME("&cPlease type a name !"),
     MESSAGES_COMMANDS_NICK_SUCCESS("&6Successfully nicked to &b%nick% &6with &b%skin%&6's skin !"),
     MESSAGES_COMMANDS_NICK_TOUNNICK("&7(Type '/unnick' to unnick.)"),
@@ -53,7 +53,7 @@ public enum Config
         this.value = value;
     }
 
-    public String getConfigValue()
+    public String getValue()
     {
         return name().replace("_", ".").toLowerCase();
     }

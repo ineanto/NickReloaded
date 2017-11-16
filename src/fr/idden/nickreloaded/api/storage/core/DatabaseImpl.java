@@ -1,4 +1,4 @@
-package fr.idden.nickreloaded.api.storage.impl;
+package fr.idden.nickreloaded.api.storage.core;
 
 import fr.idden.nickreloaded.api.storage.mysql.Table;
 
@@ -15,8 +15,6 @@ public interface DatabaseImpl
     void setConnection(Connection connection);
 
     boolean isConnected();
-
-    boolean tableExists(String name);
 
     Table getTable(String name);
 }

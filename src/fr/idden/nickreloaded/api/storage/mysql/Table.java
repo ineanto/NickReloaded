@@ -1,7 +1,7 @@
 package fr.idden.nickreloaded.api.storage.mysql;
 
-import fr.idden.nickreloaded.api.storage.RequestHandler;
-import fr.idden.nickreloaded.api.storage.impl.DatabaseImpl;
+import fr.idden.nickreloaded.api.storage.core.RequestHandler;
+import fr.idden.nickreloaded.api.storage.core.DatabaseImpl;
 
 import java.util.List;
 import java.util.Map;

@@ -1,9 +1,7 @@
 package fr.idden.nickreloaded.api.manager;
 
 import fr.idden.nickreloaded.NickReloaded;
-import fr.idden.nickreloaded.api.config.Config;
-import fr.idden.nickreloaded.api.config.ConfigFile;
-import fr.idden.nickreloaded.api.storage.PlayerStorage;
+import fr.idden.nickreloaded.api.storage.AccountProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
@@ -16,7 +14,6 @@ public class NickManager
 {
     private ArrayList<Player> players = new ArrayList<>();
     private HashMap<Player, BukkitTask> tasks = new HashMap<>();
-    private ConfigFile configFile = NickReloaded.getInstance().getStorageManager().getConfigFile();
     private BukkitTask task;
 
     public void nick(Player player, String nick, String skin)
@@ -26,16 +23,12 @@ public class NickManager
                                                                 {
                                                                     if (tasks.containsKey(player))
                                                                     {
-                                                                        if (PlayerStorage.getStorage(player.getUniqueId()).isNicked())
-                                                                        {
-                                                                            NickReloaded.getInstance().getPayloadManager().getActionbar().sendActionbar(player,
-                                                                                                                                                        configFile.getString(Config.MESSAGES_COMMANDS_NICK_ACTIVE.getConfigValue(),
-                                                                                                                                                                     true));
-                                                                        }
+                                                                            //SEND ACTIONBAR (IF NICKED)
                                                                     }
                                                                 },
                                                                 0,
                                                                 20);
+
         tasks.putIfAbsent(player,
                           task);
 
@@ -52,19 +45,11 @@ public class NickManager
                                                             player.setDisplayName(player.getName());
                                                             player.setPlayerListName(player.getName());
 
-                                                            NickReloaded.getInstance().getPayloadManager().getIdentityManager().setPlayerName(player,
-                                                                                                                                              player.getName());
-                                                            NickReloaded.getInstance().getPayloadManager().getIdentityManager().setPlayerSkin(player,
-                                                                                                                                              player.getName());
+                                                            //SET PLAYER SKIN AND NAME
 
                                                             stopTask(player);
 
-                                                            if (PlayerStorage.getStorage(player.getUniqueId()) != null)
-                                                            {
-                                                                PlayerStorage.getStorage(player.getUniqueId()).setNick(null);
-                                                                PlayerStorage.getStorage(player.getUniqueId()).setSkin(null);
-                                                                PlayerStorage.getStorage(player.getUniqueId()).setNicked(false);
-                                                            }
+                                                            //SET STORAGE TO NULL
                                                         }
                                                         else
                                                         {
@@ -76,19 +61,11 @@ public class NickManager
                                                             player.setDisplayName(nick);
                                                             player.setPlayerListName(nick);
 
-                                                            NickReloaded.getInstance().getPayloadManager().getIdentityManager().setPlayerSkin(player,
-                                                                                                                                              skin);
-                                                            NickReloaded.getInstance().getPayloadManager().getIdentityManager().setPlayerName(player,
-                                                                                                                                              nick);
+                                                            //SET PLAYER SKIN AND NAME
 
-                                                            if (PlayerStorage.getStorage(player.getUniqueId()) == null)
-                                                            {
-                                                                new StorageManager().load(player.getUniqueId());
-                                                            }
+                                                            //IF DATA NULL LOAD DATA
 
-                                                            PlayerStorage.getStorage(player.getUniqueId()).setNick(nick);
-                                                            PlayerStorage.getStorage(player.getUniqueId()).setSkin(skin);
-                                                            PlayerStorage.getStorage(player.getUniqueId()).setNicked(true);
+                                                            //DEFINE DATA
                                                         }
                                                     });
     }
@@ -104,39 +81,25 @@ public class NickManager
 
     public boolean isNicked(Player player)
     {
-        return PlayerStorage.getStorage(player.getUniqueId()).isNicked();
+        return new AccountProvider(player.getUniqueId()).getAccount().isNicked();
     }
 
 
 
     public void processData(DataStatus status)
     {
-        StorageManager storageManager = NickReloaded.getInstance().getStorageManager();
-
         if (status == DataStatus.DISABLING)
         {
             Bukkit.getOnlinePlayers().forEach(player ->
                                               {
-                                                  if (isNicked(player))
-                                                  {
-                                                      storageManager.save(player.getUniqueId());
-                                                  }
+                                                  //SAVE DATA (IF NICKED)
                                               });
         }
         else if (status == DataStatus.ENABLING)
         {
             Bukkit.getOnlinePlayers().forEach(player ->
                                               {
-                                                  storageManager.load(player.getUniqueId());
-
-                                                  PlayerStorage playerStorage = PlayerStorage.getStorage(player.getUniqueId());
-
-                                                  if (isNicked(player))
-                                                  {
-                                                      nick(player,
-                                                           playerStorage.getNick(),
-                                                           playerStorage.getSkin());
-                                                  }
+                                                  //LOAD DATA (IF NICKED)
                                               });
         }
     }

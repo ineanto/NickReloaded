@@ -5,8 +5,7 @@
     <bytecodeTargetLevel target="1.8" />
   </component>
   <component name="EclipseCompilerSettings">
-    <option name="PROCEED_ON_ERROR" value="false" />
-    <option name="DEPRECATION" value="false" />
+    <option name="DEBUGGING_INFO" value="false" />
   </component>
   <component name="JavacSettings">
     <option name="DEBUGGING_INFO" value="false" />

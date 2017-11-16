@@ -1,7 +1,6 @@
 package fr.idden.nickreloaded.api.nms.v1_9_R2;
 
 import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
 import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.nms.event.PlayerProfileEditorListener;
 import fr.idden.nickreloaded.api.nms.impl.AbstractPlayerIdentityManager;
@@ -40,7 +39,6 @@ public class v1_9_R2_PlayerIdentityManager
         Field pidGameMode = null;
         Field pidGameProfile = null;
         Field pidDisplayName = null;
-
         try
         {
             profileField = EntityHuman.class.getDeclaredField("bS");
@@ -71,7 +69,9 @@ public class v1_9_R2_PlayerIdentityManager
         playerInfoData_gameProfile = pidGameProfile;
         playerInfoData_displayName = pidDisplayName;
 
-        NickReloaded.getInstance().getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles, this), NickReloaded.getInstance());
+        NickReloaded.getInstance().getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles,
+                                                                                                                 this),
+                                                                                 NickReloaded.getInstance());
     }
 
     @Override
@@ -122,13 +122,14 @@ public class v1_9_R2_PlayerIdentityManager
     {
         GameProfile gameProfile = getFakeProfile(player);
         gameProfile.getProperties().get("textures").clear();
-        GameProfile skinProfile = NickReloaded.getInstance().getPayloadManager().getGameprofileFiller().fillGameprofile(new GameProfile(null,
+        /*GameProfile skinProfile = NickReloaded.getInstance().getPayloadManager().getGameprofileFiller().fillGameprofile(new GameProfile(null,
                                                                                                                                         skin));
         for (Property texture : skinProfile.getProperties().get("textures"))
         {
             gameProfile.getProperties().put("textures",
                                             texture);
         }
+        */
 
         updatePlayer(player,
                      true);

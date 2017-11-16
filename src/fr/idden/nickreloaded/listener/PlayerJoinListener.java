@@ -1,7 +1,6 @@
 package fr.idden.nickreloaded.listener;
 
 import fr.idden.nickreloaded.NickReloaded;
-import fr.idden.nickreloaded.api.manager.StorageManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -20,7 +19,7 @@ public class PlayerJoinListener
     {
         Player player = event.getPlayer();
 
-        new StorageManager().load(player.getUniqueId());
+        //LOAD DATA
 
         /*
         PlayerStorage playerStorage = PlayerStorage.getStorage(event.getPlayer().getUniqueId());

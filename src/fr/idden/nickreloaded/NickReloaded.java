@@ -1,14 +1,10 @@
 package fr.idden.nickreloaded;
 
+import fr.idden.nickreloaded.api.logger.NickReloadedLogger;
+import fr.idden.nickreloaded.api.manager.NMSManager;
 import fr.idden.nickreloaded.api.manager.NickManager;
-import fr.idden.nickreloaded.api.manager.PayloadManager;
-import fr.idden.nickreloaded.api.manager.StorageManager;
-import fr.idden.nickreloaded.api.nms.throwable.PayloadUnsupportedVersionException;
-import fr.idden.nickreloaded.api.placeholderapi.NickReloadedPAPI;
-import fr.idden.nickreloaded.command.AdminNickCommand;
-import fr.idden.nickreloaded.command.NickCommand;
-import fr.idden.nickreloaded.command.NickReloadedCommand;
-import fr.idden.nickreloaded.command.UnnickCommand;
+import fr.idden.nickreloaded.api.placeholderapi.NRPlaceHolderExpansion;
+import fr.idden.nickreloaded.api.string.Messages;
 import fr.idden.nickreloaded.listener.PlayerJoinListener;
 import fr.idden.nickreloaded.listener.PlayerQuitListener;
 import org.bukkit.Bukkit;
@@ -24,87 +20,39 @@ public class NickReloaded
     {
         instance = this;
 
-        log(Messages.SEPARATOR.getMessage());
+        NickReloadedLogger.log(NickReloadedLogger.Level.NONE, Messages.SEPARATOR);
 
-        printPrefix();
+        NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "NickReloaded - Enabling...");
 
-        try
-        {
-            getPayloadManager().init();
-        }
-        catch (PayloadUnsupportedVersionException e)
-        {
-            e.printStackTrace();
-        }
+        new NMSManager().init();
 
         if (Bukkit.getPluginManager().isPluginEnabled("NickReloaded"))
         {
             if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
             {
-                new NickReloadedPAPI(this).hook();
-                log(Messages.PLACEHOLDERAPI_FOUND.getMessage());
+                new NRPlaceHolderExpansion(this).hook();
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, Messages.PAPI_HOOK);
             }
-
-            getStorageManager().setupStorage();
-
-            getNickManager().processData(NickManager.DataStatus.ENABLING);
 
             //LISTENERS
             new PlayerJoinListener();
             new PlayerQuitListener();
 
             //COMMANDS
-            new NickCommand();
-            new UnnickCommand();
-            new AdminNickCommand();
-            new NickReloadedCommand();
+            //• NICK
+            //• NICKRELOADED (infos etc)
 
-            log(" ");
-            log(Messages.PLUGIN_ENABLED.getMessage());
+            NickReloadedLogger.log(NickReloadedLogger.Level.NONE, " ");
+            NickReloadedLogger.log(NickReloadedLogger.Level.INFO, Messages.PLUGIN_ENABLED);
         }
 
-        log(Messages.SEPARATOR.getMessage());
+        NickReloadedLogger.log(NickReloadedLogger.Level.NONE, Messages.SEPARATOR);
     }
 
     @Override
     public void onDisable()
     {
-        getNickManager().processData(NickManager.DataStatus.DISABLING);
-    }
-
-    public void printPrefix()
-    {
-        log("§a _   _ _      _    ____      _                 _          _ ");
-        log("§2| \\ | (_) ___| | _|  _ \\ ___| | ___   __ _  __| | ___  __| |");
-        log("§a|  \\| | |/ __| |/ / |_) / _ \\ |/ _ \\ / _` |/ _` |/ _ \\/ _` |");
-        log("§2| |\\  | | (__|   <|  _ <  __/ | (_) | (_| | (_| |  __/ (_| |");
-        log("§a|_| \\_|_|\\___|_|\\_\\_| \\_\\___|_|\\___/ \\__,_|\\__,_|\\___|\\__,_|");
-        log(" ");
-    }
-
-    public void log(String message)
-    {
-        getServer().getConsoleSender().sendMessage(getInstance().getPrefix() + message);
-    }
-
-    public StorageManager getStorageManager()
-    {
-        return new StorageManager();
-    }
-
-    public NickManager getNickManager()
-    {
-        return new NickManager();
-    }
-
-    public PayloadManager getPayloadManager()
-    {
-        return new PayloadManager();
-    }
-
-    public String getPrefix()
-    {
-        return "§f[§6NickReloaded§f] ";
+        new NickManager().processData(NickManager.DataStatus.DISABLING);
     }
 
     public static NickReloaded getInstance()

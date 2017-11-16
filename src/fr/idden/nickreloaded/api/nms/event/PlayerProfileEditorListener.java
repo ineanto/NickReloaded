@@ -1,9 +1,7 @@
 package fr.idden.nickreloaded.api.nms.event;
 
 import com.mojang.authlib.GameProfile;
-import fr.idden.nickreloaded.NickReloaded;
 import fr.idden.nickreloaded.api.nms.impl.AbstractPlayerIdentityManager;
-import fr.idden.nickreloaded.api.storage.PlayerStorage;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -29,14 +27,14 @@ public class PlayerProfileEditorListener
     public void onPlayerJoin(PlayerJoinEvent event)
     {
         UUID uuid = event.getPlayer().getUniqueId();
-        if (PlayerStorage.getStorage(uuid) != null)
+        /*if (PlayerStorage.getStorage(uuid) != null)
         {
             if ((NickReloaded.getInstance().getNickManager().isNicked(event.getPlayer())) && (fakeProfiles.containsKey(uuid)))
             {
                 fakeProfiles.put(uuid,
                                  abstractPlayerIdentityManager.getFakeProfile(event.getPlayer()));
             }
-        }
+        }*/
 
     }
 
