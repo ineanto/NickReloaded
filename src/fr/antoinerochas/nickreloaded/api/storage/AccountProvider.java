@@ -1,8 +1,8 @@
 package fr.antoinerochas.nickreloaded.api.storage;
 
-import fr.antoinerochas.nickreloaded.api.config.ConfigFileValues;
 import fr.antoinerochas.nickreloaded.api.logger.NickReloadedLogger;
 import fr.antoinerochas.nickreloaded.api.manager.StorageManager;
+import fr.antoinerochas.nickreloaded.api.storage.core.CacheStorageMode;
 import fr.antoinerochas.nickreloaded.api.storage.mysql.Field;
 import fr.antoinerochas.nickreloaded.api.storage.mysql.Table;
 import fr.antoinerochas.nickreloaded.api.storage.redisson.RedisManager;
@@ -32,7 +32,7 @@ public class AccountProvider
         this.redissonAccess = RedisManager.INSTANCE;
     }
 
-    public NickData getAccount()
+    public NickData getData()
     {
         NickData nickData = getDataFromCache();
 
@@ -44,7 +44,7 @@ public class AccountProvider
         return nickData;
     }
 
-    public NickData getDataFromStorage()
+    private NickData getDataFromStorage()
     {
         Table main = StorageManager.getInstance().getMainTable();
 
@@ -76,26 +76,41 @@ public class AccountProvider
                             skin);
     }
 
-    public NickData getDataFromCache()
+    private NickData getDataFromCache()
     {
-        if(StorageManager.getInstance().getConfigFile().getFileConfiguration().getBoolean(ConfigFileValues.STORAGE_COMMON_REDIS.getValue()))
+        if(CacheStorageMode.isMode(CacheStorageMode.REDIS))
         {
             final RedissonClient redissonClient = redissonAccess.getRedissonClient();
             final String key = ACCOUNT_KEY + uuid.toString();
             final RBucket<NickData> accountBucket = redissonClient.getBucket(key);
 
-            sendAccountDataToRedis(accountBucket.get());
+            sendDataToCache(accountBucket.get());
 
             return accountBucket.get();
         }
         else
         {
+            throw new UnsupportedOperationException("Not available");
         }
-
-        return null;
     }
 
-    public void sendAccountDataToRedis(NickData account)
+    public void sendDataToCache(NickData account)
+    {
+        if(CacheStorageMode.isMode(CacheStorageMode.REDIS))
+        {
+            final RedissonClient redissonClient = redissonAccess.getRedissonClient();
+            final String key = ACCOUNT_KEY + uuid.toString();
+            final RBucket<NickData> accountBucket = redissonClient.getBucket(key);
+
+            accountBucket.set(account);
+        }
+        else
+        {
+            throw new UnsupportedOperationException("Not available");
+        }
+    }
+
+    public void sendDataToStorage(NickData account)
     {
         final RedissonClient redissonClient = redissonAccess.getRedissonClient();
         final String key = ACCOUNT_KEY + uuid.toString();

@@ -1,7 +1,9 @@
 package fr.antoinerochas.nickreloaded.api.manager;
 
 import fr.antoinerochas.nickreloaded.NickReloaded;
+import fr.antoinerochas.nickreloaded.api.config.LanguageFileValues;
 import fr.antoinerochas.nickreloaded.api.storage.AccountProvider;
+import fr.antoinerochas.nickreloaded.api.storage.NickData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
@@ -23,7 +25,7 @@ public class NickManager
                                                                 {
                                                                     if (tasks.containsKey(player))
                                                                     {
-                                                                            //SEND ACTIONBAR (IF NICKED)
+                                                                        new NMSManager().getActionbar().sendActionbar(player, StorageManager.getInstance().getLangFile().getString(LanguageFileValues.MESSAGES_COMMANDS_NICK_ACTIVE.getValue()));
                                                                     }
                                                                 },
                                                                 0,
@@ -32,6 +34,7 @@ public class NickManager
         tasks.putIfAbsent(player,
                           task);
 
+        NickData nickData = new AccountProvider(player.getUniqueId()).getData();
 
         Bukkit.getScheduler().runTaskAsynchronously(NickReloaded.getInstance(),
                                                     () ->
@@ -40,37 +43,46 @@ public class NickManager
                                                                            "") || nick == null || Objects.equals(skin,
                                                                                                                  "") || skin == null)
                                                         {
-                                                            players.remove(player);
+                                                            if (players.contains(player))
+                                                            {
+                                                                player.setDisplayName(player.getName());
+                                                                player.setPlayerListName(player.getName());
 
-                                                            player.setDisplayName(player.getName());
-                                                            player.setPlayerListName(player.getName());
+                                                                new NMSManager().getIdentityManager().setPlayerName(player, player.getName());
+                                                                new NMSManager().getIdentityManager().setPlayerSkin(player, player.getName());
 
-                                                            //SET PLAYER SKIN AND NAME
+                                                                stopTask(player);
 
-                                                            stopTask(player);
+                                                                nickData.setName(null);
+                                                                nickData.setSkin(null);
+                                                                nickData.setNicked(false);
 
-                                                            //SET STORAGE TO NULL
+                                                                players.remove(player);
+                                                            }
                                                         }
                                                         else
                                                         {
                                                             if (! players.contains(player))
                                                             {
+                                                                player.setDisplayName(nick);
+                                                                player.setPlayerListName(nick);
+
+                                                                new NMSManager().getIdentityManager().setPlayerName(player, nick);
+                                                                new NMSManager().getIdentityManager().setPlayerSkin(player, skin);
+
+                                                                //IF DATA NULL LOAD DATA
+
+                                                                nickData.setName(nick);
+                                                                nickData.setSkin(skin);
+                                                                nickData.setNicked(true);
+
                                                                 players.add(player);
                                                             }
-
-                                                            player.setDisplayName(nick);
-                                                            player.setPlayerListName(nick);
-
-                                                            //SET PLAYER SKIN AND NAME
-
-                                                            //IF DATA NULL LOAD DATA
-
-                                                            //DEFINE DATA
                                                         }
                                                     });
     }
 
-    public void stopTask(Player player)
+    private void stopTask(Player player)
     {
         if (tasks.containsKey(player))
         {
@@ -79,27 +91,17 @@ public class NickManager
         }
     }
 
-    public boolean isNicked(Player player)
-    {
-        return new AccountProvider(player.getUniqueId()).getAccount().isNicked();
-    }
-
-
-
     public void processData(DataStatus status)
     {
         if (status == DataStatus.DISABLING)
         {
-            Bukkit.getOnlinePlayers().forEach(player ->
-                                              {
-                                                  //SAVE DATA (IF NICKED)
-                                              });
+            Bukkit.getOnlinePlayers().forEach(player -> new AccountProvider(player.getUniqueId()).sendDataToStorage(new AccountProvider(player.getUniqueId()).getData()));
         }
         else if (status == DataStatus.ENABLING)
         {
             Bukkit.getOnlinePlayers().forEach(player ->
                                               {
-                                                  //LOAD DATA (IF NICKED)
+                                                  new AccountProvider(player.getUniqueId()).getData();
                                               });
         }
     }

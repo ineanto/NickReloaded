@@ -34,6 +34,11 @@ public class NMSManager
     private AbstractPlayerIdentityManager MINECRAFT_PLAYER_IDENTITY_MANAGER = null;
     private AbstractActionbar MINECRAFT_ACTION_BAR = null;
 
+    public static NMSManager getInstance()
+    {
+        return new NMSManager();
+    }
+
     public void init()
     {
         MINECRAFT_SERVER_VERSION_CONSTANT = getNMSVersion();
@@ -45,28 +50,28 @@ public class NMSManager
         switch (getBukkitVersion())
         {
             case "v1_8_R1":
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_8_R1 (" + NMSVersion.MINECRAFT_1_8_R1.getVersionName() + ").");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loaded v1_8_R1 (" + NMSVersion.MINECRAFT_1_8_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_8_R1;
             case "v1_8_R2":
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_8_R2 (" + NMSVersion.MINECRAFT_1_8_R2.getVersionName() + ").");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loaded v1_8_R2 (" + NMSVersion.MINECRAFT_1_8_R2.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_8_R2;
             case "v1_8_R3":
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_8_R3 (" + NMSVersion.MINECRAFT_1_8_R3.getVersionName() + ").");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loaded v1_8_R3 (" + NMSVersion.MINECRAFT_1_8_R3.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_8_R3;
             case "v1_9_R1":
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_9_R1 (" + NMSVersion.MINECRAFT_1_9_R1.getVersionName() + ").");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loaded v1_9_R1 (" + NMSVersion.MINECRAFT_1_9_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_9_R1;
             case "v1_9_R2":
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_9_R2 (" + NMSVersion.MINECRAFT_1_9_R2.getVersionName() + ").");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loaded v1_9_R2 (" + NMSVersion.MINECRAFT_1_9_R2.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_9_R2;
             case "v1_10_R1":
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_10_R1 (" + NMSVersion.MINECRAFT_1_10_R1.getVersionName() + ").");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loaded v1_10_R1 (" + NMSVersion.MINECRAFT_1_10_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_10_R1;
             case "v1_11_R1":
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_11_R1 (" + NMSVersion.MINECRAFT_1_11_R1.getVersionName() + ").");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loaded v1_11_R1 (" + NMSVersion.MINECRAFT_1_11_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_11_R1;
             case "v1_12_R1":
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded v1_12_R1 (" + NMSVersion.MINECRAFT_1_12_R1.getVersionName() + ").");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loaded v1_12_R1 (" + NMSVersion.MINECRAFT_1_12_R1.getVersionName() + ").");
                 return NMSVersion.MINECRAFT_1_12_R1;
 
             default:
@@ -192,7 +197,7 @@ public class NMSManager
                     break;
             }
 
-            NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Loaded §b" + module.getName() + " §afor version(s) §b" + MINECRAFT_SERVER_VERSION_CONSTANT.getVersionName());
+            NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§6Loaded §b" + module.getName() + " §6for version(s) §a" + MINECRAFT_SERVER_VERSION_CONSTANT.getVersionName());
         }
     }
 
@@ -246,9 +251,9 @@ public class NMSManager
 
     public enum NMSModule
     {
-        GAMEPROFILE_FILLER("Gameprofile Filler"),
-        PLAYER_IDENTITY_MANAGER("Player Identity Manager"),
-        ACTIONBAR("ActionBar");
+        GAMEPROFILE_FILLER("Gameprofile Filler Module"),
+        PLAYER_IDENTITY_MANAGER("Player Identity Module"),
+        ACTIONBAR("ActionBar Module");
 
         private String name;
 

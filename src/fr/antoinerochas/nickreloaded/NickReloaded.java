@@ -3,6 +3,7 @@ package fr.antoinerochas.nickreloaded;
 import fr.antoinerochas.nickreloaded.api.logger.NickReloadedLogger;
 import fr.antoinerochas.nickreloaded.api.manager.NMSManager;
 import fr.antoinerochas.nickreloaded.api.manager.NickManager;
+import fr.antoinerochas.nickreloaded.api.manager.StorageManager;
 import fr.antoinerochas.nickreloaded.api.placeholderapi.PlaceHolderAPIHook;
 import fr.antoinerochas.nickreloaded.api.string.Messages;
 import fr.antoinerochas.nickreloaded.api.updater.NickReloadedUpdater;
@@ -39,7 +40,9 @@ public class NickReloaded
                                                          this::callUpdater,
                                                          20L);
 
-        new NMSManager().init();
+        NMSManager.getInstance().init();
+
+        StorageManager.getInstance().setupStorage();
 
         if (Bukkit.getPluginManager().isPluginEnabled("NickReloaded"))
         {
@@ -60,7 +63,7 @@ public class NickReloaded
 
             NickReloadedLogger.log(NickReloadedLogger.Level.NONE,
                                    " ");
-            NickReloadedLogger.log(NickReloadedLogger.Level.INFO,
+            NickReloadedLogger.log(NickReloadedLogger.Level.NONE,
                                    Messages.PLUGIN_ENABLED);
         }
     }
@@ -101,8 +104,8 @@ public class NickReloaded
             case UPDATE_AVAILABLE:
             {
                 String new_version = updater.getVersion();
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§cAn update is available ! (" + new_version + ")");
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "§cDownload at: https://www.spigotmc.org/resources/nickreloaded.46335/ !");
+                NickReloadedLogger.log(NickReloadedLogger.Level.WARN, "§cAn update is available ! (" + new_version + ")");
+                NickReloadedLogger.log(NickReloadedLogger.Level.WARN, "§cDownload at: https://www.spigotmc.org/resources/nickreloaded.46335/ !");
                 break;
             }
 

@@ -43,8 +43,6 @@ public class StorageManager
         String redisIP = configFile.getString(ConfigFileValues.STORAGE_REDIS_IP.getValue()), redisPassword = configFile.getString(ConfigFileValues.STORAGE_REDIS_PASSWORD.getValue());
         int redisPort = configFile.getFileConfiguration().getInt(ConfigFileValues.STORAGE_REDIS_PORT.getValue());
 
-        RequestHandler requestHandler = new RequestHandler(database);
-
         if(CacheStorageMode.isMode(CacheStorageMode.SOCKETS))
         {
             //SOCKETS
@@ -57,10 +55,6 @@ public class StorageManager
         if (DatabaseStorageMode.isMode(DatabaseStorageMode.SQLITE))
         {
             database = new SQLiteDatabase(configFile.getString(ConfigFileValues.STORAGE_SQLITE_FILENAME.getValue()));
-
-            requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(ConfigFileValues.STORAGE_TABLE_NAME.getValue()) + "` (" + "`UUID` TEXT UNIQUE, " + " `NICKED` INTEGER, " + " `NAME` TEXT, " + " `SKIN` TEXT " + ");");
-
-            requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(ConfigFileValues.STORAGE_TABLE_RANDOMNAME.getValue()) + "` (" + "`NAME` TEXT" + ");");
         }
         else
         {
@@ -69,13 +63,24 @@ public class StorageManager
                                          username,
                                          password,
                                          database_name);
+        }
 
+        database.connect();
+
+        RequestHandler requestHandler = new RequestHandler(database);
+
+        if (DatabaseStorageMode.isMode(DatabaseStorageMode.SQLITE))
+        {
+            requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(ConfigFileValues.STORAGE_TABLE_NAME.getValue()) + "` (" + "`UUID` TEXT UNIQUE, " + " `NICKED` INTEGER, " + " `NAME` TEXT, " + " `SKIN` TEXT " + ");");
+
+            requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(ConfigFileValues.STORAGE_TABLE_RANDOMNAME.getValue()) + "` (" + "`NAME` TEXT" + ");");
+        }
+        else
+        {
             requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(ConfigFileValues.STORAGE_TABLE_NAME.getValue()) + "` (`UUID` VARCHAR(255), `NICKED` tinyint(1), `NAME` VARCHAR(16), `SKIN` VARCHAR(16), UNIQUE (uuid));");
 
             requestHandler.executeUpdate("CREATE TABLE IF NOT EXISTS `" + configFile.getString(ConfigFileValues.STORAGE_TABLE_RANDOMNAME.getValue()) + "` " + "(`NAME` VARCHAR(16));");
         }
-
-        database.connect();
 
         table = database.getTable(database_name);
         random = database.getTable(random_name);

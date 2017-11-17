@@ -3,7 +3,9 @@ package fr.antoinerochas.nickreloaded.api.storage.sqlite;
 import fr.antoinerochas.nickreloaded.api.storage.core.DatabaseImpl;
 import fr.antoinerochas.nickreloaded.api.storage.mysql.Table;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class SQLiteDatabase
         implements DatabaseImpl

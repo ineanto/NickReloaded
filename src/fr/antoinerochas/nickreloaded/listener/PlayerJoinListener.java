@@ -1,6 +1,9 @@
 package fr.antoinerochas.nickreloaded.listener;
 
 import fr.antoinerochas.nickreloaded.NickReloaded;
+import fr.antoinerochas.nickreloaded.api.manager.NickManager;
+import fr.antoinerochas.nickreloaded.api.storage.AccountProvider;
+import fr.antoinerochas.nickreloaded.api.storage.NickData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -19,27 +22,14 @@ public class PlayerJoinListener
     {
         Player player = event.getPlayer();
 
-        //LOAD DATA
+        AccountProvider accountProvider = new AccountProvider(player.getUniqueId());
+        NickData nickData = accountProvider.getData();
 
-        /*
-        PlayerStorage playerStorage = PlayerStorage.getStorage(event.getPlayer().getUniqueId());
-
-        if (playerStorage.isNicked())
+        if (nickData.isNicked())
         {
-            NickReloaded.getInstance().getNickManager().nick(player,
-                                                     playerStorage.getNick(),
-                                                     playerStorage.getSkin());
-
-            Bukkit.getOnlinePlayers().forEach(oPlayer ->
-                                              {
-                                                  if (player.getUniqueId() != oPlayer.getUniqueId())
-                                                  {
-                                                      NickReloaded.getInstance().getPayloadManager().getIdentityManager().updatePlayer(player,
-                                                                                                                               ! Objects.equals(playerStorage.getSkin(),
-                                                                                                                                                player.getName()));
-                                                  }
-                                              });
+            new NickManager().nick(player,
+                                 nickData.getName(),
+                                 nickData.getSkin());
         }
-        */
     }
 }
