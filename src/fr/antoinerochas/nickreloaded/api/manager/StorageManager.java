@@ -45,7 +45,7 @@ public class StorageManager
 
         RequestHandler requestHandler = new RequestHandler(database);
 
-        if(CacheStorageMode.isMode(CacheStorageMode.PLUGIN_MESSAGE))
+        if(CacheStorageMode.isMode(CacheStorageMode.SOCKETS))
         {
             //SOCKETS
         }
@@ -114,7 +114,7 @@ public class StorageManager
 
         if(! configFile.getFileConfiguration().getBoolean(ConfigFileValues.STORAGE_COMMON_REDIS.getValue()))
         {
-            CacheStorageMode.setMode(CacheStorageMode.PLUGIN_MESSAGE);
+            CacheStorageMode.setMode(CacheStorageMode.SOCKETS);
         }
         else
         {

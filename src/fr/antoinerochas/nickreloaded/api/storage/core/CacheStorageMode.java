@@ -3,7 +3,7 @@ package fr.antoinerochas.nickreloaded.api.storage.core;
 public enum CacheStorageMode
 {
     REDIS,
-    PLUGIN_MESSAGE;
+    SOCKETS;
 
     private static CacheStorageMode databaseStorageMode;
 
