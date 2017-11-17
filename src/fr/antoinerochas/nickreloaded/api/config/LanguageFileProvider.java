@@ -7,32 +7,37 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.io.File;
 import java.io.IOException;
 
-public class FileProvider
+public class LanguageFileProvider
 {
     public static java.io.File config;
     public static FileConfiguration configC;
     public static ConfigurationSection configCS;
 
-    public FileProvider(String file)
+    public LanguageFileProvider(String file)
     {
-        config = new java.io.File("plugins/" + NickReloaded.getInstance().getDescription().getName(),
-                                  file);
+        config = new File("plugins/" + NickReloaded.getInstance().getDescription().getName(),
+                          file);
 
         if (! config.exists())
         {
-            NickReloadedLogger.log(NickReloadedLogger.Level.WARN, "Config doesn't exists ! Creating...");
+            NickReloadedLogger.log(NickReloadedLogger.Level.INFO,
+                                   "§aLanguage file doesn't exists ! Creating...");
+
             config.getParentFile().mkdirs();
+
             try
             {
                 config.createNewFile();
-                NickReloadedLogger.log(NickReloadedLogger.Level.INFO, "Config created !");
+                NickReloadedLogger.log(NickReloadedLogger.Level.INFO,
+                                       "§aLanguage file created !");
             }
             catch (IOException e)
             {
-                NickReloadedLogger.log(NickReloadedLogger.Level.WARN, "Oh... something went wrong while creating the config file. Report this to Spigot's plugin page.");
-                e.printStackTrace();
+                NickReloadedLogger.log(NickReloadedLogger.Level.WARN,
+                                       "§cOh... something went wrong while creating the language file, report this error: " + e.getMessage() + " to the plugin's page.");
             }
         }
 
@@ -53,7 +58,7 @@ public class FileProvider
             e.printStackTrace();
         }
 
-        for (Config value : Config.values())
+        for (LanguageFileValues value : LanguageFileValues.values())
         {
             if (configCS.get(value.name().replaceAll("_",
                                                      ".").toLowerCase()) == null)

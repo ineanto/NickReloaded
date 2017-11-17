@@ -27,61 +27,28 @@
       <file leaf-file-name="AccountProvider.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/AccountProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="299">
+              <caret line="78" column="38" lean-forward="true" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StorageManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/manager/StorageManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseStorageMode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/core/DatabaseStorageMode.java">
+      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/plugin.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="46">
-              <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-              <folding>
-                <element signature="e#451#452#0" expanded="true" />
-                <element signature="e#493#494#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CacheStorageMode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/core/CacheStorageMode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+              <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/Config.java">
+      <file leaf-file-name="NickReloadedLogger.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/logger/NickReloadedLogger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RedisManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/redisson/RedisManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="29" column="47" lean-forward="false" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+            <state relative-caret-position="182">
+              <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,46 +56,54 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RedisCrendentials.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/redisson/RedisCrendentials.java">
+      <file leaf-file-name="PlayerQuitListener.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/listener/PlayerQuitListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+            <state relative-caret-position="276">
+              <caret line="18" column="15" lean-forward="false" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MySQLDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/mysql/MySQLDatabase.java">
+      <file leaf-file-name="StorageManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/manager/StorageManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+            <state relative-caret-position="193">
+              <caret line="98" column="31" lean-forward="false" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MinecraftNameParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/parser/MinecraftNameParser.java">
+      <file leaf-file-name="LanguageFileProvider.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/LanguageFileProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlaceHolderAPIHook.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/placeholderapi/PlaceHolderAPIHook.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+            <state relative-caret-position="-92">
+              <caret line="71" column="17" lean-forward="true" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#302#303#0" expanded="false" />
-                <element signature="e#347#348#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LanguageFileValues.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/LanguageFileValues.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="667">
+              <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfigFileProvider.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/ConfigFileProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="93" column="5" lean-forward="true" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,9 +113,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -207,11 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/data/NickData.java" />
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/string/MessageBuilder.java" />
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/storage/core/DatabaseImpl.java" />
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/storage/sqlite/SQLiteDatabase.java" />
-        <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/config/File.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/storage/mysql/MySQLDatabase.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/command/help/HelpValues.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/listener/PlayerJoinListener.java" />
@@ -230,7 +200,6 @@
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/manager/StorageProvider.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/data/DataProvider.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/config/Config.java" />
-        <option value="$PROJECT_DIR$/src/plugin.yml" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/manager/StorageManager.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/string/Messages.java" />
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/logger/NickReloadedLogger.java" />
@@ -241,7 +210,6 @@
         <option value="$PROJECT_DIR$/src/fr/idden/nickreloaded/api/config/FileProvider.java" />
         <option value="$PROJECT_DIR$/src/fr/antoinerochas/api/config/FileProvider.java" />
         <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/nickreloaded/api/config/FileProvider.java" />
-        <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/FileProvider.java" />
         <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/NickReloaded.java" />
         <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/string/Messages.java" />
         <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/string/MessageBuilder.java" />
@@ -257,7 +225,14 @@
         <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/core/StorageMode.java" />
         <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/core/DatabaseStorageMode.java" />
         <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/core/CacheStorageMode.java" />
+        <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/NickData.java" />
+        <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/FileProvider.java" />
+        <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/ConfigFileProvider.java" />
+        <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/ConfigFileValues.java" />
+        <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/LanguageFileValues.java" />
+        <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/LanguageFileProvider.java" />
         <option value="$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/manager/StorageManager.java" />
+        <option value="$PROJECT_DIR$/src/plugin.yml" />
       </list>
     </option>
   </component>
@@ -307,6 +282,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -435,37 +411,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NickReloaded" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NickReloaded" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fr.antoinerochas.nickreloaded" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -474,17 +427,17 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/01 Développement/02 Librairies/03 Redis/slf4j-api-1.7.25.jar!/" />
-    <property name="SearchEverywhereHistoryKey" value="NickR&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/antoinerochas/nickreloaded/api/logger/NickReloadedLogger.java&#10;Message&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/antoinerochas/nickreloaded/api/string/MessageBuilder.java&#10;Config&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/config/Config.java&#10;Payl&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/manager/PayloadManager.java&#10;NickMa&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/manager/NickManager.java&#10;NickRe&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/NickReloaded.java&#10;MySQL&#9;PSI&#9;JAVA://fr.idden.nickreloaded.api.storage.mysql.MySQLDatabase&#10;Paylaod&#9;null&#9;null&#10;NickManager&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/manager/NickManager.java&#10;identi&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/nms/v1_8_R1/v1_8_R1_PlayerIdentityManager.java&#10;Gamepro&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/nms/v1_9_R2/v1_9_R2_GameprofileFiller.java&#10;Payload&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/nms/PayloadManager.java&#10;Sto&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/storage/StorageManager.java&#10;Storg&#9;null&#9;null&#10;NickMana&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/nick/NickManager.java&#10;PlayerInfoData&#9;PSI&#9;JAVA://net.minecraft.server.v1_8_R1.PlayerInfoData&#10;StorageM&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/storage/StorageManager.java&#10;Stoa&#9;PSI&#9;JAVA://sun.plugin2.message.StopAppletAckMessage&#10;Storage&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/storage/StorageManager.java&#10;Stora&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/storage/StorageMode.java&#10;PacketP&#9;FILE&#9;jar://C:/Users/Antoine/Documents/Développement/Jars/spigot-1.12.jar!/net/minecraft/server/v1_12_R1/PacketPlayOutPlayerInfo.class&#10;PacketPlayOutName&#9;PSI&#9;JAVA://net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn&#10;PacketPlayOutInfo&#9;PSI&#9;JAVA://net.minecraft.server.v1_12_R1.PacketPlayOutPlayerInfo" />
+    <property name="SearchEverywhereHistoryKey" value="Config&#9;PSI&#9;JAVA://fr.antoinerochas.nickreloaded.api.config.Config&#10;NickR&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/antoinerochas/nickreloaded/api/logger/NickReloadedLogger.java&#10;Message&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/antoinerochas/nickreloaded/api/string/MessageBuilder.java&#10;Payl&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/manager/PayloadManager.java&#10;NickMa&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/manager/NickManager.java&#10;NickRe&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/NickReloaded.java&#10;MySQL&#9;PSI&#9;JAVA://fr.idden.nickreloaded.api.storage.mysql.MySQLDatabase&#10;Paylaod&#9;null&#9;null&#10;NickManager&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/manager/NickManager.java&#10;identi&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/nms/v1_8_R1/v1_8_R1_PlayerIdentityManager.java&#10;Gamepro&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/nms/v1_9_R2/v1_9_R2_GameprofileFiller.java&#10;Payload&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/nms/PayloadManager.java&#10;Sto&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/storage/StorageManager.java&#10;Storg&#9;null&#9;null&#10;NickMana&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/nick/NickManager.java&#10;PlayerInfoData&#9;PSI&#9;JAVA://net.minecraft.server.v1_8_R1.PlayerInfoData&#10;StorageM&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/storage/StorageManager.java&#10;Stoa&#9;PSI&#9;JAVA://sun.plugin2.message.StopAppletAckMessage&#10;Storage&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/storage/StorageManager.java&#10;Stora&#9;FILE&#9;file://C:/Users/Antoine/IdeaProjects/NickReloaded/src/fr/idden/nickreloaded/api/storage/StorageMode.java&#10;PacketP&#9;FILE&#9;jar://C:/Users/Antoine/Documents/Développement/Jars/spigot-1.12.jar!/net/minecraft/server/v1_12_R1/PacketPlayOutPlayerInfo.class&#10;PacketPlayOutName&#9;PSI&#9;JAVA://net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn&#10;PacketPlayOutInfo&#9;PSI&#9;JAVA://net.minecraft.server.v1_12_R1.PacketPlayOutPlayerInfo" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="fr.idden.nickreloaded.api.data" />
-      <recent name="fr.idden.nickreloaded.api.string" />
-      <recent name="fr.idden.nickreloaded" />
-      <recent name="fr.idden.nickreloaded.command.perm" />
-      <recent name="fr.idden.nickreloaded.api.nms.impl" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R1" />
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms" />
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R2" />
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R3" />
+      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_9_R1" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="fr.antoinerochas.nickreloaded.api.storage.core" />
@@ -493,12 +446,12 @@
       <recent name="fr.idden.nickreloaded.api.nms.v_1_8_R3" />
       <recent name="fr.idden.nickreloaded.api.nms.v_1_9_R1" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R1" />
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms" />
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R2" />
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_8_R3" />
-      <recent name="C:\Users\Antoine\IdeaProjects\NickReloaded\src\fr\idden\nickreloaded\api\nms\v_1_9_R1" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="fr.antoinerochas.nickreloaded.api.config" />
+      <recent name="fr.idden.nickreloaded.api.data" />
+      <recent name="fr.idden.nickreloaded.api.string" />
+      <recent name="fr.idden.nickreloaded" />
+      <recent name="fr.idden.nickreloaded.command.perm" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -752,6 +705,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37261146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -779,7 +733,6 @@
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37261146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="92" y="122" width="1736" height="866" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32800853" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -852,22 +805,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/wesjd/anvilgui/AnvilGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3322">
-          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jrt://C:/Program Files/Java/jdk-9!/java.base/java/lang/Override.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/storage/impl/StorageManagerImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/api/storage/PlayerStorage.java" />
     <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/core/RequestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -908,13 +845,6 @@
     <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickCommand.java" />
     <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/NickReloadedCommand.java" />
     <entry file="file://$PROJECT_DIR$/src/fr/idden/nickreloaded/command/UnnickCommand.java" />
-    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/listener/PlayerQuitListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/listener/Listener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -1028,13 +958,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/data/NickData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/manager/NMSManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -1053,24 +976,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" column="71" lean-forward="false" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/logger/NickReloadedLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1081,18 +986,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/FileProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="95" column="70" lean-forward="false" selection-start-line="95" selection-start-column="70" selection-end-line="95" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/listener/PlayerJoinListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1142,22 +1039,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/AccountProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/core/CacheStorageMode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -1169,18 +1050,107 @@
     <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/core/DatabaseStorageMode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
-          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+          <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/NickData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/ConfigFileValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="32" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/LanguageFileValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/LanguageFileProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="71" column="17" lean-forward="true" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
           <folding>
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#493#494#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/config/ConfigFileProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="93" column="5" lean-forward="true" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/manager/StorageManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state relative-caret-position="193">
+          <caret line="98" column="31" lean-forward="false" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/storage/AccountProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="78" column="38" lean-forward="true" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/logger/NickReloadedLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/nms/v1_9_R1/v1_9_R1_GameprofileFiller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="33" column="51" lean-forward="false" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/api/nms/v1_12_R1/v1_12_R1_GameprofileFiller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="24" column="51" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/antoinerochas/nickreloaded/listener/PlayerQuitListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="18" column="15" lean-forward="false" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
           <folding />
         </state>
       </provider>

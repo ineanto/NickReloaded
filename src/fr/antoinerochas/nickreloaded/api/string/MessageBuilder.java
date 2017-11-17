@@ -1,6 +1,6 @@
 package fr.antoinerochas.nickreloaded.api.string;
 
-import fr.antoinerochas.nickreloaded.api.config.Config;
+import fr.antoinerochas.nickreloaded.api.config.ConfigFileValues;
 import fr.antoinerochas.nickreloaded.api.manager.StorageManager;
 
 public class MessageBuilder
@@ -14,10 +14,10 @@ public class MessageBuilder
 
     public String prefix()
     {
-        return StorageManager.getInstance().getConfigFile().getString(Config.PREFIX.getValue());
+        return StorageManager.getInstance().getConfigFile().getString(ConfigFileValues.PREFIX.getValue());
     }
 
-    public String errorPrefix() { return prefix() + StorageManager.getInstance().getConfigFile().getString(Config.ERROR_PREFIX.getValue()); }
+    public String errorPrefix() { return prefix() + StorageManager.getInstance().getConfigFile().getString(ConfigFileValues.ERROR_PREFIX.getValue()); }
 
     public String buildError()
     {

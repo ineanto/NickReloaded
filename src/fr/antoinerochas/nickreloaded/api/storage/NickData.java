@@ -1,4 +1,4 @@
-package fr.antoinerochas.nickreloaded.api.data;
+package fr.antoinerochas.nickreloaded.api.storage;
 
 import java.util.UUID;
 

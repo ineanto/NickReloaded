@@ -1,7 +1,6 @@
 package fr.antoinerochas.nickreloaded.api.storage;
 
-import fr.antoinerochas.nickreloaded.api.config.Config;
-import fr.antoinerochas.nickreloaded.api.data.NickData;
+import fr.antoinerochas.nickreloaded.api.config.ConfigFileValues;
 import fr.antoinerochas.nickreloaded.api.logger.NickReloadedLogger;
 import fr.antoinerochas.nickreloaded.api.manager.StorageManager;
 import fr.antoinerochas.nickreloaded.api.storage.mysql.Field;
@@ -79,7 +78,7 @@ public class AccountProvider
 
     public NickData getDataFromCache()
     {
-        if(StorageManager.getInstance().getConfigFile().getFileConfiguration().getBoolean(Config.STORAGE_COMMON_REDIS.getValue()))
+        if(StorageManager.getInstance().getConfigFile().getFileConfiguration().getBoolean(ConfigFileValues.STORAGE_COMMON_REDIS.getValue()))
         {
             final RedissonClient redissonClient = redissonAccess.getRedissonClient();
             final String key = ACCOUNT_KEY + uuid.toString();
