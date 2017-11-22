@@ -111,8 +111,8 @@ public class NickReloaded
 
             default:
             {
-                NickReloadedLogger.log(NickReloadedLogger.Level.WARN,
-                                       result.toString());
+                NickReloadedLogger.log(NickReloadedLogger.Level.FATAL,
+                                       "§4" + result.toString());
                 break;
             }
         }

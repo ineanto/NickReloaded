@@ -27,9 +27,8 @@ public class PlayerJoinListener
 
         if (nickData.isNicked())
         {
-            new NickManager().nick(player,
-                                 nickData.getName(),
-                                 nickData.getSkin());
+            NickManager.getManager(player).nick(nickData.getName(),
+                                                nickData.getSkin());
         }
     }
 }
