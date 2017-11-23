@@ -42,6 +42,8 @@ public class NickReloaded
 
         NMSManager.getInstance().init();
 
+        NickManager.getManager().processData(NickManager.DataStatus.ENABLING);
+
         StorageManager.getInstance().setupStorage();
 
         if (Bukkit.getPluginManager().isPluginEnabled("NickReloaded"))
@@ -71,7 +73,7 @@ public class NickReloaded
     @Override
     public void onDisable()
     {
-        new NickManager().processData(NickManager.DataStatus.DISABLING);
+        NickManager.getManager().processData(NickManager.DataStatus.DISABLING);
     }
 
     private void callUpdater()

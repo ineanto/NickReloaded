@@ -28,6 +28,15 @@ public class NickManager
         this.nickData = new AccountProvider(player.getUniqueId()).getData();
     }
 
+    public NickManager()
+    {
+    }
+
+    public static NickManager getManager()
+    {
+        return new NickManager();
+    }
+
     public static NickManager getManager(Player player)
     {
         return new NickManager(player);
