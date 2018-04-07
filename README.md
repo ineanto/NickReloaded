@@ -1,5 +1,8 @@
 # NickReloaded - A simple nick plugin.
 
+## Download
+https://www.spigotmc.org/resources/nickreloaded.46335/
+
 Version | Supported
 ------------ | -------------
 1.7 and below | ❌
@@ -9,12 +12,8 @@ Version | Supported
 1.11.X | ✔️
 1.12.X | ✔️
 
-Todo :
+### Contributing:
+Soon !
 
-- [x] SQLite (w/o database/local mode) support.
-- [x] Support 1.8.X to 1.12.X. 
-- [x] PlaceholderAPI support (feature requested by @superzyr (on spigot)).
-- [ ] Bungeecord.
-
-
-https://www.spigotmc.org/resources/nickreloaded.46335/
+### How to use the dedicated API:
+Soon !
