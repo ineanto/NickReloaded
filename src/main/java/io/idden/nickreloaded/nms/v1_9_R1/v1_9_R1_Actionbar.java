@@ -24,10 +24,9 @@
 
 package io.idden.nickreloaded.nms.v1_9_R1;
 
-import io.idden.nickreloaded.nms.impl.IActionbar;
+import io.idden.nickreloaded.utils.ReflectionUtil;
 import net.minecraft.server.v1_9_R1.IChatBaseComponent;
 import net.minecraft.server.v1_9_R1.PacketPlayOutChat;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 public class v1_9_R1_Actionbar
@@ -40,6 +39,6 @@ public class v1_9_R1_Actionbar
 
         PacketPlayOutChat bar = new PacketPlayOutChat(icbc, (byte) 2);
 
-        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(bar);
+        ReflectionUtil.sendPacket(player, bar);
     }
 }

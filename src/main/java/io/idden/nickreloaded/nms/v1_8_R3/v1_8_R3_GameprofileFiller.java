@@ -26,7 +26,6 @@ package io.idden.nickreloaded.nms.v1_8_R3;
 
 import com.google.common.collect.Iterables;
 import com.mojang.authlib.GameProfile;
-import io.idden.nickreloaded.nms.impl.IGameProfileFiller;
 import net.minecraft.server.v1_8_R3.MinecraftServer;
 
 public class v1_8_R3_GameprofileFiller

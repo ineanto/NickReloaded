@@ -22,11 +22,40 @@
  * SOFTWARE.
  */
 
-package io.idden.nickreloaded.nms.impl;
+package io.idden.nickreloaded.version.wrapper;
 
+import com.mojang.authlib.GameProfile;
 import org.bukkit.entity.Player;
 
-public interface IActionbar
+import java.util.UUID;
+
+/**
+ * Reprensent a Wrapper for different Minecraft NMS versions.
+ *
+ * @author Antoine "Idden" ROCHAS
+ * @since 2.0-rc1
+ */
+public interface VersionWrapper
 {
     void sendActionbar(Player player, String message);
+
+    GameProfile fillGameprofile(GameProfile gameProfile);
+
+    void updatePlayerProfile(Object packet);
+
+    void setPlayerName(Player player, String name);
+
+    String getPlayerName(Player player);
+
+    void setPlayerSkin(Player player, String skin);
+
+    void updatePlayer(Player player, final boolean isSkinChanging);
+
+    GameProfile getFakeProfile(Player player);
+
+    GameProfile getPlayerProfile(Player player);
+
+    void setProfileName(GameProfile gameProfile, String name);
+
+    void setProfileId(GameProfile gameProfile, UUID uuid);
 }

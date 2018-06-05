@@ -27,7 +27,6 @@ package io.idden.nickreloaded.nms.v1_9_R2;
 import com.mojang.authlib.GameProfile;
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.nms.event.PlayerProfileEditorListener;
-import io.idden.nickreloaded.nms.impl.PlayerIdentityManager;
 import io.idden.nickreloaded.utils.ReflectionUtil;
 import net.minecraft.server.v1_9_R2.*;
 import org.bukkit.Bukkit;

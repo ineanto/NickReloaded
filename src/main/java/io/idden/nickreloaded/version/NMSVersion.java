@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 Wesley Smith
+ * Copyright (c) 2017 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,56 +22,45 @@
  * SOFTWARE.
  */
 
-package net.wesjd.anvilgui.version;
+package io.idden.nickreloaded.version;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import net.wesjd.anvilgui.version.impl.*;
+import io.idden.nickreloaded.nms.v1_8_R1.Wrapper1_8_R1;
+import io.idden.nickreloaded.nms.v1_8_R2.Wrapper1_8_R2;
+import io.idden.nickreloaded.version.wrapper.VersionWrapper;
 
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Contains all of the {@link VersionWrapper}s
+ * Define the NMS Wrapper to use.
  *
- * @author Wesley Smith
- * @since 1.0
+ * @author Wesley Smith (modified for NickReloaded purposes by Antoine "Idden" ROCHAS)
+ * @since 2.0-rc1
  */
-public enum Version
+public enum NMSVersion
 {
-    /**
-     * The {@link Wrapper1_9_R1} value
-     */
-    ONE_NINE_R1("1_9_R1",
-                Wrapper1_9_R1.class),
-    /**
-     * The {@link Wrapper1_9_R2} value
-     */
-    ONE_NINE_R2("1_9_R2",
-                Wrapper1_9_R2.class),
-    /**
-     * The {@link Wrapper1_10_R1} value
-     */
-    ONE_TEN_R1("1_10_R1",
-               Wrapper1_10_R1.class),
-    /**
-     * The {@link Wrapper1_11_R1} value
-     */
-    ONE_ELEVEN_R1("1_11_R1",
-                  Wrapper1_11_R1.class),
-    /**
-     * The {@link Wrapper1_12_R1} value
-     */
-    ONE_TWELVE_R1("1_12_R1",
-                  Wrapper1_12_R1.class);
+    ONE_EIGHT_R1("1_8_R1", Wrapper1_8_R1.class),
 
-    /**
-     * A {@link LoadingCache} of VersionWrappers that are kept until 5 minutes of no use
-     */
-    private static final LoadingCache<Class<? extends VersionWrapper>, VersionWrapper> WRAPPER_CACHE = CacheBuilder.newBuilder().maximumSize(values().length).expireAfterWrite(5,
-                                                                                                                                                                               TimeUnit.MINUTES).build(new CacheLoader<Class<? extends VersionWrapper>, VersionWrapper>()
+    ONE_EIGHT_R2("1_8_R2", Wrapper1_8_R2.class);
+
+    /*ONE_EIGHT_R3("1_8_R3", Wrapper1_8_R3.class),
+
+    ONE_NINE_R1("1_9_R1", Wrapper1_9_R1.class),
+
+    ONE_NINE_R2("1_9_R2", Wrapper1_9_R2.class),
+
+    ONE_TEN_R1("1_10_R1", Wrapper1_10_R1.class),
+
+    ONE_ELEVEN_R1("1_11_R1", Wrapper1_11_R1.class),
+
+    ONE_TWELVE_R1("1_12_R1", Wrapper1_12_R1.class);*/
+    //todo: finish wrappers
+
+    private static final LoadingCache<Class<? extends VersionWrapper>, VersionWrapper> WRAPPER_CACHE = CacheBuilder.newBuilder().maximumSize(values().length).expireAfterWrite(3, TimeUnit.MINUTES).build(new CacheLoader<Class<? extends VersionWrapper>, VersionWrapper>()
     {
         @Override
         public VersionWrapper load(Class<? extends VersionWrapper> aClass)
@@ -81,13 +70,7 @@ public enum Version
         }
     });
 
-    /**
-     * The package value of this NMS version
-     */
-    private final String pkg;
-    /**
-     * The {@link VersionWrapper} class for this NMS version
-     */
+    private final String                          pkg;
     private final Class<? extends VersionWrapper> wrapper;
 
     /**
@@ -96,7 +79,7 @@ public enum Version
      * @param pkg     The package value of this NMS version
      * @param wrapper The {@link VersionWrapper} class for this NMS version
      */
-    Version(String pkg, Class<? extends VersionWrapper> wrapper)
+    NMSVersion(String pkg, Class<? extends VersionWrapper> wrapper)
     {
         this.pkg = pkg;
         this.wrapper = wrapper;
@@ -107,7 +90,7 @@ public enum Version
      *
      * @return The package value
      */
-    public String getPkg()
+    public String getPackage()
     {
         return pkg;
     }
@@ -133,11 +116,11 @@ public enum Version
      * Finds the {@link net.wesjd.anvilgui.version.Version} from the NMS package value
      *
      * @param pkg The NMS package value
+     *
      * @return The {@link net.wesjd.anvilgui.version.Version}, or null if no version is found
      */
-    public static net.wesjd.anvilgui.version.Version of(final String pkg)
+    public static NMSVersion of(final String pkg)
     {
-        return Arrays.stream(values()).filter(ver -> pkg.equals("v" + ver.getPkg())).findFirst().orElse(null);
+        return Arrays.stream(values()).filter(ver -> pkg.equals("v" + ver.getPackage())).findFirst().orElse(null);
     }
-
 }

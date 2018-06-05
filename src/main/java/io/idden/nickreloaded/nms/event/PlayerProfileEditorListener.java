@@ -25,38 +25,38 @@
 package io.idden.nickreloaded.nms.event;
 
 import com.mojang.authlib.GameProfile;
-import io.idden.nickreloaded.nms.impl.PlayerIdentityManager;
+import io.idden.nickreloaded.version.wrapper.VersionWrapper;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class PlayerProfileEditorListener
-        implements Listener
+public class PlayerProfileEditorListener implements Listener
 {
-    private static Map<UUID, GameProfile> fakeProfiles = new HashMap<>();
-    private static PlayerIdentityManager  playerIdentityManager;
+    private Map<UUID, GameProfile> fakeProfiles;
+    private VersionWrapper         versionWrapper;
 
-    public PlayerProfileEditorListener(Map<UUID, GameProfile> fakeProfiles, PlayerIdentityManager playerIdentityManager)
+    public PlayerProfileEditorListener(Map<UUID, GameProfile> fakeProfiles, VersionWrapper versionWrapper)
     {
         this.fakeProfiles = fakeProfiles;
-        this.playerIdentityManager = playerIdentityManager;
+        this.versionWrapper = versionWrapper;
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event)
     {
         UUID uuid = event.getPlayer().getUniqueId();
+
+        //todo: remake this with all the changes
         /*if (PlayerStorage.getStorage(uuid) != null)
         {
             if ((NickReloaded.get().getNickManager().isNicked(event.getPlayer())) && (fakeProfiles.containsKey(uuid)))
             {
                 fakeProfiles.put(uuid,
-                                 playerIdentityManager.getFakeProfile(event.getPlayer()));
+                                 versionWrapper.getFakeProfile(event.getPlayer()));
             }
         }*/
 

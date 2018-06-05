@@ -26,7 +26,6 @@ package io.idden.nickreloaded.core;
 
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.addon.AddonManager;
-import io.idden.nickreloaded.version.BukkitVersion;
 
 /**
  * Called on {@link NickReloaded#onEnable()}.

@@ -24,11 +24,13 @@
 
 package io.idden.nickreloaded.nms.v1_8_R2;
 
+import com.google.common.collect.Iterables;
 import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.nms.event.PlayerProfileEditorListener;
-import io.idden.nickreloaded.nms.impl.PlayerIdentityManager;
 import io.idden.nickreloaded.utils.ReflectionUtil;
+import io.idden.nickreloaded.version.wrapper.VersionWrapper;
 import net.minecraft.server.v1_8_R2.*;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer;
@@ -42,42 +44,86 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class v1_8_R2_PlayerIdentityManager
-        implements PlayerIdentityManager
+/**
+ * The 1.8 (R2) version {@link io.idden.nickreloaded.version.wrapper.VersionWrapper}.
+ *
+ * @author Antoine "Idden" ROCHAS
+ * @since 2.0-rc1
+ */
+public class Wrapper1_8_R2 implements VersionWrapper
 {
-    private static final Map<UUID, GameProfile> fakeProfiles = new HashMap<>();
-    private static Field playerGameProfile, gameProfileId, gameProfileName;
-    private static Field playerInfo_action, playerInfo_data;
-    private static Field playerInfoData_latency, playerInfoData_gameMode, playerInfoData_gameProfile, playerInfoData_displayName;
+    private Map<UUID, GameProfile> fakeProfiles = new HashMap<>();
 
-    public v1_8_R2_PlayerIdentityManager()
+    private Field playerGP, gpID, gpName;
+    private Field piAction, piData;
+    private Field pidLatency, pidGamemode, pidGameprofile, pidDisplayName;
+
+    @Override
+    public void sendActionbar(Player player, String message)
     {
-        Map<String, Field> fields = ReflectionUtil.registerFields(PacketPlayOutPlayerInfo.class);
-        playerInfo_action = fields.get("a");
-        playerInfo_data = fields.get("b");
+        IChatBaseComponent icbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + message + "\"}");
 
-        Field profileField = null;
-        Field profileIdField = null;
-        Field profileNameField = null;
-        Field pidLatency = null;
-        Field pidGameMode = null;
-        Field pidGameProfile = null;
-        Field pidDisplayName = null;
+        PacketPlayOutChat bar = new PacketPlayOutChat(icbc, (byte) 2);
+
+        ReflectionUtil.sendPacket(player, bar);
+    }
+
+    @Override
+    public GameProfile fillGameprofile(GameProfile gameProfile)
+    {
+        try
+        {
+            if (gameProfile != null)
+            {
+                GameProfile gameProfile1 = null;
+                if (gameProfile.getName() != null)
+                {
+                    gameProfile1 = MinecraftServer.getServer().getUserCache().getProfile(gameProfile.getName());
+                }
+                if (gameProfile1 == null)
+                {
+                    gameProfile1 = MinecraftServer.getServer().getUserCache().a(gameProfile.getId());
+                }
+                if (gameProfile1 == null)
+                {
+                    gameProfile1 = gameProfile;
+                }
+                if (Iterables.getFirst(gameProfile1.getProperties().get("textures"),
+                        null) == null)
+                {
+                    gameProfile1 = MinecraftServer.getServer().aC().fillProfileProperties(gameProfile1,
+                            true);
+                }
+                return gameProfile1;
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Wrapper1_8_R2()
+    {
+        Map<String, Field> fields = ReflectionUtil.registerFields(net.minecraft.server.v1_8_R1.PacketPlayOutPlayerInfo.class);
+        piAction = fields.get("a");
+        piData = fields.get("b");
 
         try
         {
-            profileField = EntityHuman.class.getDeclaredField("bH");
-            profileField.setAccessible(true);
-            profileIdField = GameProfile.class.getDeclaredField("id");
-            profileIdField.setAccessible(true);
-            profileNameField = GameProfile.class.getDeclaredField("name");
-            profileNameField.setAccessible(true);
+            playerGP = EntityHuman.class.getDeclaredField("bH");
+            playerGP.setAccessible(true);
+            gpID = GameProfile.class.getDeclaredField("id");
+            gpID.setAccessible(true);
+            gpName = GameProfile.class.getDeclaredField("name");
+            gpName.setAccessible(true);
             pidLatency = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("b");
             pidLatency.setAccessible(true);
-            pidGameMode = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("c");
-            pidGameMode.setAccessible(true);
-            pidGameProfile = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("d");
-            pidGameProfile.setAccessible(true);
+            pidGamemode = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("c");
+            pidGamemode.setAccessible(true);
+            pidGameprofile = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("d");
+            pidGameprofile.setAccessible(true);
             pidDisplayName = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("e");
             pidDisplayName.setAccessible(true);
         }
@@ -85,14 +131,6 @@ public class v1_8_R2_PlayerIdentityManager
         {
             e.printStackTrace();
         }
-
-        playerGameProfile = profileField;
-        gameProfileId = profileIdField;
-        gameProfileName = profileNameField;
-        playerInfoData_latency = pidLatency;
-        playerInfoData_gameMode = pidGameMode;
-        playerInfoData_gameProfile = pidGameProfile;
-        playerInfoData_displayName = pidDisplayName;
 
         NickReloaded.INSTANCE.getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles, this), NickReloaded.INSTANCE);
     }
@@ -102,19 +140,19 @@ public class v1_8_R2_PlayerIdentityManager
     {
         try
         {
-            PacketPlayOutPlayerInfo.EnumPlayerInfoAction action = (PacketPlayOutPlayerInfo.EnumPlayerInfoAction) playerInfo_action.get(packet);
+            PacketPlayOutPlayerInfo.EnumPlayerInfoAction action = (PacketPlayOutPlayerInfo.EnumPlayerInfoAction) piAction.get(packet);
             if (action != PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER)
             {
                 return;
             }
-            List<PacketPlayOutPlayerInfo.PlayerInfoData> dataList = (List<PacketPlayOutPlayerInfo.PlayerInfoData>) playerInfo_data.get(packet);
+            List<PacketPlayOutPlayerInfo.PlayerInfoData> dataList = (List<PacketPlayOutPlayerInfo.PlayerInfoData>) piData.get(packet);
             for (PacketPlayOutPlayerInfo.PlayerInfoData data : dataList)
             {
                 GameProfile gameProfile = data.a();
                 if (fakeProfiles.containsKey(gameProfile.getId()))
                 {
-                    playerInfoData_gameProfile.set(data,
-                                                   fakeProfiles.get(gameProfile.getId()));
+                    pidGameprofile.set(data,
+                            fakeProfiles.get(gameProfile.getId()));
                 }
             }
         }
@@ -129,9 +167,9 @@ public class v1_8_R2_PlayerIdentityManager
     {
         GameProfile gameProfile = getFakeProfile(player);
         setProfileName(gameProfile,
-                       name);
+                name);
         updatePlayer(player,
-                     false);
+                false);
     }
 
     @Override
@@ -145,7 +183,7 @@ public class v1_8_R2_PlayerIdentityManager
     {
         GameProfile gameProfile = getFakeProfile(player);
         gameProfile.getProperties().get("textures").clear();
-        /*GameProfile skinProfile = NickReloaded.get().getPayloadManager().getGameprofileFiller().fillGameprofile(new GameProfile(null,
+        GameProfile skinProfile = fillGameprofile(new GameProfile(null,
         skin));
 
 
@@ -153,10 +191,10 @@ public class v1_8_R2_PlayerIdentityManager
         {
             gameProfile.getProperties().put("textures",
                                             texture);
-        }*/
+        }
 
         updatePlayer(player,
-                     true);
+                true);
     }
 
     @Override
@@ -170,7 +208,7 @@ public class v1_8_R2_PlayerIdentityManager
             if (! p.getUniqueId().equals(uuid))
             {
                 ReflectionUtil.sendPacket(p,
-                                      destroyPacket);
+                        destroyPacket);
             }
         }
         new BukkitRunnable()
@@ -179,16 +217,16 @@ public class v1_8_R2_PlayerIdentityManager
             public void run()
             {
                 PacketPlayOutPlayerInfo playerInfo = new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER,
-                                                                                 entityPlayer);
+                        entityPlayer);
                 PacketPlayOutNamedEntitySpawn spawnPacket = new PacketPlayOutNamedEntitySpawn(entityPlayer);
                 for (Player player : Bukkit.getServer().getOnlinePlayers())
                 {
                     ReflectionUtil.sendPacket(player,
-                                          playerInfo);
+                            playerInfo);
                     if (! player.getUniqueId().equals(uuid))
                     {
                         ReflectionUtil.sendPacket(player,
-                                              spawnPacket);
+                                spawnPacket);
                     }
                     else
                     {
@@ -196,12 +234,12 @@ public class v1_8_R2_PlayerIdentityManager
                         {
                             boolean isFlying = player.isFlying();
                             ReflectionUtil.sendPacket(player,
-                                                  new PacketPlayOutRespawn(player.getWorld().getEnvironment().getId(),
-                                                                            entityPlayer.getWorld().getDifficulty(),
-                                                                            entityPlayer.getWorld().worldData.getType(),
-                                                                            entityPlayer.playerInteractManager.getGameMode()));
+                                    new PacketPlayOutRespawn(player.getWorld().getEnvironment().getId(),
+                                            entityPlayer.getWorld().getDifficulty(),
+                                            entityPlayer.getWorld().worldData.getType(),
+                                            entityPlayer.playerInteractManager.getGameMode()));
                             player.teleport(player.getLocation(),
-                                            PlayerTeleportEvent.TeleportCause.PLUGIN);
+                                    PlayerTeleportEvent.TeleportCause.PLUGIN);
                             player.setFlying(isFlying);
                         }
                         player.updateInventory();
@@ -211,7 +249,7 @@ public class v1_8_R2_PlayerIdentityManager
                 updatePlayerProfile(playerInfo);
             }
         }.runTaskLater(NickReloaded.INSTANCE,
-                       0);
+                0);
     }
 
     @Override
@@ -225,11 +263,11 @@ public class v1_8_R2_PlayerIdentityManager
         else
         {
             GameProfile fakeProfile = new GameProfile(player.getUniqueId(),
-                                                      player.getName());
+                    player.getName());
             fakeProfile.getProperties().replaceValues("textures",
-                                                      getPlayerProfile(player).getProperties().get("textures"));
+                    getPlayerProfile(player).getProperties().get("textures"));
             fakeProfiles.put(uuid,
-                             fakeProfile);
+                    fakeProfile);
             return fakeProfile;
         }
     }
@@ -239,7 +277,7 @@ public class v1_8_R2_PlayerIdentityManager
     {
         try
         {
-            return (GameProfile) playerGameProfile.get(((CraftPlayer) player).getHandle());
+            return (GameProfile) playerGP.get(((CraftPlayer) player).getHandle());
         }
         catch (Exception e)
         {
@@ -253,8 +291,8 @@ public class v1_8_R2_PlayerIdentityManager
     {
         try
         {
-            gameProfileName.set(gameProfile,
-                                name);
+            gpName.set(gameProfile,
+                    name);
         }
         catch (Exception e)
         {
@@ -267,8 +305,8 @@ public class v1_8_R2_PlayerIdentityManager
     {
         try
         {
-            gameProfileId.set(gameProfile,
-                              uuid);
+            gpID.set(gameProfile,
+                    uuid);
         }
         catch (Exception e)
         {
