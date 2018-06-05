@@ -47,6 +47,7 @@ public enum NMSVersion
 
     ONE_EIGHT_R2("1_8_R2", Wrapper1_8_R2.class);
 
+    //todo: finish wrappers !
     /*ONE_EIGHT_R3("1_8_R3", Wrapper1_8_R3.class),
 
     ONE_NINE_R1("1_9_R1", Wrapper1_9_R1.class),
@@ -58,7 +59,6 @@ public enum NMSVersion
     ONE_ELEVEN_R1("1_11_R1", Wrapper1_11_R1.class),
 
     ONE_TWELVE_R1("1_12_R1", Wrapper1_12_R1.class);*/
-    //todo: finish wrappers
 
     private static final LoadingCache<Class<? extends VersionWrapper>, VersionWrapper> WRAPPER_CACHE = CacheBuilder.newBuilder().maximumSize(values().length).expireAfterWrite(3, TimeUnit.MINUTES).build(new CacheLoader<Class<? extends VersionWrapper>, VersionWrapper>()
     {
