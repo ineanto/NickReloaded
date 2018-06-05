@@ -1,4 +1,4 @@
-package io.idden.nickreloaded.core.nms.impl;
+package io.idden.nickreloaded.nms.impl;
 
 import com.mojang.authlib.GameProfile;
 import org.bukkit.entity.Player;

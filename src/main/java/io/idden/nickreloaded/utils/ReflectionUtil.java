@@ -1,4 +1,4 @@
-package io.idden.nickreloaded.core.nms.utils;
+package io.idden.nickreloaded.utils;
 
 import io.idden.nickreloaded.version.BukkitVersion;
 import org.bukkit.entity.Player;

@@ -1,14 +1,10 @@
-package io.idden.nickreloaded.core.nms.v1_9_R1;
+package io.idden.nickreloaded.nms.v1_9_R1;
 
 import com.mojang.authlib.GameProfile;
-import fr.antoinerochas.nickreloaded.NickReloaded;
-import fr.antoinerochas.nickreloaded.core.nms.event.PlayerProfileEditorListener;
-import fr.antoinerochas.nickreloaded.core.nms.impl.AbstractPlayerIdentityManager;
-import fr.antoinerochas.nickreloaded.core.nms.utils.NRNMSUtils;
 import io.idden.nickreloaded.NickReloaded;
-import io.idden.nickreloaded.core.nms.event.PlayerProfileEditorListener;
-import io.idden.nickreloaded.core.nms.impl.PlayerIdentityManager;
-import io.idden.nickreloaded.core.nms.utils.ReflectionUtil;
+import io.idden.nickreloaded.nms.event.PlayerProfileEditorListener;
+import io.idden.nickreloaded.nms.impl.PlayerIdentityManager;
+import io.idden.nickreloaded.utils.ReflectionUtil;
 import net.minecraft.server.v1_9_R1.*;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
@@ -74,7 +70,7 @@ public class v1_9_R1_PlayerIdentityManager
         playerInfoData_gameProfile = pidGameProfile;
         playerInfoData_displayName = pidDisplayName;
 
-        NickReloaded.getInstance().getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles, this), NickReloaded.getInstance());
+        NickReloaded.INSTANCE.getServer().getPluginManager().registerEvents(new PlayerProfileEditorListener(fakeProfiles, this), NickReloaded.INSTANCE);
     }
 
     @Override
@@ -144,7 +140,9 @@ public class v1_9_R1_PlayerIdentityManager
     {
         final EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
         final UUID uuid = player.getUniqueId();
+
         PacketPlayOutEntityDestroy destroyPacket = new PacketPlayOutEntityDestroy(entityPlayer.getId());
+
         for (Player p : Bukkit.getServer().getOnlinePlayers())
         {
             if (! p.getUniqueId().equals(uuid))
@@ -153,6 +151,7 @@ public class v1_9_R1_PlayerIdentityManager
                                       destroyPacket);
             }
         }
+
         new BukkitRunnable()
         {
             @Override
@@ -190,7 +189,7 @@ public class v1_9_R1_PlayerIdentityManager
 
                 updatePlayerProfile(playerInfo);
             }
-        }.runTaskLater(NickReloaded.getInstance(),
+        }.runTaskLater(NickReloaded.INSTANCE,
                        0);
     }
 
@@ -198,6 +197,7 @@ public class v1_9_R1_PlayerIdentityManager
     public GameProfile getFakeProfile(Player player)
     {
         UUID uuid = player.getUniqueId();
+
         if (fakeProfiles.containsKey(uuid))
         {
             return fakeProfiles.get(uuid);

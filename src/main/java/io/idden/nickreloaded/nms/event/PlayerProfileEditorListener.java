@@ -1,7 +1,7 @@
-package io.idden.nickreloaded.core.nms.event;
+package io.idden.nickreloaded.nms.event;
 
 import com.mojang.authlib.GameProfile;
-import io.idden.nickreloaded.core.nms.impl.PlayerIdentityManager;
+import io.idden.nickreloaded.nms.impl.PlayerIdentityManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -42,9 +42,6 @@ public class PlayerProfileEditorListener
     public void onPlayerQuit(PlayerQuitEvent event)
     {
         UUID uuid = event.getPlayer().getUniqueId();
-        if (fakeProfiles.containsKey(uuid))
-        {
-            fakeProfiles.remove(uuid);
-        }
+        fakeProfiles.remove(uuid);
     }
 }

@@ -1,8 +1,8 @@
-package io.idden.nickreloaded.core.nms.v1_8_R2;
+package io.idden.nickreloaded.nms.v1_8_R2;
 
 import com.google.common.collect.Iterables;
 import com.mojang.authlib.GameProfile;
-import io.idden.nickreloaded.core.nms.impl.IGameProfileFiller;
+import io.idden.nickreloaded.nms.impl.IGameProfileFiller;
 import net.minecraft.server.v1_8_R2.MinecraftServer;
 
 public class v1_8_R2_GameprofileFiller

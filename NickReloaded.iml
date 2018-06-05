@@ -11,131 +11,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/05 Autre/PlaceholderAPI-2.8.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.10.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.10.2.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.11.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.11.2.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.11.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.11.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.12.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.12.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.8.3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.8.3.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.8.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.8.8.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.8.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.9.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.9.4.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.9.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/spigot-1.9.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/01 Développement/02 Librairies/01 Bungeecord &amp; Spigot/BungeeCord.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="HikariCP-2.7.2" level="project" />
-    <orderEntry type="library" name="jackson-annotations-2.9.0" level="project" />
-    <orderEntry type="library" name="jackson-core-2.9.2" level="project" />
-    <orderEntry type="library" name="jackson-databind-2.9.0" level="project" />
-    <orderEntry type="library" name="jackson-dataformat-yaml-2.9.0" level="project" />
-    <orderEntry type="library" name="redisson-3.5.0" level="project" />
-    <orderEntry type="library" name="slf4j-api-1.7.25" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.9.4:1.9.4" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.12.2:1.12.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot-1.8:1.8" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot-1.8.3:1.8.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot-1.8.8:1.8.8" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot-1.9:1.9" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot-1.9.4:1.9.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot-1.10.2:1.10.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot-1.11.2:1.11.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot-1.12.2:1.12.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: me.clip:placeholderapi:2.8.7" level="project" />
   </component>
 </module>

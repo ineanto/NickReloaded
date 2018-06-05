@@ -1,6 +1,7 @@
-package io.idden.nickreloaded.init;
+package io.idden.nickreloaded.core;
 
 import io.idden.nickreloaded.NickReloaded;
+import io.idden.nickreloaded.addon.AddonManager;
 import io.idden.nickreloaded.version.BukkitVersion;
 
 /**
@@ -11,6 +12,9 @@ import io.idden.nickreloaded.version.BukkitVersion;
  */
 public class Manager
 {
+    public BukkitVersion bukkitVersion = new BukkitVersion();
+    public AddonManager  addonManager  = new AddonManager();
+
     public void start()
     {
         /*
@@ -19,7 +23,13 @@ public class Manager
           otherwise the plugin can't work,
           as he depends on NMS version to work.
          */
-        new BukkitVersion();
+        bukkitVersion.set();
+
+        /*
+          Load addons before everything to
+          avoid errors.
+         */
+        addonManager.loadAddons();
     }
 
     public void onLoad()
@@ -28,6 +38,6 @@ public class Manager
 
     public void stop()
     {
-        new BukkitVersion().unset();
+        bukkitVersion.unset();
     }
 }

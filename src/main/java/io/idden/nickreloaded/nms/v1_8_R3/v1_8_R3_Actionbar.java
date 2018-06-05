@@ -1,6 +1,6 @@
-package io.idden.nickreloaded.core.nms.v1_8_R3;
+package io.idden.nickreloaded.nms.v1_8_R3;
 
-import io.idden.nickreloaded.core.nms.impl.IActionbar;
+import io.idden.nickreloaded.nms.impl.IActionbar;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;

@@ -1,6 +1,6 @@
 package io.idden.nickreloaded;
 
-import io.idden.nickreloaded.init.Manager;
+import io.idden.nickreloaded.core.Manager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**

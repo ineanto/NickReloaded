@@ -1,7 +1,7 @@
 package io.idden.nickreloaded.command;
 
 /**
- * Class description
+ * The "/nick" command class.
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1

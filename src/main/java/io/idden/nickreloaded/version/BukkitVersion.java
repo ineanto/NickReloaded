@@ -13,7 +13,7 @@ public class BukkitVersion
     public static String VERSION_DEFAULT = "none";
     public static String VERSION = VERSION_DEFAULT;
 
-    public BukkitVersion()
+    public void set()
     {
         String packageName = NickReloaded.INSTANCE.getServer().getClass().getPackage().getName();
 
