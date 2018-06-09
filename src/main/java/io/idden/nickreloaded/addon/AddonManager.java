@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@ package io.idden.nickreloaded.addon;
 
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.addon.papi.PlaceholderAPIAddon;
-import io.idden.nickreloaded.addon.result.AddonRegisterResult;
 import io.idden.nickreloaded.logger.Logger;
 
 import java.util.HashMap;
@@ -43,40 +42,24 @@ public class AddonManager
 
     public void loadAddons()
     {
-        //PlaceholderAPI
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.ADDON, "Loading addons...");
+
         PlaceholderAPIAddon placeholderAPIAddon = new PlaceholderAPIAddon();
 
-        placeholderAPIAddon.register(new AddonRegisterResult()
+        if (placeholderAPIAddon.search())
         {
-            @Override
-            public void onSuccess()
-            {
-                //Registering into map
-                ADDONS.putIfAbsent(placeholderAPIAddon.id, placeholderAPIAddon);
-            }
+            placeholderAPIAddon.load();
+            ADDONS.put(placeholderAPIAddon.id, placeholderAPIAddon);
+        }
 
-            @Override
-            public void notFound()
-            {
-                //Not a requiered dependency
-            }
-
-            @Override
-            public void onFail()
-            {
-                //Not a requiered dependency
-            }
-        });
-
-
-        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "Dependencies loaded !");
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.ADDON, "Addons loaded !");
     }
 
     public void unloadAddons()
     {
         ADDONS.forEach((id, addon) ->
         {
-            addon.unregister();
+            addon.unload();
             ADDONS.remove(id);
         });
     }

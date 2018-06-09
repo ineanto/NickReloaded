@@ -22,46 +22,69 @@
  * SOFTWARE.
  */
 
-package io.idden.nickreloaded.player.data;
+package io.idden.nickreloaded.player.skin;
 
+import io.idden.nickreloaded.core.Manager;
 import io.idden.nickreloaded.player.CustomPlayer;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * Manage data.
+ * Manage apparence.
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
  */
-public class Data
+public class Apparence implements Serializable
 {
-    public UUID         uuid;
-    public CustomPlayer customPlayer;
+    public UUID   uuid;
+    public String name;
 
-    public boolean dataLoaded = false;
+    public transient Player       player;
+    public transient CustomPlayer customPlayer;
 
-    public Data(UUID uuid, CustomPlayer customPlayer)
+    public boolean disguised;
+    public String  dSkin = null;
+    public String  dName = null;
+
+    public Apparence(UUID uuid, CustomPlayer customPlayer)
     {
         this.uuid = uuid;
+        this.player = Bukkit.getPlayer(uuid);
+        this.name = player.getName();
         this.customPlayer = customPlayer;
     }
 
-    public void loadData() //Use that in first
+    public void setName(String name)
     {
-        dataLoaded = true;
+        Manager.WRAPPER.setPlayerName(player, name);
+        dName = name;
     }
 
-    public void saveData()
+    public void setSkin(String skin)
     {
-        dataLoaded = false;
+        Manager.WRAPPER.setPlayerSkin(player, skin);
+        dSkin = skin;
     }
 
-    private void loadSQLData() {}
+    public void resetName()
+    {
+        Manager.WRAPPER.setPlayerName(player, name);
+        dName = null;
+    }
 
-    private void saveSQLData() {}
+    public void resetSkin()
+    {
+        Manager.WRAPPER.setPlayerSkin(player, name);
+        dSkin = null;
+    }
 
-    private void saveCache() {}
-
-    private void loadCache() {}
+    public void reset()
+    {
+        resetName();
+        resetSkin();
+    }
 }

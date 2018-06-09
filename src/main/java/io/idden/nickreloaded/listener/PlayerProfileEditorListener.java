@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package io.idden.nickreloaded.nms.event;
+package io.idden.nickreloaded.listener;
 
 import com.mojang.authlib.GameProfile;
 import io.idden.nickreloaded.version.wrapper.VersionWrapper;
@@ -34,6 +34,12 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Triggered when a player joins, register a fakeprofile.
+ *
+ * @author Antoine "Idden" ROCHAS
+ * @since 2.0-rc1
+ */
 public class PlayerProfileEditorListener implements Listener
 {
     private Map<UUID, GameProfile> fakeProfiles;
@@ -53,10 +59,10 @@ public class PlayerProfileEditorListener implements Listener
         //todo: remake this with all the changes
         /*if (PlayerStorage.getStorage(uuid) != null)
         {
-            if ((NickReloaded.get().getNickManager().isNicked(event.getPlayer())) && (fakeProfiles.containsKey(uuid)))
+            if ((NickReloaded.get().getNickManager().isNicked(listener.getPlayer())) && (fakeProfiles.containsKey(uuid)))
             {
                 fakeProfiles.put(uuid,
-                                 versionWrapper.getFakeProfile(event.getPlayer()));
+                                 versionWrapper.getFakeProfile(listener.getPlayer()));
             }
         }*/
 

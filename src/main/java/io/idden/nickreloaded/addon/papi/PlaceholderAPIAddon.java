@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@ package io.idden.nickreloaded.addon.papi;
 
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.addon.AbstractAddon;
-import io.idden.nickreloaded.addon.result.AddonRegisterResult;
 import io.idden.nickreloaded.logger.Logger;
 
 /**
@@ -37,42 +36,51 @@ import io.idden.nickreloaded.logger.Logger;
  */
 public class PlaceholderAPIAddon extends AbstractAddon
 {
-    PlaceholderAPIExpansion placeholderAPIExpansion = new PlaceholderAPIExpansion();
+    PlaceholderAPIExpansion placeholderAPIExpansion = null;
 
     public PlaceholderAPIAddon()
     {
-        this.id = "PlaceholderAPI-Addon";
+        this.id = "PAPI";
+        this.prefix = "PlaceholderAPI Addon";
     }
 
     @Override
-    public void register(AddonRegisterResult registerResult)
+    public boolean search()
     {
-        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "Searching for PlaceholderAPI...");
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.ADDON, "Loading " + id + " addon...");
+        NickReloaded.INSTANCE.manager.logger.log(prefix, "Searching for PlaceholderAPI...");
 
-        if(NickReloaded.INSTANCE.getServer().getPluginManager().getPlugin("PlaceholderAPI") == null)
+        if (NickReloaded.INSTANCE.getServer().getPluginManager().getPlugin("PlaceholderAPI") == null)
         {
-            NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "PlaceholderAPI not found ! Skipping.");
-            registerResult.notFound();
-            return;
+            NickReloaded.INSTANCE.manager.logger.log(prefix, "PlaceholderAPI not found. Skipping.");
+            return false;
         }
 
-        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "PlaceholderAPI found ! Hooking...");
+        placeholderAPIExpansion = new PlaceholderAPIExpansion();
+        NickReloaded.INSTANCE.manager.logger.log(prefix, "PlaceholderAPI found !");
+        return true;
+    }
+
+    @Override
+    public void load()
+    {
+        NickReloaded.INSTANCE.manager.logger.log(prefix, "Hooking into PlaceholderAPI...");
 
         if (placeholderAPIExpansion.register())
         {
-            NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "Hooked ! You can now use NickReloaded placeholders !");
-            NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, id + " loaded.");
-            registerResult.onSuccess();
-            return;
+            NickReloaded.INSTANCE.manager.logger.log(prefix, "Hooked ! You can now use NickReloaded placeholders !");
+            NickReloaded.INSTANCE.manager.logger.log(Logger.Level.ADDON, "Addon " + id + " loaded.");
         }
-
-        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.WARNING, "PlaceholderAPI failed to hook, please send an error report.");
-        registerResult.onFail();
+        else
+        {
+            NickReloaded.INSTANCE.manager.logger.log(Logger.Level.WARNING, "Failed to hook into PlaceholderAPI, please check logs.");
+        }
     }
 
     @Override
-    public void unregister()
+    public void unload()
     {
-        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, id + " unloaded.");
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.ADDON, "Unhooking PlaceholderAPI...");
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.ADDON, "Unhooked PlaceholderAPI !");
     }
 }

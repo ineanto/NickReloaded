@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * The main class of NickReloaded.
  *
  * @author Antoine "Idden" R.
- * @since 1.0-rc1
+ * @since 2.0-rc1
  */
 public class NickReloaded extends JavaPlugin
 {

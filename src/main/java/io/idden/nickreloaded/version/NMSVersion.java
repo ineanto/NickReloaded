@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,6 +84,18 @@ public enum NMSVersion
     }
 
     /**
+     * Finds the {@link net.wesjd.anvilgui.version.Version} from the NMS package value
+     *
+     * @param pkg The NMS package value
+     *
+     * @return The {@link net.wesjd.anvilgui.version.Version}, or null if no version is found
+     */
+    public static NMSVersion of(final String pkg)
+    {
+        return Arrays.stream(values()).filter(ver -> pkg.equals("v" + ver.getPackage())).findFirst().orElse(null);
+    }
+
+    /**
      * Gets the package value of this NMS version
      *
      * @return The package value
@@ -108,17 +120,5 @@ public enum NMSVersion
         {
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Finds the {@link net.wesjd.anvilgui.version.Version} from the NMS package value
-     *
-     * @param pkg The NMS package value
-     *
-     * @return The {@link net.wesjd.anvilgui.version.Version}, or null if no version is found
-     */
-    public static NMSVersion of(final String pkg)
-    {
-        return Arrays.stream(values()).filter(ver -> pkg.equals("v" + ver.getPackage())).findFirst().orElse(null);
     }
 }

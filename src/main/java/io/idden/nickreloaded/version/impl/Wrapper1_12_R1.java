@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ import com.google.common.collect.Iterables;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import io.idden.nickreloaded.NickReloaded;
-import io.idden.nickreloaded.nms.event.PlayerProfileEditorListener;
+import io.idden.nickreloaded.listener.PlayerProfileEditorListener;
 import io.idden.nickreloaded.utils.ReflectionUtil;
 import io.idden.nickreloaded.version.wrapper.VersionWrapper;
 import net.minecraft.server.v1_12_R1.*;

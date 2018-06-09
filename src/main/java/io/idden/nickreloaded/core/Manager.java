@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@ package io.idden.nickreloaded.core;
 
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.addon.AddonManager;
+import io.idden.nickreloaded.listener.ListenerManager;
 import io.idden.nickreloaded.logger.Logger;
 import io.idden.nickreloaded.version.NMSVersion;
 import io.idden.nickreloaded.version.wrapper.VersionWrapper;
@@ -42,8 +43,9 @@ public class Manager
     public static VersionWrapper WRAPPER         = null;
     public static String         NMS_PKG_VERSION = null;
 
-    public AddonManager addonManager = new AddonManager();
-    public Logger logger = new Logger();
+    public AddonManager    addonManager    = new AddonManager();
+    public ListenerManager listenerManager = new ListenerManager();
+    public Logger          logger          = new Logger();
 
     public void start()
     {
@@ -57,7 +59,7 @@ public class Manager
          */
         NMSVersion version = NMSVersion.of(Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3]);
 
-        if(version.getPackage() == null)
+        if (version.getPackage() == null)
         {
             logger.log(Logger.Level.FATAL, "Your version is incompatible with NickReloaded ! Disabling...");
             Bukkit.getPluginManager().disablePlugin(NickReloaded.INSTANCE);
@@ -69,7 +71,6 @@ public class Manager
 
             logger.log(Logger.Level.LOG, "Loaded Wrapper for version " + NMS_PKG_VERSION + " !");
 
-            logger.log(Logger.Level.LOG, "Loading dependencies...");
             /*
               Load addons before everything to
               avoid dependency errors.
@@ -77,11 +78,15 @@ public class Manager
             addonManager.loadAddons();
         }
 
-        logger.log(Logger.Level.LOG, "Plugin loaded.");
+        listenerManager.registerListeners();
+
+        logger.log(Logger.Level.LOG, "NickReloaded v" + NickReloaded.VERSION + " enabled !");
     }
 
     public void stop()
     {
+        addonManager.unloadAddons();
+        listenerManager.unregisterListeners();
         logger.log(Logger.Level.LOG, "Plugin disabled. Bye !");
         WRAPPER = null;
     }

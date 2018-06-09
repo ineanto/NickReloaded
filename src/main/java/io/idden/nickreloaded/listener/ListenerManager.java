@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,21 +22,35 @@
  * SOFTWARE.
  */
 
-package io.idden.nickreloaded.player.skin;
+package io.idden.nickreloaded.listener;
 
-import java.util.UUID;
+import io.idden.nickreloaded.NickReloaded;
+import org.bukkit.event.Listener;
+
+import java.util.ArrayList;
 
 /**
- * Manage skin.
+ * Manage {@link Listener}s
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
  */
-public class Skin
+public class ListenerManager
 {
-    public UUID uuid;
+    public ArrayList<Listener> LISTENERS = new ArrayList<>();
 
-    public Skin(UUID uuid) { this.uuid = uuid; }
+    public ListenerManager()
+    {
+        LISTENERS.add(new PlayerJoinListener());
+    }
 
+    public void registerListeners()
+    {
+        LISTENERS.forEach(listener -> NickReloaded.INSTANCE.getServer().getPluginManager().registerEvents(listener, NickReloaded.INSTANCE));
+    }
 
+    public void unregisterListeners()
+    {
+        LISTENERS.clear();
+    }
 }

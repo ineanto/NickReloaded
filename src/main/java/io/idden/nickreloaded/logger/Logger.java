@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,6 @@ package io.idden.nickreloaded.logger;
 
 import org.bukkit.Bukkit;
 
-import java.text.DateFormat;
-import java.util.Locale;
-
 /**
  * The logger, revisited.
  *
@@ -37,22 +34,31 @@ import java.util.Locale;
  */
 public class Logger
 {
-    public void log(Level level, String log)
+    public void log(String prefix, String log, boolean date)
     {
-        if(level == null)
+        if (prefix == null)
         {
-            level = Level.NONE;
+            prefix = Level.NONE.prefix;
         }
 
-        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+        Bukkit.getConsoleSender().sendMessage("[" + prefix + "] | " + log);
+    }
 
-        Bukkit.getConsoleSender().sendMessage("[" + level.prefix + "] " + dateFormat.format(System.currentTimeMillis()) + " | " + log);
+    public void log(String prefix, String log)
+    {
+        log(prefix, log, false);
+    }
+
+    public void log(Level level, String log)
+    {
+        log(level.prefix, log, false);
     }
 
     public enum Level
     {
         NONE(""),
         LOG("Log"),
+        ADDON("Addon"),
         WARNING("WARNING"),
         FATAL("FATAL");
 

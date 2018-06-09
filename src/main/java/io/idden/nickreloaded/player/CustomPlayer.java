@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
 package io.idden.nickreloaded.player;
 
 import io.idden.nickreloaded.player.data.Data;
-import io.idden.nickreloaded.player.skin.Skin;
+import io.idden.nickreloaded.player.skin.Apparence;
 import org.bukkit.entity.Player;
 
 /**
@@ -38,11 +38,13 @@ public class CustomPlayer
 {
     public Player bukkitPlayer;
 
-    public Data data = new Data(bukkitPlayer.getUniqueId());
-    public Skin skin = new Skin(bukkitPlayer.getUniqueId());
+    public Data      data;
+    public Apparence apparence;
 
     public CustomPlayer(Player bukkitPlayer)
     {
         this.bukkitPlayer = bukkitPlayer;
+        this.data = new Data(bukkitPlayer.getUniqueId(), this);
+        this.apparence = new Apparence(bukkitPlayer.getUniqueId(), this);
     }
 }

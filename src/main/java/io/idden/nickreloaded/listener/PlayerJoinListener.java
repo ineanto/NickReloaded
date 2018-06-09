@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,19 +22,30 @@
  * SOFTWARE.
  */
 
-package io.idden.nickreloaded.addon.result;
+package io.idden.nickreloaded.listener;
+
+import io.idden.nickreloaded.player.CustomPlayer;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 /**
- * A callback for addon registering.
+ * Triggered when a player joins.
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
  */
-public interface AddonRegisterResult
+public class PlayerJoinListener implements Listener
 {
-    void onSuccess();
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event)
+    {
+        Player       player       = event.getPlayer();
+        CustomPlayer customPlayer = new CustomPlayer(player);
 
-    void notFound();
+        //todo: check for updates ?
 
-    void onFail();
+        customPlayer.data.loadData();
+    }
 }

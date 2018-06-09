@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,7 @@ public class ReflectionUtil
     {
         try
         {
-            Object handle = player.getClass().getMethod("getHandle").invoke(player);
+            Object handle           = player.getClass().getMethod("getHandle").invoke(player);
             Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
             playerConnection.getClass().getMethod("sendPacket", getNMSClass("Packet")).invoke(playerConnection, packet);
         }
@@ -74,11 +74,9 @@ public class ReflectionUtil
         for (Field field : cl.getDeclaredFields())
         {
             field.setAccessible(true);
-            fields.put(field.getName(),
-                       field);
+            fields.put(field.getName(), field);
         }
-        classFields.put(cl,
-                        fields);
+        classFields.put(cl, fields);
         return fields;
     }
 

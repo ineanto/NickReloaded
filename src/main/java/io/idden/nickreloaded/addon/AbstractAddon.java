@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,6 @@
 
 package io.idden.nickreloaded.addon;
 
-import io.idden.nickreloaded.addon.result.AddonRegisterResult;
-
 /**
  * Represent a plugin hook.
  *
@@ -35,8 +33,11 @@ import io.idden.nickreloaded.addon.result.AddonRegisterResult;
 public abstract class AbstractAddon
 {
     public String id;
+    public String prefix;
 
-    public abstract void register(AddonRegisterResult registerResult);
+    public abstract boolean search();
 
-    public abstract void unregister();
+    public abstract void load();
+
+    public abstract void unload();
 }

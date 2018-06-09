@@ -1,7 +1,7 @@
 /*
- * MIT License
+ *  MIT License
  *
- * Copyright (c) 2017 Antoine "Idden" ROCHAS
+ *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ import com.google.common.collect.Iterables;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import io.idden.nickreloaded.NickReloaded;
-import io.idden.nickreloaded.nms.event.PlayerProfileEditorListener;
+import io.idden.nickreloaded.listener.PlayerProfileEditorListener;
 import io.idden.nickreloaded.utils.ReflectionUtil;
 import io.idden.nickreloaded.version.wrapper.VersionWrapper;
 import net.minecraft.server.v1_8_R2.*;
@@ -119,11 +119,9 @@ public class Wrapper1_8_R2 implements VersionWrapper
                 {
                     gameProfile1 = gameProfile;
                 }
-                if (Iterables.getFirst(gameProfile1.getProperties().get("textures"),
-                        null) == null)
+                if (Iterables.getFirst(gameProfile1.getProperties().get("textures"), null) == null)
                 {
-                    gameProfile1 = MinecraftServer.getServer().aC().fillProfileProperties(gameProfile1,
-                            true);
+                    gameProfile1 = MinecraftServer.getServer().aC().fillProfileProperties(gameProfile1, true);
                 }
                 return gameProfile1;
             }
@@ -151,8 +149,7 @@ public class Wrapper1_8_R2 implements VersionWrapper
                 GameProfile gameProfile = data.a();
                 if (fakeProfiles.containsKey(gameProfile.getId()))
                 {
-                    pidGameprofile.set(data,
-                            fakeProfiles.get(gameProfile.getId()));
+                    pidGameprofile.set(data, fakeProfiles.get(gameProfile.getId()));
                 }
             }
         }
@@ -166,10 +163,8 @@ public class Wrapper1_8_R2 implements VersionWrapper
     public void setPlayerName(Player player, String name)
     {
         GameProfile gameProfile = getFakeProfile(player);
-        setProfileName(gameProfile,
-                name);
-        updatePlayer(player,
-                false);
+        setProfileName(gameProfile, name);
+        updatePlayer(player, false);
     }
 
     @Override
@@ -183,32 +178,28 @@ public class Wrapper1_8_R2 implements VersionWrapper
     {
         GameProfile gameProfile = getFakeProfile(player);
         gameProfile.getProperties().get("textures").clear();
-        GameProfile skinProfile = fillGameprofile(new GameProfile(null,
-        skin));
+        GameProfile skinProfile = fillGameprofile(new GameProfile(null, skin));
 
 
         for (Property texture : skinProfile.getProperties().get("textures"))
         {
-            gameProfile.getProperties().put("textures",
-                                            texture);
+            gameProfile.getProperties().put("textures", texture);
         }
 
-        updatePlayer(player,
-                true);
+        updatePlayer(player, true);
     }
 
     @Override
     public void updatePlayer(Player player, boolean isSkinChanging)
     {
-        final EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
-        final UUID uuid = player.getUniqueId();
+        final EntityPlayer         entityPlayer  = ((CraftPlayer) player).getHandle();
+        final UUID                 uuid          = player.getUniqueId();
         PacketPlayOutEntityDestroy destroyPacket = new PacketPlayOutEntityDestroy(entityPlayer.getId());
         for (Player p : Bukkit.getServer().getOnlinePlayers())
         {
             if (! p.getUniqueId().equals(uuid))
             {
-                ReflectionUtil.sendPacket(p,
-                        destroyPacket);
+                ReflectionUtil.sendPacket(p, destroyPacket);
             }
         }
         new BukkitRunnable()
@@ -216,30 +207,22 @@ public class Wrapper1_8_R2 implements VersionWrapper
             @Override
             public void run()
             {
-                PacketPlayOutPlayerInfo playerInfo = new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER,
-                        entityPlayer);
+                PacketPlayOutPlayerInfo playerInfo = new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER, entityPlayer);
                 PacketPlayOutNamedEntitySpawn spawnPacket = new PacketPlayOutNamedEntitySpawn(entityPlayer);
                 for (Player player : Bukkit.getServer().getOnlinePlayers())
                 {
-                    ReflectionUtil.sendPacket(player,
-                            playerInfo);
+                    ReflectionUtil.sendPacket(player, playerInfo);
                     if (! player.getUniqueId().equals(uuid))
                     {
-                        ReflectionUtil.sendPacket(player,
-                                spawnPacket);
+                        ReflectionUtil.sendPacket(player, spawnPacket);
                     }
                     else
                     {
                         if (isSkinChanging)
                         {
                             boolean isFlying = player.isFlying();
-                            ReflectionUtil.sendPacket(player,
-                                    new PacketPlayOutRespawn(player.getWorld().getEnvironment().getId(),
-                                            entityPlayer.getWorld().getDifficulty(),
-                                            entityPlayer.getWorld().worldData.getType(),
-                                            entityPlayer.playerInteractManager.getGameMode()));
-                            player.teleport(player.getLocation(),
-                                    PlayerTeleportEvent.TeleportCause.PLUGIN);
+                            ReflectionUtil.sendPacket(player, new PacketPlayOutRespawn(player.getWorld().getEnvironment().getId(), entityPlayer.getWorld().getDifficulty(), entityPlayer.getWorld().worldData.getType(), entityPlayer.playerInteractManager.getGameMode()));
+                            player.teleport(player.getLocation(), PlayerTeleportEvent.TeleportCause.PLUGIN);
                             player.setFlying(isFlying);
                         }
                         player.updateInventory();
@@ -248,8 +231,7 @@ public class Wrapper1_8_R2 implements VersionWrapper
 
                 updatePlayerProfile(playerInfo);
             }
-        }.runTaskLater(NickReloaded.INSTANCE,
-                0);
+        }.runTaskLater(NickReloaded.INSTANCE, 0);
     }
 
     @Override
@@ -262,12 +244,9 @@ public class Wrapper1_8_R2 implements VersionWrapper
         }
         else
         {
-            GameProfile fakeProfile = new GameProfile(player.getUniqueId(),
-                    player.getName());
-            fakeProfile.getProperties().replaceValues("textures",
-                    getPlayerProfile(player).getProperties().get("textures"));
-            fakeProfiles.put(uuid,
-                    fakeProfile);
+            GameProfile fakeProfile = new GameProfile(player.getUniqueId(), player.getName());
+            fakeProfile.getProperties().replaceValues("textures", getPlayerProfile(player).getProperties().get("textures"));
+            fakeProfiles.put(uuid, fakeProfile);
             return fakeProfile;
         }
     }
@@ -291,8 +270,7 @@ public class Wrapper1_8_R2 implements VersionWrapper
     {
         try
         {
-            gpName.set(gameProfile,
-                    name);
+            gpName.set(gameProfile, name);
         }
         catch (Exception e)
         {
@@ -305,8 +283,7 @@ public class Wrapper1_8_R2 implements VersionWrapper
     {
         try
         {
-            gpID.set(gameProfile,
-                    uuid);
+            gpID.set(gameProfile, uuid);
         }
         catch (Exception e)
         {

@@ -1,27 +1,3 @@
-/*
- * MIT License
- *
- * Copyright (c) 2017 Wesley Smith
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 package net.wesjd.anvilgui.version.impl;
 
 import net.minecraft.server.v1_10_R1.*;
@@ -33,6 +9,7 @@ import org.bukkit.inventory.Inventory;
 
 /**
  * {@link VersionWrapper} implemented for NMS version 1_10_R1
+ *
  * @author Wesley Smith
  * @since 1.0
  */
@@ -43,7 +20,8 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public int getNextContainerId(Player player) {
+    public int getNextContainerId(Player player)
+    {
         return toNMS(player).nextContainerCounter();
     }
 
@@ -51,7 +29,8 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public void handleInventoryCloseEvent(Player player) {
+    public void handleInventoryCloseEvent(Player player)
+    {
         CraftEventFactory.handleInventoryCloseEvent(toNMS(player));
     }
 
@@ -59,7 +38,8 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public void sendPacketOpenWindow(Player player, int containerId) {
+    public void sendPacketOpenWindow(Player player, int containerId)
+    {
         toNMS(player).playerConnection.sendPacket(new PacketPlayOutOpenWindow(containerId, "minecraft:anvil", new ChatMessage(Blocks.ANVIL.a() + ".name")));
     }
 
@@ -67,7 +47,8 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public void sendPacketCloseWindow(Player player, int containerId) {
+    public void sendPacketCloseWindow(Player player, int containerId)
+    {
         toNMS(player).playerConnection.sendPacket(new PacketPlayOutCloseWindow(containerId));
     }
 
@@ -75,7 +56,8 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public void setActiveContainerDefault(Player player) {
+    public void setActiveContainerDefault(Player player)
+    {
         toNMS(player).activeContainer = toNMS(player).defaultContainer;
     }
 
@@ -83,7 +65,8 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public void setActiveContainer(Player player, Object container) {
+    public void setActiveContainer(Player player, Object container)
+    {
         toNMS(player).activeContainer = (Container) container;
     }
 
@@ -91,7 +74,8 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public void setActiveContainerId(Object container, int containerId) {
+    public void setActiveContainerId(Object container, int containerId)
+    {
         ((Container) container).windowId = containerId;
     }
 
@@ -99,7 +83,8 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public void addActiveContainerSlotListener(Object container, Player player) {
+    public void addActiveContainerSlotListener(Object container, Player player)
+    {
         ((Container) container).addSlotListener(toNMS(player));
     }
 
@@ -107,7 +92,8 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public Inventory toBukkitInventory(Object container) {
+    public Inventory toBukkitInventory(Object container)
+    {
         return ((Container) container).getBukkitView().getTopInventory();
     }
 
@@ -115,30 +101,37 @@ public class Wrapper1_10_R1 implements VersionWrapper
      * {@inheritDoc}
      */
     @Override
-    public Object newContainerAnvil(Player player) {
+    public Object newContainerAnvil(Player player)
+    {
         return new net.wesjd.anvilgui.version.impl.Wrapper1_10_R1.AnvilContainer(toNMS(player));
     }
 
     /**
      * Turns a {@link Player} into an NMS one
+     *
      * @param player The player to be converted
+     *
      * @return the NMS EntityPlayer
      */
-    private EntityPlayer toNMS(Player player) {
+    private EntityPlayer toNMS(Player player)
+    {
         return ((CraftPlayer) player).getHandle();
     }
 
     /**
      * Modifications to ContainerAnvil that makes it so you don't have to have xp to use this anvil
      */
-    private class AnvilContainer extends ContainerAnvil {
+    private class AnvilContainer extends ContainerAnvil
+    {
 
-        public AnvilContainer(EntityHuman entityhuman) {
+        public AnvilContainer(EntityHuman entityhuman)
+        {
             super(entityhuman.inventory, entityhuman.world, new BlockPosition(0, 0, 0), entityhuman);
         }
 
         @Override
-        public boolean a(EntityHuman entityhuman) {
+        public boolean a(EntityHuman entityhuman)
+        {
             return true;
         }
 
