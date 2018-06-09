@@ -24,7 +24,10 @@
 
 package io.idden.nickreloaded.addon;
 
+import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.addon.papi.PlaceholderAPIAddon;
+import io.idden.nickreloaded.addon.result.AddonRegisterResult;
+import io.idden.nickreloaded.logger.Logger;
 
 import java.util.HashMap;
 
@@ -40,10 +43,33 @@ public class AddonManager
 
     public void loadAddons()
     {
+        //PlaceholderAPI
         PlaceholderAPIAddon placeholderAPIAddon = new PlaceholderAPIAddon();
 
-        //Registering into map
-        ADDONS.putIfAbsent(placeholderAPIAddon.id, placeholderAPIAddon);
+        placeholderAPIAddon.register(new AddonRegisterResult()
+        {
+            @Override
+            public void onSuccess()
+            {
+                //Registering into map
+                ADDONS.putIfAbsent(placeholderAPIAddon.id, placeholderAPIAddon);
+            }
+
+            @Override
+            public void notFound()
+            {
+                //Not a requiered dependency
+            }
+
+            @Override
+            public void onFail()
+            {
+                //Not a requiered dependency
+            }
+        });
+
+
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "Dependencies loaded !");
     }
 
     public void unloadAddons()
@@ -52,6 +78,6 @@ public class AddonManager
         {
             addon.unregister();
             ADDONS.remove(id);
-        } );
+        });
     }
 }

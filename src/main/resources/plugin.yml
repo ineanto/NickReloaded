@@ -1,4 +1,4 @@
 name: NickReloaded
-main: fr.antoinerochas.nickreloaded.NickReloaded
-version: 2.0
-author: Idden
+main: io.idden.nickreloaded.NickReloaded
+version: 2.0-rc1
+authors: [Antoine "Idden" ROCHAS, Wesley Smith (AnvilGUI)]

@@ -26,6 +26,10 @@ package io.idden.nickreloaded.core;
 
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.addon.AddonManager;
+import io.idden.nickreloaded.logger.Logger;
+import io.idden.nickreloaded.version.NMSVersion;
+import io.idden.nickreloaded.version.wrapper.VersionWrapper;
+import org.bukkit.Bukkit;
 
 /**
  * Called on {@link NickReloaded#onEnable()}.
@@ -35,32 +39,50 @@ import io.idden.nickreloaded.addon.AddonManager;
  */
 public class Manager
 {
-    public BukkitVersion bukkitVersion = new BukkitVersion();
-    public AddonManager  addonManager  = new AddonManager();
+    public static VersionWrapper WRAPPER         = null;
+    public static String         NMS_PKG_VERSION = null;
+
+    public AddonManager addonManager = new AddonManager();
+    public Logger logger = new Logger();
 
     public void start()
     {
+        logger.log(Logger.Level.LOG, "Loading NickReloaded v" + NickReloaded.VERSION + "...");
+
         /*
           This is important to call this as
           soon as the plugin is enabled
           otherwise the plugin can't work,
           as he depends on NMS version to work.
          */
-        bukkitVersion.set();
+        NMSVersion version = NMSVersion.of(Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3]);
 
-        /*
-          Load addons before everything to
-          avoid errors.
-         */
-        addonManager.loadAddons();
-    }
+        if(version.getPackage() == null)
+        {
+            logger.log(Logger.Level.FATAL, "Your version is incompatible with NickReloaded ! Disabling...");
+            Bukkit.getPluginManager().disablePlugin(NickReloaded.INSTANCE);
+        }
+        else
+        {
+            NMS_PKG_VERSION = version.getPackage();
+            WRAPPER = version.getWrapper();
 
-    public void onLoad()
-    {
+            logger.log(Logger.Level.LOG, "Loaded Wrapper for version " + NMS_PKG_VERSION + " !");
+
+            logger.log(Logger.Level.LOG, "Loading dependencies...");
+            /*
+              Load addons before everything to
+              avoid dependency errors.
+            */
+            addonManager.loadAddons();
+        }
+
+        logger.log(Logger.Level.LOG, "Plugin loaded.");
     }
 
     public void stop()
     {
-        bukkitVersion.unset();
+        logger.log(Logger.Level.LOG, "Plugin disabled. Bye !");
+        WRAPPER = null;
     }
 }

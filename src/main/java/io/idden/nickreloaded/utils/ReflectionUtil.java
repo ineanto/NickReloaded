@@ -24,6 +24,7 @@
 
 package io.idden.nickreloaded.utils;
 
+import io.idden.nickreloaded.core.Manager;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
@@ -53,7 +54,7 @@ public class ReflectionUtil
     {
         try
         {
-            return Class.forName("net.minecraft.server." + BukkitVersion.VERSION + "." + name);
+            return Class.forName("net.minecraft.server." + Manager.NMS_PKG_VERSION + "." + name);
         }
 
         catch (ClassNotFoundException e)

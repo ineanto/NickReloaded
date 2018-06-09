@@ -26,6 +26,8 @@ package io.idden.nickreloaded.addon.papi;
 
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.addon.AbstractAddon;
+import io.idden.nickreloaded.addon.result.AddonRegisterResult;
+import io.idden.nickreloaded.logger.Logger;
 
 /**
  * Register {@link me.clip.placeholderapi.PlaceholderAPI} addon.
@@ -35,23 +37,42 @@ import io.idden.nickreloaded.addon.AbstractAddon;
  */
 public class PlaceholderAPIAddon extends AbstractAddon
 {
+    PlaceholderAPIExpansion placeholderAPIExpansion = new PlaceholderAPIExpansion();
+
     public PlaceholderAPIAddon()
     {
         this.id = "PlaceholderAPI-Addon";
     }
 
     @Override
-    public void register()
+    public void register(AddonRegisterResult registerResult)
     {
-        if(NickReloaded.INSTANCE.getServer().getPluginManager().getPlugin("PlaceholderAPI") != null)
-        {
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "Searching for PlaceholderAPI...");
 
+        if(NickReloaded.INSTANCE.getServer().getPluginManager().getPlugin("PlaceholderAPI") == null)
+        {
+            NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "PlaceholderAPI not found ! Skipping.");
+            registerResult.notFound();
+            return;
         }
+
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "PlaceholderAPI found ! Hooking...");
+
+        if (placeholderAPIExpansion.register())
+        {
+            NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, "Hooked ! You can now use NickReloaded placeholders !");
+            NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, id + " loaded.");
+            registerResult.onSuccess();
+            return;
+        }
+
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.WARNING, "PlaceholderAPI failed to hook, please send an error report.");
+        registerResult.onFail();
     }
 
     @Override
     public void unregister()
     {
-
+        NickReloaded.INSTANCE.manager.logger.log(Logger.Level.LOG, id + " unloaded.");
     }
 }

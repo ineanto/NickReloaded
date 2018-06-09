@@ -22,23 +22,45 @@
  * SOFTWARE.
  */
 
-package io.idden.nickreloaded.nms.v1_9_R1;
+package io.idden.nickreloaded.logger;
 
-import io.idden.nickreloaded.utils.ReflectionUtil;
-import net.minecraft.server.v1_9_R1.IChatBaseComponent;
-import net.minecraft.server.v1_9_R1.PacketPlayOutChat;
-import org.bukkit.entity.Player;
+import org.bukkit.Bukkit;
 
-public class v1_9_R1_Actionbar
-        implements IActionbar
+import java.text.DateFormat;
+import java.util.Locale;
+
+/**
+ * The logger, revisited.
+ *
+ * @author Antoine "Idden" ROCHAS
+ * @since 2.0-rc1
+ */
+public class Logger
 {
-    @Override
-    public void sendActionbar(Player player, String message)
+    public void log(Level level, String log)
     {
-        IChatBaseComponent icbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + message + "\"}");
+        if(level == null)
+        {
+            level = Level.NONE;
+        }
 
-        PacketPlayOutChat bar = new PacketPlayOutChat(icbc, (byte) 2);
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
 
-        ReflectionUtil.sendPacket(player, bar);
+        Bukkit.getConsoleSender().sendMessage("[" + level.prefix + "] " + dateFormat.format(System.currentTimeMillis()) + " | " + log);
+    }
+
+    public enum Level
+    {
+        NONE(""),
+        LOG("Log"),
+        WARNING("WARNING"),
+        FATAL("FATAL");
+
+        public String prefix;
+
+        Level(String prefix)
+        {
+            this.prefix = prefix;
+        }
     }
 }

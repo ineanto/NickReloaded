@@ -22,24 +22,19 @@
  * SOFTWARE.
  */
 
-package io.idden.nickreloaded.nms.v1_12_R1;
+package io.idden.nickreloaded.addon.result;
 
-import io.idden.nickreloaded.utils.ReflectionUtil;
-import net.minecraft.server.v1_12_R1.ChatMessageType;
-import net.minecraft.server.v1_12_R1.IChatBaseComponent;
-import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
-import org.bukkit.entity.Player;
-
-public class v1_12_R1_Actionbar
-        implements IActionbar
+/**
+ * A callback for addon registering.
+ *
+ * @author Antoine "Idden" ROCHAS
+ * @since 2.0-rc1
+ */
+public interface AddonRegisterResult
 {
-    @Override
-    public void sendActionbar(Player player, String message)
-    {
-        IChatBaseComponent icbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + message + "\"}");
+    void onSuccess();
 
-        PacketPlayOutChat bar = new PacketPlayOutChat(icbc, ChatMessageType.GAME_INFO);
+    void notFound();
 
-        ReflectionUtil.sendPacket(player, bar);
-    }
+    void onFail();
 }

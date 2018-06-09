@@ -22,25 +22,48 @@
  * SOFTWARE.
  */
 
-package io.idden.nickreloaded.jframe;
+package io.idden.nickreloaded.addon.papi;
 
-import javax.swing.*;
+import io.idden.nickreloaded.NickReloaded;
+import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import org.bukkit.entity.Player;
 
 /**
- * Make a pop-up when double clicked on .jar file.
+ * The PlaceholderAPI {@link me.clip.placeholderapi.expansion.PlaceholderExpansion}.
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
  */
-public class NickReloadedTutorial
+public class PlaceholderAPIExpansion extends PlaceholderExpansion
 {
-    /*
-       This can help if someone is
-       in trouble installing the plugin,
-       so i'm making it ! :)
-     */
-    public static void main(String[] args)
+    @Override
+    public String getIdentifier()
     {
-        JOptionPane.showMessageDialog(null, "Put \"NickReloaded-X.X-xxx.jar\" into your \"/plugins\" folder !", "Nah, this isn't executable :(", JOptionPane.INFORMATION_MESSAGE);
+        return "nickreloaded";
+    }
+
+    @Override
+    public String getPlugin()
+    {
+        return "NickReloaded";
+    }
+
+    @Override
+    public String getAuthor()
+    {
+        return "Antoine \"Idden\" ROCHAS";
+    }
+
+    @Override
+    public String getVersion()
+    {
+        return NickReloaded.VERSION;
+    }
+
+    @Override
+    public String onPlaceholderRequest(Player player, String s)
+    {
+
+        return "nickreloaded_" + s;
     }
 }

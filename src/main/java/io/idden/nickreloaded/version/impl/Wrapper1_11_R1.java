@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package io.idden.nickreloaded.nms.v1_8_R1;
+package io.idden.nickreloaded.version.impl;
 
 import com.google.common.collect.Iterables;
 import com.mojang.authlib.GameProfile;
@@ -31,9 +31,9 @@ import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.nms.event.PlayerProfileEditorListener;
 import io.idden.nickreloaded.utils.ReflectionUtil;
 import io.idden.nickreloaded.version.wrapper.VersionWrapper;
-import net.minecraft.server.v1_8_R1.*;
+import net.minecraft.server.v1_11_R1.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -45,20 +45,20 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * The 1.8 (R1) version {@link io.idden.nickreloaded.version.wrapper.VersionWrapper}.
+ * The 1.11 (R1) version {@link io.idden.nickreloaded.version.wrapper.VersionWrapper}.
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
  */
-public class Wrapper1_8_R1 implements VersionWrapper
+public class Wrapper1_11_R1 implements VersionWrapper
 {
-    private Map<UUID, GameProfile> fakeProfiles = new HashMap<>();
+    private static final Map<UUID, GameProfile> fakeProfiles = new HashMap<>();
 
     private Field playerGP, gpID, gpName;
     private Field piAction, piData;
     private Field pidLatency, pidGamemode, pidGameprofile, pidDisplayName;
 
-    public Wrapper1_8_R1()
+    public Wrapper1_11_R1()
     {
         Map<String, Field> fields = ReflectionUtil.registerFields(PacketPlayOutPlayerInfo.class);
         piAction = fields.get("a");
@@ -66,19 +66,19 @@ public class Wrapper1_8_R1 implements VersionWrapper
 
         try
         {
-            playerGP = EntityHuman.class.getDeclaredField("bF");
+            playerGP = EntityHuman.class.getDeclaredField("bS");
             playerGP.setAccessible(true);
             gpID = GameProfile.class.getDeclaredField("id");
             gpID.setAccessible(true);
             gpName = GameProfile.class.getDeclaredField("name");
             gpName.setAccessible(true);
-            pidLatency = PlayerInfoData.class.getDeclaredField("b");
+            pidLatency = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("b");
             pidLatency.setAccessible(true);
-            pidGamemode = PlayerInfoData.class.getDeclaredField("c");
+            pidGamemode = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("c");
             pidGamemode.setAccessible(true);
-            pidGameprofile = PlayerInfoData.class.getDeclaredField("d");
+            pidGameprofile = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("d");
             pidGameprofile.setAccessible(true);
-            pidDisplayName = PlayerInfoData.class.getDeclaredField("e");
+            pidDisplayName = PacketPlayOutPlayerInfo.PlayerInfoData.class.getDeclaredField("e");
             pidDisplayName.setAccessible(true);
         }
         catch (Exception e)
@@ -92,7 +92,7 @@ public class Wrapper1_8_R1 implements VersionWrapper
     @Override
     public void sendActionbar(Player player, String message)
     {
-        IChatBaseComponent icbc = ChatSerializer.a("{\"text\": \"" + message + "\"}");
+        IChatBaseComponent icbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + message + "\"}");
 
         PacketPlayOutChat bar = new PacketPlayOutChat(icbc, (byte) 2);
 
@@ -102,13 +102,11 @@ public class Wrapper1_8_R1 implements VersionWrapper
     @Override
     public GameProfile fillGameprofile(GameProfile gameProfile)
     {
-        //todo: handle errors
         try
         {
             if (gameProfile != null)
             {
                 GameProfile gameProfile1 = null;
-
                 if (gameProfile.getName() != null)
                 {
                     gameProfile1 = MinecraftServer.getServer().getUserCache().getProfile(gameProfile.getName());
@@ -123,7 +121,7 @@ public class Wrapper1_8_R1 implements VersionWrapper
                 }
                 if (Iterables.getFirst(gameProfile1.getProperties().get("textures"), null) == null)
                 {
-                    gameProfile1 = MinecraftServer.getServer().aB().fillProfileProperties(gameProfile1, true);
+                    gameProfile1 = MinecraftServer.getServer().az().fillProfileProperties(gameProfile1, true);
                 }
                 return gameProfile1;
             }
@@ -132,7 +130,6 @@ public class Wrapper1_8_R1 implements VersionWrapper
         {
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -141,13 +138,13 @@ public class Wrapper1_8_R1 implements VersionWrapper
     {
         try
         {
-            EnumPlayerInfoAction action = (EnumPlayerInfoAction) piAction.get(packet);
-            if (action != EnumPlayerInfoAction.ADD_PLAYER)
+            PacketPlayOutPlayerInfo.EnumPlayerInfoAction action = (PacketPlayOutPlayerInfo.EnumPlayerInfoAction) piAction.get(packet);
+            if (action != PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER)
             {
                 return;
             }
-            List<PlayerInfoData> dataList = (List<PlayerInfoData>) piData.get(packet);
-            for (PlayerInfoData data : dataList)
+            List<PacketPlayOutPlayerInfo.PlayerInfoData> dataList = (List<PacketPlayOutPlayerInfo.PlayerInfoData>) piData.get(packet);
+            for (PacketPlayOutPlayerInfo.PlayerInfoData data : dataList)
             {
                 GameProfile gameProfile = data.a();
                 if (fakeProfiles.containsKey(gameProfile.getId()))
@@ -210,7 +207,7 @@ public class Wrapper1_8_R1 implements VersionWrapper
             @Override
             public void run()
             {
-                PacketPlayOutPlayerInfo       playerInfo  = new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.ADD_PLAYER, entityPlayer);
+                PacketPlayOutPlayerInfo       playerInfo  = new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER, entityPlayer);
                 PacketPlayOutNamedEntitySpawn spawnPacket = new PacketPlayOutNamedEntitySpawn(entityPlayer);
                 for (Player player : Bukkit.getServer().getOnlinePlayers())
                 {

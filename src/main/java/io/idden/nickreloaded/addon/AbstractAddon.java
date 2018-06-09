@@ -24,6 +24,8 @@
 
 package io.idden.nickreloaded.addon;
 
+import io.idden.nickreloaded.addon.result.AddonRegisterResult;
+
 /**
  * Represent a plugin hook.
  *
@@ -34,7 +36,7 @@ public abstract class AbstractAddon
 {
     public String id;
 
-    public abstract void register();
+    public abstract void register(AddonRegisterResult registerResult);
 
     public abstract void unregister();
 }

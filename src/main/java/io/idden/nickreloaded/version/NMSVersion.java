@@ -27,8 +27,7 @@ package io.idden.nickreloaded.version;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import io.idden.nickreloaded.nms.v1_8_R1.Wrapper1_8_R1;
-import io.idden.nickreloaded.nms.v1_8_R2.Wrapper1_8_R2;
+import io.idden.nickreloaded.version.impl.*;
 import io.idden.nickreloaded.version.wrapper.VersionWrapper;
 
 import java.util.Arrays;
@@ -45,20 +44,19 @@ public enum NMSVersion
 {
     ONE_EIGHT_R1("1_8_R1", Wrapper1_8_R1.class),
 
-    ONE_EIGHT_R2("1_8_R2", Wrapper1_8_R2.class);
+    ONE_EIGHT_R2("1_8_R2", Wrapper1_8_R2.class),
 
-    //todo: finish wrappers !
-    /*ONE_EIGHT_R3("1_8_R3", Wrapper1_8_R3.class),
+    ONE_EIGHT_R3("1_8_R3", Wrapper1_8_R3.class),
 
     ONE_NINE_R1("1_9_R1", Wrapper1_9_R1.class),
 
     ONE_NINE_R2("1_9_R2", Wrapper1_9_R2.class),
 
-    ONE_TEN_R1("1_10_R1", Wrapper1_10_R1.class),
+    //ONE_TEN_R1("1_10_R1", Wrapper1_10_R1.class), todo: do this one
 
     ONE_ELEVEN_R1("1_11_R1", Wrapper1_11_R1.class),
 
-    ONE_TWELVE_R1("1_12_R1", Wrapper1_12_R1.class);*/
+    ONE_TWELVE_R1("1_12_R1", Wrapper1_12_R1.class);
 
     private static final LoadingCache<Class<? extends VersionWrapper>, VersionWrapper> WRAPPER_CACHE = CacheBuilder.newBuilder().maximumSize(values().length).expireAfterWrite(3, TimeUnit.MINUTES).build(new CacheLoader<Class<? extends VersionWrapper>, VersionWrapper>()
     {

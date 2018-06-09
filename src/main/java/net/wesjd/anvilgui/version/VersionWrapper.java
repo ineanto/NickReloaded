@@ -89,7 +89,7 @@ public interface VersionWrapper {
     void addActiveContainerSlotListener(Object container, Player player);
 
     /**
-     * Gets the {@link Inventory} wrapper of the supplied NMS container
+     * Gets the {@link Inventory} WRAPPER of the supplied NMS container
      * @param container The NMS container to get the {@link Inventory} of
      * @return The inventory of the NMS container
      */
