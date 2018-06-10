@@ -1,28 +1,15 @@
 /*
- *  MIT License
- *
- *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * Copyright (c) 2017-2018 Antoine "Idden" ROCHAS.
+ * This work is under Creative Commons (CC) BY-NC-SA 2.0 License.
+ * https://creativecommons.org/licenses/by-nc-sa/2.0/
  */
 
 package io.idden.nickreloaded.command;
+
+import io.idden.nickreloaded.NickReloaded;
+import io.idden.nickreloaded.command.abstrct.AbstractCommand;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 /**
  * The "/nick" command class.
@@ -30,5 +17,28 @@ package io.idden.nickreloaded.command;
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
  */
-public class NickCommand
-{}
+public class NickCommand extends AbstractCommand
+{
+    public NickCommand(String name)
+    {
+        super(name);
+        setPermission("nickreloaded.nick");
+        //setPermissionMessage()
+    }
+
+    @Override
+    public boolean execute(CommandSender sender, String command, String[] args)
+    {
+        if (! testPermission(sender)) { return true; }
+
+        if(sender instanceof Player)
+        {
+            return true;
+        }
+        else
+        {
+            NickReloaded.INSTANCE.manager.logger.log("Console", "You must me a player to do this !");
+            return true;
+        }
+    }
+}

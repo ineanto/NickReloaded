@@ -1,29 +1,12 @@
 /*
- *  MIT License
- *
- *  Copyright (c) 2017-2018 Antoine "Idden" ROCHAS
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * Copyright (c) 2017-2018 Antoine "Idden" ROCHAS.
+ * This work is under Creative Commons (CC) BY-NC-SA 2.0 License.
+ * https://creativecommons.org/licenses/by-nc-sa/2.0/
  */
 
 package io.idden.nickreloaded.command.abstrct;
 
+import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
@@ -37,30 +20,23 @@ public abstract class AbstractCommand extends Command
     {
         super(name);
 
-        CommandMap commandMap      = null;
-        Field      commandMapField = null;
+        Field      commandMapField;
+        CommandMap commandMap;
 
         try
         {
             commandMapField = Bukkit.getServer().getClass().getDeclaredField("commandMap");
-        }
-        catch (NoSuchFieldException e)
-        {
-            e.printStackTrace();
-        }
+            Validate.notNull(commandMapField, "CommandMapField not found");
+            commandMapField.setAccessible(true);
 
-        commandMapField.setAccessible(true);
-
-        try
-        {
             commandMap = (CommandMap) commandMapField.get(Bukkit.getServer());
+            Validate.notNull(commandMap, "Unable to get CommandMap");
+            commandMap.register(name, this);
         }
-        catch (IllegalAccessException e)
+        catch (IllegalAccessException | NoSuchFieldException e)
         {
             e.printStackTrace();
         }
-
-        commandMap.register(name, this);
     }
 
     @Override
