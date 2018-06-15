@@ -1,7 +1,11 @@
-# NickReloaded - A simple nick plugin.
+# NickReloaded - A simple nick plugin. 
+![license](https://img.shields.io/github/license/Iddenn/NickReloaded.svg?style=flat-square)
 
-## Download
-https://www.spigotmc.org/resources/nickreloaded.46335/
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Iddenn/NickReloaded/2.0-rc1.svg?style=flat-square) 
+![GitHub issues](https://img.shields.io/github/issues/Iddenn/NickReloaded.svg?style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Iddenn/NickReloaded.svg?style=flat-square)
+
+
 
 Version | Supported
 ------------ | -------------
@@ -12,8 +16,8 @@ Version | Supported
 1.11.X | ✔️
 1.12.X | ✔️
 
-### Contributing:
-Soon !
+## Download
+https://www.spigotmc.org/resources/nickreloaded.46335/
 
-### How to use the dedicated API:
+### Contributing:
 Soon !
