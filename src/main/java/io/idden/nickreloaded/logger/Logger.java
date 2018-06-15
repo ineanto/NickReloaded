@@ -16,30 +16,25 @@ import org.bukkit.Bukkit;
  */
 public class Logger
 {
-    public void log(String prefix, String log, boolean date)
+    public void log(Level level, String log)
+    {
+        log(level.prefix, log);
+    }
+
+    public void log(String prefix, String log)
     {
         if (prefix == null)
         {
             prefix = Level.NONE.prefix;
         }
 
-        Bukkit.getConsoleSender().sendMessage("[" + prefix + "] | " + log);
-    }
-
-    public void log(String prefix, String log)
-    {
-        log(prefix, log, false);
-    }
-
-    public void log(Level level, String log)
-    {
-        log(level.prefix, log, false);
+        Bukkit.getConsoleSender().sendMessage("[" + prefix + "/Log]: " + log);
     }
 
     public enum Level
     {
         NONE(""),
-        LOG("Log"),
+        PLUGIN("Plugin"),
         ADDON("Addon"),
         WARNING("WARNING"),
         FATAL("FATAL");

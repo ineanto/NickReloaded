@@ -6,7 +6,7 @@
 
 package io.idden.nickreloaded.player.skin;
 
-import io.idden.nickreloaded.core.Manager;
+import io.idden.nickreloaded.NickReloadedConstants;
 import io.idden.nickreloaded.player.CustomPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -42,25 +42,25 @@ public class Apparence implements Serializable
 
     public void setName(String name)
     {
-        Manager.WRAPPER.setPlayerName(player, name);
+        NickReloadedConstants.WRAPPER.setPlayerName(player, name);
         dName = name;
     }
 
     public void setSkin(String skin)
     {
-        Manager.WRAPPER.setPlayerSkin(player, skin);
+        NickReloadedConstants.WRAPPER.setPlayerSkin(player, skin);
         dSkin = skin;
     }
 
     public void resetName()
     {
-        Manager.WRAPPER.setPlayerName(player, name);
+        NickReloadedConstants.WRAPPER.setPlayerName(player, name);
         dName = null;
     }
 
     public void resetSkin()
     {
-        Manager.WRAPPER.setPlayerSkin(player, name);
+        NickReloadedConstants.WRAPPER.setPlayerSkin(player, name);
         dSkin = null;
     }
 

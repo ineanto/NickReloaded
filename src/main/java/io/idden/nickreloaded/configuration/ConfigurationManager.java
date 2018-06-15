@@ -6,7 +6,11 @@
 
 package io.idden.nickreloaded.configuration;
 
-import io.idden.nickreloaded.configuration.data.DataConfiguration;
+import io.idden.nickreloaded.configuration.data.CacheConfiguration;
+import io.idden.nickreloaded.configuration.data.SQLConfiguration;
+import io.idden.nickreloaded.configuration.plugin.PluginConfiguration;
+
+import java.util.ArrayList;
 
 /**
  * Manage configurations.
@@ -16,16 +20,22 @@ import io.idden.nickreloaded.configuration.data.DataConfiguration;
  */
 public class ConfigurationManager
 {
-    DataConfiguration dataConfiguration;
+    public PluginConfiguration pluginConfiguration;
+    public SQLConfiguration sqlConfiguration;
+    public CacheConfiguration cacheConfiguration;
+
+    private ArrayList<Configuration> configurations = new ArrayList<>();
 
     public void loadConfigurations()
     {
-        dataConfiguration = new DataConfiguration();
-        dataConfiguration.load();
+        configurations.add(pluginConfiguration = new PluginConfiguration());
+        configurations.add(sqlConfiguration = new SQLConfiguration());
+        configurations.add(cacheConfiguration = new CacheConfiguration());
     }
 
     public void saveConfigurations()
     {
-        dataConfiguration.save();
+        configurations.forEach(Configuration::save);
+        configurations.clear();
     }
 }

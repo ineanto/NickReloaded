@@ -7,6 +7,7 @@
 package io.idden.nickreloaded.listener;
 
 import com.mojang.authlib.GameProfile;
+import io.idden.nickreloaded.player.CustomPlayer;
 import io.idden.nickreloaded.version.wrapper.VersionWrapper;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +18,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Triggered when a player joins, register a fakeprofile.
+ * Triggered when a player joins, registering a fakeprofile.
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
@@ -36,17 +37,13 @@ public class PlayerProfileEditorListener implements Listener
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event)
     {
-        UUID uuid = event.getPlayer().getUniqueId();
+        UUID         uuid         = event.getPlayer().getUniqueId();
+        CustomPlayer customPlayer = new CustomPlayer(event.getPlayer());
 
-        //todo: remake this with all the changes
-        /*if (PlayerStorage.getStorage(uuid) != null)
+        if (customPlayer.apparence.disguised && fakeProfiles.containsKey(uuid))
         {
-            if ((NickReloaded.get().getNickManager().isNicked(listener.getPlayer())) && (fakeProfiles.containsKey(uuid)))
-            {
-                fakeProfiles.put(uuid,
-                                 versionWrapper.getFakeProfile(listener.getPlayer()));
-            }
-        }*/
+            fakeProfiles.put(uuid, versionWrapper.getFakeProfile(customPlayer.bukkitPlayer));
+        }
 
     }
 

@@ -16,11 +16,11 @@ import java.util.HashMap;
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
  */
-public class DataConfiguration extends Configuration
+public class SQLConfiguration extends Configuration
 {
-    public DataConfiguration()
+    public SQLConfiguration()
     {
-        super("data");
+        super("data", "sql");
 
         HashMap<String, Object> values = new HashMap<>();
 
@@ -30,6 +30,6 @@ public class DataConfiguration extends Configuration
         values.put("sql.password", "p@ssw0rD");
         values.put("sql.database", "nickreloaded");
 
-        configuration.addDefaults(values);
+        setDefaults(values);
     }
 }

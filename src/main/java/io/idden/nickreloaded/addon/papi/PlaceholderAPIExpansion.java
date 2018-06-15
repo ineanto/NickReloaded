@@ -6,7 +6,7 @@
 
 package io.idden.nickreloaded.addon.papi;
 
-import io.idden.nickreloaded.NickReloaded;
+import io.idden.nickreloaded.NickReloadedConstants;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 
@@ -39,7 +39,7 @@ public class PlaceholderAPIExpansion extends PlaceholderExpansion
     @Override
     public String getVersion()
     {
-        return NickReloaded.VERSION;
+        return NickReloadedConstants.VERSION;
     }
 
     @Override

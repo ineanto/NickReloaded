@@ -15,6 +15,7 @@ import io.idden.nickreloaded.utils.ReflectionUtil;
 import io.idden.nickreloaded.version.wrapper.VersionWrapper;
 import net.minecraft.server.v1_9_R2.*;
 import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.v1_9_R2.CraftServer;
 import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -86,16 +87,18 @@ public class Wrapper1_9_R2 implements VersionWrapper
     {
         try
         {
+            MinecraftServer craftServer = ((CraftServer) Bukkit.getServer()).getServer();
+
             if (gameProfile != null)
             {
                 GameProfile gameProfile1 = null;
                 if (gameProfile.getName() != null)
                 {
-                    gameProfile1 = MinecraftServer.getServer().getUserCache().getProfile(gameProfile.getName());
+                    gameProfile1 = craftServer.getUserCache().getProfile(gameProfile.getName());
                 }
                 if (gameProfile1 == null)
                 {
-                    gameProfile1 = MinecraftServer.getServer().getUserCache().a(gameProfile.getId());
+                    gameProfile1 = craftServer.getUserCache().a(gameProfile.getId());
                 }
                 if (gameProfile1 == null)
                 {
@@ -103,7 +106,7 @@ public class Wrapper1_9_R2 implements VersionWrapper
                 }
                 if (Iterables.getFirst(gameProfile1.getProperties().get("textures"), null) == null)
                 {
-                    gameProfile1 = MinecraftServer.getServer().ay().fillProfileProperties(gameProfile1, true);
+                    gameProfile1 = craftServer.ay().fillProfileProperties(gameProfile1, true);
                 }
                 return gameProfile1;
             }

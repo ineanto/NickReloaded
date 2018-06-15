@@ -6,6 +6,7 @@
 
 package io.idden.nickreloaded.command.abstrct;
 
+import io.idden.nickreloaded.NickReloaded;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -32,6 +33,7 @@ public abstract class AbstractCommand extends Command
             commandMap = (CommandMap) commandMapField.get(Bukkit.getServer());
             Validate.notNull(commandMap, "Unable to get CommandMap");
             commandMap.register(name, this);
+            NickReloaded.INSTANCE.manager.logger.log("Command", "Registered \"" + name + "\" command.");
         }
         catch (IllegalAccessException | NoSuchFieldException e)
         {

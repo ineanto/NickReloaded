@@ -7,89 +7,108 @@
 package io.idden.nickreloaded.configuration;
 
 import io.idden.nickreloaded.NickReloaded;
-import io.idden.nickreloaded.logger.Logger;
 import org.apache.commons.lang3.Validate;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
- * Represent a plugin configuration.
+ * Represent a plugin configurations.
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
  */
 public class Configuration
 {
-    public String            fileName;
     public YamlConfiguration configuration;
-    public boolean           loaded;
 
-    private File file;
+    private File configFile;
 
-    public Configuration(String fileName)
+    public Configuration(String folder, String name)
     {
-        this.fileName = fileName;
-        this.file = new File(NickReloaded.INSTANCE.getDataFolder(), fileName);
+        File configFolder;
+        if (folder == null) { configFolder = NickReloaded.INSTANCE.getDataFolder(); }
+        else { configFolder = new File(NickReloaded.INSTANCE.getDataFolder(), folder); }
 
-        if (setupConfiguration())
-        {
-            NickReloaded.INSTANCE.manager.logger.log("Config", "Created configuration file: \"" + fileName + "\".");
-        }
+        this.configFile = new File(configFolder, name + ".yml");
+
+        create();
+        load();
     }
 
-    private boolean setupConfiguration()
+    public Configuration(String name)
     {
-        if (! file.exists())
-        {
-            file.getParentFile().mkdirs();
-            NickReloaded.INSTANCE.saveResource(fileName + ".yml", false);
-            configuration = new YamlConfiguration();
-        }
-
-        return false;
+        this(null, name);
     }
 
     public Object getEntry(String path)
     {
-        Validate.isTrue(loaded, "Configuration isn't loaded");
         return configuration.get(path);
     }
 
     public void setEntry(String path, Object value)
     {
-        Validate.isTrue(loaded, "Configuration isn't loaded");
         configuration.set(path, value);
+        save();
     }
 
-    public void save()
+    public void setMultipleEntry(HashMap<String, Object> values)
     {
-        Validate.notNull(configuration, "Configuration is null");
+        values.forEach((path, value) -> configuration.set(path, value));
+        save();
+    }
 
-        try
+    public void setDefaults(HashMap<String, Object> values)
+    {
+        values.forEach((path, value) ->
         {
-            configuration.save(file);
-            loaded = false;
-        }
-        catch (IOException e)
-        {
-            NickReloaded.INSTANCE.manager.logger.log(Logger.Level.WARNING, "Failed to save configuration: \"" + fileName + "\":");
-            e.printStackTrace();
-        }
+            if(getEntry(path) == null)
+            {
+                configuration.set(path, value);
+            }
+        });
+
+        save();
     }
 
     public void load()
     {
-        Validate.notNull(file, "File is null");
+        configuration = YamlConfiguration.loadConfiguration(configFile);
+        NickReloaded.INSTANCE.manager.logger.log("Config", "Loaded \"" + configFile.getName() + "\" !");
+    }
+
+    private void create()
+    {
+        if (! configFile.exists())
+        {
+            if (! configFile.getParentFile().exists())
+            {
+                configFile.getParentFile().mkdirs();
+            }
+
+            try
+            {
+                configFile.createNewFile();
+                System.out.println("Everything created successfully for file \"" + configFile.getName() + "\" !");
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void save()
+    {
+        Validate.notNull(configuration);
 
         try
         {
-            configuration.load(file);
-            loaded = true;
+            configuration.save(configFile);
         }
-        catch (IOException | InvalidConfigurationException e)
+        catch (IOException e)
         {
             e.printStackTrace();
         }

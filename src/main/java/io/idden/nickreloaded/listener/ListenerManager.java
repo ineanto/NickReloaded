@@ -19,20 +19,20 @@ import java.util.ArrayList;
  */
 public class ListenerManager
 {
-    public ArrayList<Listener> LISTENERS = new ArrayList<>();
+    private ArrayList<Listener> listeners = new ArrayList<>();
 
     public ListenerManager()
     {
-        LISTENERS.add(new PlayerJoinListener());
+        listeners.add(new PlayerJoinListener());
     }
 
     public void registerListeners()
     {
-        LISTENERS.forEach(listener -> NickReloaded.INSTANCE.getServer().getPluginManager().registerEvents(listener, NickReloaded.INSTANCE));
+        listeners.forEach(listener -> NickReloaded.INSTANCE.getServer().getPluginManager().registerEvents(listener, NickReloaded.INSTANCE));
     }
 
     public void unregisterListeners()
     {
-        LISTENERS.clear();
+        listeners.clear();
     }
 }

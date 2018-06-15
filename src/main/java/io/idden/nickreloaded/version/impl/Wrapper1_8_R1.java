@@ -16,6 +16,7 @@ import io.idden.nickreloaded.version.wrapper.VersionWrapper;
 import net.minecraft.server.v1_8_R1.*;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R1.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -38,7 +39,7 @@ public class Wrapper1_8_R1 implements VersionWrapper
 
     private Field playerGP, gpID, gpName;
     private Field piAction, piData;
-    private Field pidLatency, pidGamemode, pidGameprofile, pidDisplayName;
+    private Field pidGameprofile;
 
     public Wrapper1_8_R1()
     {
@@ -54,14 +55,8 @@ public class Wrapper1_8_R1 implements VersionWrapper
             gpID.setAccessible(true);
             gpName = GameProfile.class.getDeclaredField("name");
             gpName.setAccessible(true);
-            pidLatency = PlayerInfoData.class.getDeclaredField("b");
-            pidLatency.setAccessible(true);
-            pidGamemode = PlayerInfoData.class.getDeclaredField("c");
-            pidGamemode.setAccessible(true);
             pidGameprofile = PlayerInfoData.class.getDeclaredField("d");
             pidGameprofile.setAccessible(true);
-            pidDisplayName = PlayerInfoData.class.getDeclaredField("e");
-            pidDisplayName.setAccessible(true);
         }
         catch (Exception e)
         {
@@ -86,17 +81,18 @@ public class Wrapper1_8_R1 implements VersionWrapper
     {
         try
         {
+            MinecraftServer craftServer = ((CraftServer) Bukkit.getServer()).getServer();
+
             if (gameProfile != null)
             {
                 GameProfile gameProfile1 = null;
-
                 if (gameProfile.getName() != null)
                 {
-                    gameProfile1 = MinecraftServer.getServer().getUserCache().getProfile(gameProfile.getName());
+                    gameProfile1 = craftServer.getUserCache().getProfile(gameProfile.getName());
                 }
                 if (gameProfile1 == null)
                 {
-                    gameProfile1 = MinecraftServer.getServer().getUserCache().a(gameProfile.getId());
+                    gameProfile1 = craftServer.getUserCache().a(gameProfile.getId());
                 }
                 if (gameProfile1 == null)
                 {
@@ -104,7 +100,7 @@ public class Wrapper1_8_R1 implements VersionWrapper
                 }
                 if (Iterables.getFirst(gameProfile1.getProperties().get("textures"), null) == null)
                 {
-                    gameProfile1 = MinecraftServer.getServer().aB().fillProfileProperties(gameProfile1, true);
+                    gameProfile1 = craftServer.aB().fillProfileProperties(gameProfile1, true);
                 }
                 return gameProfile1;
             }

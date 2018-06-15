@@ -6,7 +6,7 @@
 
 package io.idden.nickreloaded.utils;
 
-import io.idden.nickreloaded.core.Manager;
+import io.idden.nickreloaded.NickReloadedConstants;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
@@ -36,7 +36,7 @@ public class ReflectionUtil
     {
         try
         {
-            return Class.forName("net.minecraft.server." + Manager.NMS_PKG_VERSION + "." + name);
+            return Class.forName("net.minecraft.server.v" + NickReloadedConstants.NMS_PKG_VERSION + "." + name);
         }
 
         catch (ClassNotFoundException e)
@@ -52,7 +52,9 @@ public class ReflectionUtil
         {
             return classFields.get(cl);
         }
+
         Map<String, Field> fields = new HashMap<>();
+
         for (Field field : cl.getDeclaredFields())
         {
             field.setAccessible(true);

@@ -8,6 +8,7 @@ package io.idden.nickreloaded.command;
 
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.command.abstrct.AbstractCommand;
+import io.idden.nickreloaded.player.CustomPlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -19,11 +20,11 @@ import org.bukkit.entity.Player;
  */
 public class NickCommand extends AbstractCommand
 {
-    public NickCommand(String name)
+    public NickCommand()
     {
-        super(name);
+        super("nick");
         setPermission("nickreloaded.nick");
-        //setPermissionMessage()
+        setUsage("/nick <nickname> [skin]");
     }
 
     @Override
@@ -33,6 +34,34 @@ public class NickCommand extends AbstractCommand
 
         if(sender instanceof Player)
         {
+            Player player = (Player) sender;
+            CustomPlayer customPlayer = new CustomPlayer(player);
+
+            if(args.length < 1)
+            {
+                sendHelp(player);
+            }
+            else
+            {
+                String nickname = args[0];
+                String skin = null;
+
+                if(args.length > 1)
+                {
+                    skin = args[1];
+                }
+
+                player.sendMessage("§cTrying to set your nickname to \"" + nickname + "\"" + (skin == null ? "" : " and your skin to \"" + skin + "\" ") + "...");
+                customPlayer.apparence.setName(nickname);
+
+                if(skin != null)
+                {
+                    customPlayer.apparence.setSkin(skin);
+                }
+
+                player.sendMessage("§aSet your nickname to \"" + nickname + "\"" + (skin == null ? "" : " and your skin to \"" + skin + "\" ") + " !");
+            }
+
             return true;
         }
         else
@@ -40,5 +69,10 @@ public class NickCommand extends AbstractCommand
             NickReloaded.INSTANCE.manager.logger.log("Console", "You must me a player to do this !");
             return true;
         }
+    }
+
+    private void sendHelp(Player player)
+    {
+        player.sendMessage("§cMissing arguments: " + getUsage() + ".");
     }
 }
