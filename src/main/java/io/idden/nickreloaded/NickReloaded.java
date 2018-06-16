@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * The main class of NickReloaded.
  *
- * @author Antoine "Idden" R.
+ * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
  */
 public class NickReloaded extends JavaPlugin

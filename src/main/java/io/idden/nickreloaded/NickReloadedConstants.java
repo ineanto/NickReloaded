@@ -20,7 +20,7 @@ public class NickReloadedConstants
     public static String         NMS_PKG_VERSION;
     public static VersionWrapper WRAPPER;
 
-    public void unset()
+    public void unsetConstants()
     {
         VERSION = null;
         NMS_PKG_VERSION = null;

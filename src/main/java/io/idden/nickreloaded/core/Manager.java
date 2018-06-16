@@ -10,9 +10,11 @@ import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.NickReloadedConstants;
 import io.idden.nickreloaded.addon.AddonManager;
 import io.idden.nickreloaded.command.NickCommand;
+import io.idden.nickreloaded.command.UnnickCommand;
 import io.idden.nickreloaded.configuration.ConfigurationManager;
 import io.idden.nickreloaded.listener.ListenerManager;
 import io.idden.nickreloaded.logger.Logger;
+import io.idden.nickreloaded.mojang.MojangChecker;
 import io.idden.nickreloaded.version.NMSVersion;
 import org.bukkit.Bukkit;
 
@@ -29,7 +31,8 @@ public class Manager
     public ConfigurationManager configurationManager = new ConfigurationManager();
     public Logger               logger               = new Logger();
 
-    private NickReloadedConstants nickReloadedConstants = new NickReloadedConstants();
+    private NickReloadedConstants constants     = new NickReloadedConstants();
+    private MojangChecker         mojangChecker = new MojangChecker();
 
     public void start()
     {
@@ -51,19 +54,43 @@ public class Manager
         }
         else
         {
-            //CraftBukkit version is supported by NickReloaded
+            //CraftBukkit version is supported by NickReloaded.
             NickReloadedConstants.NMS_PKG_VERSION = version.getPackage();
             NickReloadedConstants.WRAPPER = version.getWrapper();
 
             logger.log("Wrapper", "Loaded Wrapper for version " + NickReloadedConstants.NMS_PKG_VERSION + " !");
 
+            logger.log("Mojang Servers", "Checking Mojang Session Servers status...");
+
+            /*if (! mojangChecker.check())
+            {
+                //Servers aren't in a good status
+                logger.log("Mojang Servers", "Hum... Session Servers arn't available right now. See https://status.mojang.com/check to get status.");
+                Bukkit.getPluginManager().disablePlugin(NickReloaded.INSTANCE);
+            }
+            else
+            {
+                logger.log("Mojang Servers", "Servers are OK !");
+            }*/
+
+            logger.log("Mojang Servers", "Servers checked !");
+
             /*
-              Load addons before everything to
-              avoid dependency errors.
-            */
-            addonManager.loadAddons();
-            new NickCommand();
+               This is important to load configuration files
+               before initializing plugin's components.
+               This prevent useless initialization from
+               some plugin components (dependency, storage ect...)
+             */
             configurationManager.loadConfigurations();
+
+            /*
+               Loading dependencies !
+             */
+            addonManager.loadAddons();
+
+            new NickCommand();
+            new UnnickCommand();
+
             listenerManager.registerListeners();
         }
 
@@ -75,7 +102,7 @@ public class Manager
         addonManager.unloadAddons();
         listenerManager.unregisterListeners();
         configurationManager.saveConfigurations();
-        nickReloadedConstants.unset();
+        constants.unsetConstants();
         logger.log(Logger.Level.PLUGIN, "Plugin disabled. Bye !");
     }
 }

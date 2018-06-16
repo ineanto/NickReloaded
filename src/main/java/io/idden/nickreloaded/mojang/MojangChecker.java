@@ -6,7 +6,6 @@
 
 package io.idden.nickreloaded.mojang;
 
-import io.idden.nickreloaded.NickReloaded;
 import org.shanerx.mojang.Mojang;
 
 /**
@@ -17,16 +16,8 @@ import org.shanerx.mojang.Mojang;
  */
 public class MojangChecker
 {
-    public boolean checkEverithingIsAllright()
+    public boolean check()
     {
-        Mojang mojang = new Mojang().connect();
-
-        if (mojang.getStatus(Mojang.ServiceType.SESSIONSERVER_MOJANG_COM) != Mojang.ServiceStatus.GREEN)
-        {
-            NickReloaded.INSTANCE.manager.logger.log("ERROR", "The Session Server isn't available right now ! Go to https://status.mojang.com/check for more informations.");
-            return false;
-        }
-
-        return true;
+        return new Mojang().connect().getStatus(Mojang.ServiceType.SESSIONSERVER_MOJANG_COM) == Mojang.ServiceStatus.GREEN;
     }
 }

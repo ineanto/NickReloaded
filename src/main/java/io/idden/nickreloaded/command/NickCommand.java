@@ -32,21 +32,22 @@ public class NickCommand extends AbstractCommand
     {
         if (! testPermission(sender)) { return true; }
 
-        if(sender instanceof Player)
+        if (sender instanceof Player)
         {
-            Player player = (Player) sender;
+            Player       player       = (Player) sender;
             CustomPlayer customPlayer = new CustomPlayer(player);
 
-            if(args.length < 1)
+            if (args.length < 1)
             {
                 sendHelp(player);
+                return true;
             }
             else
             {
                 String nickname = args[0];
-                String skin = null;
+                String skin     = null;
 
-                if(args.length > 1)
+                if (args.length > 1)
                 {
                     skin = args[1];
                 }
@@ -54,15 +55,14 @@ public class NickCommand extends AbstractCommand
                 player.sendMessage("§cTrying to set your nickname to \"" + nickname + "\"" + (skin == null ? "" : " and your skin to \"" + skin + "\" ") + "...");
                 customPlayer.apparence.setName(nickname);
 
-                if(skin != null)
+                if (skin != null)
                 {
                     customPlayer.apparence.setSkin(skin);
                 }
 
                 player.sendMessage("§aSet your nickname to \"" + nickname + "\"" + (skin == null ? "" : " and your skin to \"" + skin + "\" ") + " !");
+                return true;
             }
-
-            return true;
         }
         else
         {

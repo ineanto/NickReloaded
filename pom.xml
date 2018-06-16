@@ -52,7 +52,7 @@
         <dependency>
             <groupId>com.github.SparklingComet</groupId>
             <artifactId>java-mojang-api</artifactId>
-            <version>LATEST</version>
+            <version>master-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -114,13 +114,9 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.7.0</version>
+
                     <configuration>
                         <compilerId>eclipse</compilerId>
                         <source>1.8</source>
