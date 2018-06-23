@@ -36,8 +36,9 @@ public class Logger
         NONE(""),
         PLUGIN("Plugin"),
         ADDON("Addon"),
-        WARNING("WARNING"),
-        FATAL("FATAL");
+        WARNING("Warn"),
+        FATAL("FATAL"),
+        DEBUG("Debug");
 
         public String prefix;
 

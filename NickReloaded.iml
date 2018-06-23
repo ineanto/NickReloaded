@@ -10,7 +10,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.github.SparklingComet:java-mojang-api:master-07e1ffea0a-1" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.8:1.8" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.8.3:1.8.3" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.8.8:1.8.8" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.9:1.9" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.9.4:1.9.4" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.10.2:1.10.2" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.11.2:1.11.2" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.12.2:1.12.2" level="project" />
+    <orderEntry type="library" name="Maven: me.clip:placeholderapi:2.8.7" level="project" />
+    <orderEntry type="library" name="Maven: org.shanerx:java-mojang-api:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.mashape.unirest:unirest-java:1.4.9" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.4" level="project" />
@@ -23,14 +32,5 @@
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.8:1.8" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.8.3:1.8.3" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.8.8:1.8.8" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.9:1.9" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.9.4:1.9.4" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.10.2:1.10.2" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.11.2:1.11.2" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-1.12.2:1.12.2" level="project" />
-    <orderEntry type="library" name="Maven: me.clip:placeholderapi:2.8.7" level="project" />
   </component>
 </module>

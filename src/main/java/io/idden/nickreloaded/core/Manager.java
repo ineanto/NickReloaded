@@ -62,7 +62,8 @@ public class Manager
 
             logger.log("Mojang Servers", "Checking Mojang Session Servers status...");
 
-            /*if (! mojangChecker.check())
+            //https://github.com/SparklingComet/java-mojang-api/pull/5
+            if (! mojangChecker.check())
             {
                 //Servers aren't in a good status
                 logger.log("Mojang Servers", "Hum... Session Servers arn't available right now. See https://status.mojang.com/check to get status.");
@@ -71,7 +72,7 @@ public class Manager
             else
             {
                 logger.log("Mojang Servers", "Servers are OK !");
-            }*/
+            }
 
             logger.log("Mojang Servers", "Servers checked !");
 
@@ -84,7 +85,7 @@ public class Manager
             configurationManager.loadConfigurations();
 
             /*
-               Loading dependencies !
+               Loading dependencies...
              */
             addonManager.loadAddons();
 
