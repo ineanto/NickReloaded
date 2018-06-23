@@ -39,12 +39,20 @@ public class UnnickCommand extends AbstractCommand
             {
                 CustomPlayer customPlayer = new CustomPlayer(player);
 
-                customPlayer.apparence.reset();
+                if(customPlayer.data.apparence.disguised)
+                {
+                    customPlayer.data.apparence.reset();
+                }
+                else
+                {
+                    player.sendMessage("§cYou're not nicked!");
+                }
+
                 return true;
             }
             else
             {
-                player.sendMessage("Command ran on other player !");
+                player.sendMessage("Command ran on other player!");
             }
         }
         return false;

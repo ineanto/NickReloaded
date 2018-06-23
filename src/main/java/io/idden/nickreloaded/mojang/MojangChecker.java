@@ -6,10 +6,8 @@
 
 package io.idden.nickreloaded.mojang;
 
-import org.shanerx.mojang.Mojang;
-
 /**
- * Check everything is OK Mojang side, to call skin textures.
+ * Check everything is OK Mojang side, to be able to change skin later.
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1
@@ -18,6 +16,6 @@ public class MojangChecker
 {
     public boolean check()
     {
-        return new Mojang().connect().getStatus(Mojang.ServiceType.SESSIONSERVER_MOJANG_COM) == Mojang.ServiceStatus.GREEN;
+        return true;
     }
 }

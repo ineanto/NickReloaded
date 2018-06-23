@@ -7,6 +7,7 @@
 package io.idden.nickreloaded.player.data;
 
 import io.idden.nickreloaded.player.CustomPlayer;
+import io.idden.nickreloaded.player.skin.Apparence;
 
 import java.util.UUID;
 
@@ -29,21 +30,16 @@ public class Data
         this.customPlayer = customPlayer;
     }
 
-    public void loadData() //Use that in first
+    public Apparence loadData() //Use that in first
     {
         dataLoaded = true;
+        return null;
     }
 
     public void saveData()
     {
-        dataLoaded = false;
+
     }
 
-    private void loadSQLData() {}
 
-    private void saveSQLData() {}
-
-    private void saveCache() {}
-
-    private void loadCache() {}
 }

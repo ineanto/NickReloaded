@@ -7,6 +7,7 @@
 package io.idden.nickreloaded.player;
 
 import io.idden.nickreloaded.player.data.Data;
+import io.idden.nickreloaded.player.debug.DebugUtils;
 import io.idden.nickreloaded.player.skin.Apparence;
 import org.bukkit.entity.Player;
 
@@ -20,13 +21,15 @@ public class CustomPlayer
 {
     public Player bukkitPlayer;
 
-    public Data      data;
-    public Apparence apparence;
+    public final Data       data;
+    public final Apparence  apparence;
+    public final DebugUtils debugUtils;
 
     public CustomPlayer(Player bukkitPlayer)
     {
         this.bukkitPlayer = bukkitPlayer;
         this.data = new Data(bukkitPlayer.getUniqueId(), this);
-        this.apparence = new Apparence(bukkitPlayer.getUniqueId(), this);
+        this.apparence = data.loadData();
+        this.debugUtils = new DebugUtils(bukkitPlayer);
     }
 }

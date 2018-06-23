@@ -58,7 +58,7 @@ public class Manager
             NickReloadedConstants.NMS_PKG_VERSION = version.getPackage();
             NickReloadedConstants.WRAPPER = version.getWrapper();
 
-            logger.log("Wrapper", "Loaded Wrapper for version " + NickReloadedConstants.NMS_PKG_VERSION + " !");
+            logger.log("Wrapper", "Loaded Wrapper for version " + NickReloadedConstants.NMS_PKG_VERSION + "!");
 
             logger.log("Mojang Servers", "Checking Mojang Session Servers status...");
 
@@ -71,7 +71,7 @@ public class Manager
             }
             else
             {
-                logger.log("Mojang Servers", "Servers are OK !");
+                logger.log("Mojang Servers", "Status: OK");
             }
 
             logger.log("Mojang Servers", "Servers checked !");

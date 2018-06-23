@@ -28,7 +28,7 @@ public class Apparence implements Serializable
     public transient Player       player;
     public transient CustomPlayer customPlayer;
 
-    public boolean disguised;
+    public boolean disguised = false;
     public String  dSkin = null;
     public String  dName = null;
 
@@ -40,13 +40,33 @@ public class Apparence implements Serializable
         this.customPlayer = customPlayer;
     }
 
-    public void setName(String name)
+    public void setApparence(String name, String skin)
+    {
+        if(name == null && skin == null)
+        {
+            throw new UnsupportedOperationException("Can't apply null data to player");
+        }
+
+        if(skin != null)
+        {
+            setSkin(skin);
+        }
+
+        if(name != null)
+        {
+            setName(name);
+        }
+
+        disguised = true;
+    }
+
+    private void setName(String name)
     {
         NickReloadedConstants.WRAPPER.setPlayerName(player, name);
         dName = name;
     }
 
-    public void setSkin(String skin)
+    private void setSkin(String skin)
     {
         NickReloadedConstants.WRAPPER.setPlayerSkin(player, skin);
         dSkin = skin;
@@ -68,5 +88,6 @@ public class Apparence implements Serializable
     {
         resetName();
         resetSkin();
+        disguised = false;
     }
 }

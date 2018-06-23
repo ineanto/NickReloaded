@@ -13,7 +13,7 @@ import io.idden.nickreloaded.logger.Logger;
 import java.util.HashMap;
 
 /**
- * Manage addon.
+ * Manage addons.
  *
  * @author Antoine "Idden" ROCHAS
  * @since 2.0-rc1

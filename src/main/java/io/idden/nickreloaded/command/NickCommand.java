@@ -53,20 +53,18 @@ public class NickCommand extends AbstractCommand
                 }
 
                 player.sendMessage("§cTrying to set your nickname to \"" + nickname + "\"" + (skin == null ? "" : " and your skin to \"" + skin + "\" ") + "...");
-                customPlayer.apparence.setName(nickname);
 
-                if (skin != null)
-                {
-                    customPlayer.apparence.setSkin(skin);
-                }
+                customPlayer.debugUtils.sendDebug("DisguisedBfrNick=" + customPlayer.data.apparence.disguised);
+                customPlayer.data.apparence.setApparence(nickname, skin);
+                customPlayer.debugUtils.sendDebug("Disguised=" + customPlayer.data.apparence.disguised);
 
-                player.sendMessage("§aSet your nickname to \"" + nickname + "\"" + (skin == null ? "" : " and your skin to \"" + skin + "\" ") + " !");
+                player.sendMessage("§aNick set!");
                 return true;
             }
         }
         else
         {
-            NickReloaded.INSTANCE.manager.logger.log("Console", "You must me a player to do this !");
+            NickReloaded.INSTANCE.manager.logger.log("Console", "You must me a player to do this!");
             return true;
         }
     }

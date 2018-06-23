@@ -7,6 +7,7 @@
 package io.idden.nickreloaded.configuration;
 
 import io.idden.nickreloaded.NickReloaded;
+import io.idden.nickreloaded.logger.Logger;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -76,7 +77,7 @@ public class Configuration
     public void load()
     {
         configuration = YamlConfiguration.loadConfiguration(configFile);
-        NickReloaded.INSTANCE.manager.logger.log("Config", "Loaded \"" + configFile.getName() + "\" !");
+        NickReloaded.INSTANCE.manager.logger.log("Config", "Loaded \"" + configFile.getName() + "\"!");
     }
 
     private void create()
@@ -91,7 +92,7 @@ public class Configuration
             try
             {
                 configFile.createNewFile();
-                System.out.println("Everything created successfully for file \"" + configFile.getName() + "\" !");
+                NickReloaded.INSTANCE.manager.logger.log(Logger.Level.DEBUG, "Everything created successfully for file \"" + configFile.getName() + "\"!");
             }
             catch (IOException e)
             {
