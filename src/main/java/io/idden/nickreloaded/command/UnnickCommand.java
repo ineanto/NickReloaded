@@ -39,9 +39,9 @@ public class UnnickCommand extends AbstractCommand
             {
                 CustomPlayer customPlayer = new CustomPlayer(player);
 
-                if(customPlayer.data.apparence.disguised)
+                if(customPlayer.apparence.disguised)
                 {
-                    customPlayer.data.apparence.reset();
+                    customPlayer.apparence.reset();
                 }
                 else
                 {

@@ -31,6 +31,12 @@ public class ConfigurationManager
         configurations.add(pluginConfiguration = new PluginConfiguration());
         configurations.add(sqlConfiguration = new SQLConfiguration());
         configurations.add(cacheConfiguration = new CacheConfiguration());
+
+        configurations.forEach(configuration ->
+        {
+            configuration.create();
+            configuration.load();
+        });
     }
 
     public void saveConfigurations()

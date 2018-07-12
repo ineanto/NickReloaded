@@ -33,13 +33,11 @@ public class Data
     public Apparence loadData() //Use that in first
     {
         dataLoaded = true;
-        return null;
+        return new Apparence(uuid, customPlayer);
     }
 
     public void saveData()
     {
 
     }
-
-
 }

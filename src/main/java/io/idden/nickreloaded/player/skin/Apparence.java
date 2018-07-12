@@ -6,12 +6,14 @@
 
 package io.idden.nickreloaded.player.skin;
 
+import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.NickReloadedConstants;
 import io.idden.nickreloaded.player.CustomPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.UUID;
 
 /**
@@ -22,6 +24,8 @@ import java.util.UUID;
  */
 public class Apparence implements Serializable
 {
+    public ArrayList<UUID> nicked = new ArrayList<>();
+
     public UUID   uuid;
     public String name;
 
@@ -29,8 +33,8 @@ public class Apparence implements Serializable
     public transient CustomPlayer customPlayer;
 
     public boolean disguised = false;
-    public String  dSkin = null;
-    public String  dName = null;
+    public String  dSkin     = null;
+    public String  dName     = null;
 
     public Apparence(UUID uuid, CustomPlayer customPlayer)
     {
@@ -42,22 +46,29 @@ public class Apparence implements Serializable
 
     public void setApparence(String name, String skin)
     {
-        if(name == null && skin == null)
+        if (name == null && skin == null)
         {
             throw new UnsupportedOperationException("Can't apply null data to player");
         }
 
-        if(skin != null)
+        if (! disguised)
         {
-            setSkin(skin);
-        }
+            Bukkit.getScheduler().runTaskAsynchronously(NickReloaded.INSTANCE, () ->
+            {
+                if (name != null)
+                {
+                    setName(name);
+                }
 
-        if(name != null)
-        {
-            setName(name);
-        }
+                if (skin != null)
+                {
+                    setSkin(skin);
+                }
 
-        disguised = true;
+                nicked.add(uuid);
+                disguised = true;
+            });
+        }
     }
 
     private void setName(String name)
@@ -86,8 +97,12 @@ public class Apparence implements Serializable
 
     public void reset()
     {
-        resetName();
-        resetSkin();
-        disguised = false;
+        Bukkit.getScheduler().runTaskAsynchronously(NickReloaded.INSTANCE, () ->
+        {
+            resetName();
+            resetSkin();
+            nicked.remove(uuid);
+            disguised = false;
+        });
     }
 }

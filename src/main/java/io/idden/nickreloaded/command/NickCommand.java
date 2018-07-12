@@ -54,9 +54,9 @@ public class NickCommand extends AbstractCommand
 
                 player.sendMessage("§cTrying to set your nickname to \"" + nickname + "\"" + (skin == null ? "" : " and your skin to \"" + skin + "\" ") + "...");
 
-                customPlayer.debugUtils.sendDebug("DisguisedBfrNick=" + customPlayer.data.apparence.disguised);
-                customPlayer.data.apparence.setApparence(nickname, skin);
-                customPlayer.debugUtils.sendDebug("Disguised=" + customPlayer.data.apparence.disguised);
+                customPlayer.debugUtils.sendDebug("DisguisedBfrNick=" + customPlayer.apparence.disguised);
+                customPlayer.apparence.setApparence(nickname, skin);
+                customPlayer.debugUtils.sendDebug("Disguised=" + customPlayer.apparence.disguised);
 
                 player.sendMessage("§aNick set!");
                 return true;

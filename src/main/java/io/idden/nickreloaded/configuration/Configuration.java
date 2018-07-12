@@ -8,7 +8,7 @@ package io.idden.nickreloaded.configuration;
 
 import io.idden.nickreloaded.NickReloaded;
 import io.idden.nickreloaded.logger.Logger;
-import org.apache.commons.lang3.Validate;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -26,17 +26,15 @@ public class Configuration
     public YamlConfiguration configuration;
 
     private File configFile;
+    private HashMap<String, ?> defaults;
 
     public Configuration(String folder, String name)
     {
         File configFolder;
-        if (folder == null) { configFolder = NickReloaded.INSTANCE.getDataFolder(); }
-        else { configFolder = new File(NickReloaded.INSTANCE.getDataFolder(), folder); }
+
+        configFolder = folder == null ? NickReloaded.INSTANCE.getDataFolder() : new File(NickReloaded.INSTANCE.getDataFolder(), folder);
 
         this.configFile = new File(configFolder, name + ".yml");
-
-        create();
-        load();
     }
 
     public Configuration(String name)
@@ -55,44 +53,27 @@ public class Configuration
         save();
     }
 
+    public void setDefaults(HashMap<String, ?> defaults)
+    {
+        this.defaults = defaults;
+    }
+
     public void setMultipleEntry(HashMap<String, Object> values)
     {
         values.forEach((path, value) -> configuration.set(path, value));
         save();
     }
 
-    public void setDefaults(HashMap<String, Object> values)
-    {
-        values.forEach((path, value) ->
-        {
-            if(getEntry(path) == null)
-            {
-                configuration.set(path, value);
-            }
-        });
-
-        save();
-    }
-
-    public void load()
-    {
-        configuration = YamlConfiguration.loadConfiguration(configFile);
-        NickReloaded.INSTANCE.manager.logger.log("Config", "Loaded \"" + configFile.getName() + "\"!");
-    }
-
-    private void create()
+    public void create()
     {
         if (! configFile.exists())
         {
-            if (! configFile.getParentFile().exists())
-            {
-                configFile.getParentFile().mkdirs();
-            }
-
             try
             {
-                configFile.createNewFile();
-                NickReloaded.INSTANCE.manager.logger.log(Logger.Level.DEBUG, "Everything created successfully for file \"" + configFile.getName() + "\"!");
+                if(configFile.getParentFile().mkdirs() && configFile.createNewFile())
+                {
+                    NickReloaded.INSTANCE.manager.logger.log(Logger.Level.DEBUG, "Everything created successfully for file \"" + configFile.getName() + "\"!");
+                }
             }
             catch (IOException e)
             {
@@ -101,9 +82,47 @@ public class Configuration
         }
     }
 
+    public void load()
+    {
+        configuration = new YamlConfiguration();
+
+        try
+        {
+            configuration.load(configFile);
+        }
+        catch (InvalidConfigurationException | IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        if(defaults != null && !defaults.isEmpty())
+        {
+            defaults.forEach((key, value) ->
+            {
+                configuration.set(key, value);
+
+                save();
+            });
+        }
+
+        try
+        {
+            configuration.load(configFile);
+        }
+        catch (InvalidConfigurationException | IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        NickReloaded.INSTANCE.manager.logger.log("Config", "Loaded \"" + configFile.getName() + "\"!");
+    }
+
     public void save()
     {
-        Validate.notNull(configuration);
+        if(configuration == null)
+        {
+            load();
+        }
 
         try
         {

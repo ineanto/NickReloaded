@@ -217,6 +217,7 @@ public class Wrapper1_12_R1 implements VersionWrapper
     public GameProfile getFakeProfile(Player player)
     {
         UUID uuid = player.getUniqueId();
+
         if (fakeProfiles.containsKey(uuid))
         {
             return fakeProfiles.get(uuid);

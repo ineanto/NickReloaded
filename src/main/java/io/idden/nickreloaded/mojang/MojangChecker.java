@@ -6,6 +6,8 @@
 
 package io.idden.nickreloaded.mojang;
 
+import org.shanerx.mojang.Mojang;
+
 /**
  * Check everything is OK Mojang side, to be able to change skin later.
  *
@@ -16,6 +18,6 @@ public class MojangChecker
 {
     public boolean check()
     {
-        return true;
+        return new Mojang().connect().getStatus(Mojang.ServiceType.SKINS_MINECRAFT_NET) == Mojang.ServiceStatus.GREEN;
     }
 }

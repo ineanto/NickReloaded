@@ -26,7 +26,7 @@ public class PluginConfiguration extends Configuration
 
         values.put("plugin.prefix", "NickReloaded");
         values.put("plugin.offline-mode", false);
-        values.put("plugin.i18n.language", "fr");
+        values.put("plugin.language", "fr");
         values.put("plugin.storage.sql", true);
         values.put("plugin.storage.cache", false);
 

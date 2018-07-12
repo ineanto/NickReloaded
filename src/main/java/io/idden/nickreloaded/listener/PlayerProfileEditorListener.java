@@ -44,7 +44,6 @@ public class PlayerProfileEditorListener implements Listener
         {
             fakeProfiles.put(uuid, versionWrapper.getFakeProfile(customPlayer.bukkitPlayer));
         }
-
     }
 
     @EventHandler
