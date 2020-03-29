@@ -2,7 +2,7 @@
 
 # Outdated
 This repository is now read-only (for conservation purposes).<br>
-Head to [NickReloaded 2.0](https://github.com/aroooo/NickReloadedPlus) to discover the next version !
+A new version is coming by end of 2020 (promise!)
 
 ## Download
 https://www.spigotmc.org/resources/nickreloaded.46335/
