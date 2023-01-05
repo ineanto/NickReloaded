@@ -1,8 +1,8 @@
 # NickReloaded - A simple nick plugin.
 
-# Outdated
+# Outdated 🥀
 This repository is now read-only (for conservation purposes).<br>
-A new version is coming by end of 2020 (promise!)
+A new version will be coming depending on my time and availablity, but it's in the works.<br>
 
 ## Download
 https://www.spigotmc.org/resources/nickreloaded.46335/
@@ -15,9 +15,3 @@ Version | Supported
 1.10.X | ✔️
 1.11.X | ✔️
 1.12.X | ✔️
-
-### Contributing:
-Soon !
-
-### How to use the dedicated API:
-Soon !
